@@ -1,0 +1,11 @@
+{
+  "id": "m7",
+  "docId": "Q18",
+  "order": 7,
+  "title": "Splice Cost",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["kadane", "prefix suffix", "dp"]
+}

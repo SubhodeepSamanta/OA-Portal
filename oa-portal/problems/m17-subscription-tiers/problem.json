@@ -1,0 +1,11 @@
+{
+  "id": "m17",
+  "docId": "Q108",
+  "order": 17,
+  "title": "Subscription Tiers",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["sorting", "dp", "constraint-driven"]
+}

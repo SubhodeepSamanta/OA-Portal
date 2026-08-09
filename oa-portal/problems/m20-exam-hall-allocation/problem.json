@@ -1,0 +1,11 @@
+{
+  "id": "m20",
+  "docId": "Q36",
+  "order": 20,
+  "title": "Exam Hall Allocation",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["intervals", "sweep line", "heap"]
+}

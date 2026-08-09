@@ -1,0 +1,11 @@
+{
+  "id": "m14",
+  "docId": "Q63",
+  "order": 14,
+  "title": "Nearest Common Manager",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["lca", "binary lifting"]
+}

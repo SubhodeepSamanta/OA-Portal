@@ -1,0 +1,4 @@
+# Everything else is handled by the .gitignore at the repository root.
+# Hidden test data IS tracked on purpose, so a fresh clone can judge
+# immediately with no generation step.
+*.exe

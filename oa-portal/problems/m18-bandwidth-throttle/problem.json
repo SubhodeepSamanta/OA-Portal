@@ -1,0 +1,11 @@
+{
+  "id": "m18",
+  "docId": "Q29",
+  "order": 18,
+  "title": "Bandwidth Throttle",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["binary search on answer", "greedy feasibility"]
+}

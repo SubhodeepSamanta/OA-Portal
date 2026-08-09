@@ -1,0 +1,11 @@
+{
+  "id": "m8",
+  "docId": "Q46",
+  "order": 8,
+  "title": "One Swap Sum",
+  "difficulty": "Medium",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["bound the candidate set", "prefix suffix"]
+}

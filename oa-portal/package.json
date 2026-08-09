@@ -1,0 +1,21 @@
+{
+  "name": "oa-portal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local OA practice judge - modelled problems from the OA Master Plan",
+  "scripts": {
+    "start": "node server/index.js",
+    "build:tests": "node tools/build_tests.js",
+    "test:judge": "node tools/test_judge.js",
+    "test:api": "node tools/test_api.js",
+    "solve": "node tools/solve.js",
+    "build:web": "npm --prefix frontend run build",
+    "setup": "npm --prefix frontend install && npm run build:tests && npm run build:web"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "mongodb": "^7.5.0"
+  }
+}

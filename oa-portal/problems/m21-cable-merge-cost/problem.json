@@ -1,0 +1,11 @@
+{
+  "id": "m21",
+  "docId": "Q37",
+  "order": 21,
+  "title": "Cable Merge Cost",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["heap", "greedy", "huffman"]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "m22",
+  "docId": "Q41",
+  "order": 22,
+  "title": "Skyline Billboard",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["monotonic stack", "histogram"]
+}

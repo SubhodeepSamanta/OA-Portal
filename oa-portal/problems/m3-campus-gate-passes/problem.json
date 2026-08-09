@@ -1,0 +1,11 @@
+{
+  "id": "m3",
+  "docId": "Q4",
+  "order": 3,
+  "title": "Campus Gate Passes",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["difference array", "prefix sum"]
+}

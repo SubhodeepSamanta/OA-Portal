@@ -1,0 +1,11 @@
+{
+  "id": "m15",
+  "docId": "Q107",
+  "order": 15,
+  "title": "Ad Slot Revenue",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["dp", "extra state dimension"]
+}

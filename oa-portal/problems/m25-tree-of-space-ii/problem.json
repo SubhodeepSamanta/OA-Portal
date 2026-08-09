@@ -1,0 +1,11 @@
+{
+  "id": "m25",
+  "docId": "Q65",
+  "order": 25,
+  "title": "Tree of Space II",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["euler tour", "fenwick", "subtree counters"]
+}

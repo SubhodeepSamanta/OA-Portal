@@ -1,0 +1,11 @@
+{
+  "id": "m19",
+  "docId": "Q30",
+  "order": 19,
+  "title": "Placement Drive Slotting",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["sorting", "two pointers", "exchange argument"]
+}

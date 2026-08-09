@@ -1,0 +1,11 @@
+{
+  "id": "m10",
+  "docId": "Q48",
+  "order": 10,
+  "title": "Remove One Segment",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["minimum subarray", "kadane"]
+}

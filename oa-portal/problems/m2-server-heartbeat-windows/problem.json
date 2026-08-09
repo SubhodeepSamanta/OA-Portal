@@ -1,0 +1,11 @@
+{
+  "id": "m2",
+  "docId": "Q3",
+  "order": 2,
+  "title": "Server Heartbeat Windows",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["monotonic deque", "sliding window"]
+}

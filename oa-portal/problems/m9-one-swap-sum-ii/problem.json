@@ -1,0 +1,11 @@
+{
+  "id": "m9",
+  "docId": "Q47",
+  "order": 9,
+  "title": "One Swap Sum II",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["bound the candidate set", "parity"]
+}

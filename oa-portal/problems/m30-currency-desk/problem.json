@@ -1,0 +1,11 @@
+{
+  "id": "m30",
+  "docId": "Q72",
+  "order": 30,
+  "title": "Currency Desk",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["bellman-ford", "negative cycle", "log transform"]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "m23",
+  "docId": "Q45",
+  "order": 23,
+  "title": "Kitchen Order Queue",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["heap", "scheduling", "event sweep"]
+}

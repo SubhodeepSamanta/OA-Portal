@@ -1,0 +1,11 @@
+{
+  "id": "m1",
+  "docId": "Q2",
+  "order": 1,
+  "title": "Refund Reconciliation",
+  "difficulty": "Medium",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["prefix sum", "hash map"]
+}

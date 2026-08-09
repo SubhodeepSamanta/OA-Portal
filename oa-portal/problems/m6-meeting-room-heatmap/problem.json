@@ -1,0 +1,11 @@
+{
+  "id": "m6",
+  "docId": "Q17",
+  "order": 6,
+  "title": "Meeting Room Heatmap",
+  "difficulty": "Medium",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["sweep line", "sorting"]
+}

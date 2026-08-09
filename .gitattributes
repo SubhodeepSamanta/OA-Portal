@@ -1,0 +1,7 @@
+# Keep every file byte-identical in every clone.
+#
+# Test inputs and expected outputs must not be rewritten by line-ending
+# conversion on checkout - the judge compares them against real program
+# output, and a silent CRLF pass over 1400 test files is exactly the kind of
+# thing that produces "works on my machine".
+* -text

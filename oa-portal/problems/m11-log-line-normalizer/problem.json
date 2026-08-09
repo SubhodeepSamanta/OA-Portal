@@ -1,0 +1,11 @@
+{
+  "id": "m11",
+  "docId": "Q51",
+  "order": 11,
+  "title": "Log Line Normalizer",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["fix the split point", "prefix suffix", "two-state dp"]
+}

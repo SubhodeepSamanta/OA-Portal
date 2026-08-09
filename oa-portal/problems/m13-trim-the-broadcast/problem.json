@@ -1,0 +1,11 @@
+{
+  "id": "m13",
+  "docId": "Q54",
+  "order": 13,
+  "title": "Trim the Broadcast",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["reframing", "prefix sums", "monotonic stack"]
+}

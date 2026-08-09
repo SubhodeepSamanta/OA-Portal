@@ -1,0 +1,11 @@
+{
+  "id": "m27",
+  "docId": "Q70",
+  "order": 27,
+  "title": "Warehouse Robot Keys",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["bfs", "bitmask state"]
+}

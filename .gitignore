@@ -1,0 +1,19 @@
+# installed packages - `run.ps1` installs these
+node_modules/
+
+# compiler scratch space and frontend build output - both regenerated
+oa-portal/.build/
+oa-portal/frontend/dist/
+
+# ---------------------------------------------------------------------
+# PERSONAL WORK. Deliberately not tracked, so that pulling an update can
+# never overwrite the code you have written or the problems you have
+# solved. Each clone keeps its own.
+# ---------------------------------------------------------------------
+oa-portal/workspace/
+oa-portal/.data/
+
+# noise
+*.log
+.DS_Store
+Thumbs.db

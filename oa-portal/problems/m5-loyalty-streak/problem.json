@@ -1,0 +1,11 @@
+{
+  "id": "m5",
+  "docId": "Q12",
+  "order": 5,
+  "title": "Loyalty Streak",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["prefix sum", "hash map", "first occurrence"]
+}

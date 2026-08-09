@@ -1,0 +1,11 @@
+{
+  "id": "m28",
+  "docId": "Q71",
+  "order": 28,
+  "title": "Toll Roads",
+  "difficulty": "Medium",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["0-1 bfs", "deque"]
+}

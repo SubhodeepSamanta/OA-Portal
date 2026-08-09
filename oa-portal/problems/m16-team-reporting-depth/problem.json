@@ -1,0 +1,11 @@
+{
+  "id": "m16",
+  "docId": "Q66",
+  "order": 16,
+  "title": "Team Reporting Depth",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["euler tour", "offline", "fenwick"]
+}

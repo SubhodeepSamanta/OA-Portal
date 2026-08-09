@@ -1,0 +1,11 @@
+{
+  "id": "m26",
+  "docId": "Q69",
+  "order": 26,
+  "title": "Metro with Passes",
+  "difficulty": "Medium",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["dijkstra", "layered graph"]
+}
