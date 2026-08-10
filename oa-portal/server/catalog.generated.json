@@ -1386,7 +1386,8 @@
   "statement": "A campus grid `r × c`. `#` blocked, `.` free, `R` a person who already knows. Each minute every knower tells all 4-adjacent free cells. Minutes until everyone knows, or `−1`.\n**Constraints:** `1 ≤ r, c ≤ 1000`.",
   "section": "Graph modelling",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m31",
+  "playable": true
  },
  {
   "docId": "Q75",
@@ -1405,7 +1406,8 @@
   "statement": "`n` servers, initially `m` links. Then `q` events, each removing one existing link. After each removal, print the number of connected components.\n**Constraints:** `1 ≤ n ≤ 2e5`, `1 ≤ m, q ≤ 2e5`. *DSU cannot un-merge. So what do you do about the order?*",
   "section": "Graph modelling",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m32",
+  "playable": true
  },
  {
   "docId": "Q76",
@@ -1424,7 +1426,8 @@
   "statement": "Each of `n` employees referred exactly one other employee (possibly themselves). For each employee, print how many distinct employees are reachable by following referrals from them.\n**Constraints:** `1 ≤ n ≤ 2e5`.",
   "section": "Graph modelling",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m33",
+  "playable": true
  },
  {
   "docId": "Q77",
@@ -1443,7 +1446,8 @@
   "statement": "`n` cities, `m` one-way flights with prices. You hold one coupon that halves the price of **exactly one** flight (rounded down). Minimum cost from city 1 to city `n`?\n**Constraints:** `1 ≤ n ≤ 1e5`, `1 ≤ m ≤ 2e5`.",
   "section": "Graph modelling",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m34",
+  "playable": true
  },
  {
   "docId": "Q78",
@@ -1462,7 +1466,8 @@
   "statement": "`n` staff, `m` shifts; staff `i` can work a given subset of shifts. Each shift needs exactly one person and each person works at most one shift. Can every shift be covered?\n**Constraints:** `1 ≤ n, m ≤ 500`, total pairs ≤ `1e5`.",
   "section": "Graph modelling",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m35",
+  "playable": true
  },
  {
   "docId": "Q79",

@@ -1571,6 +1571,253 @@ ${FAST_READER_JAVA}}
 `,
 };
 
+S.m31 = {
+  cpp: `${CPP_HEAD}
+/* grid[i][j] is one of . # R. Return -1 if somebody can never hear it. */
+int minutesToSpread(const vector<string>& grid) {
+    // write your code here
+
+    return -1;
+}
+
+int main() {
+    int r, c;
+    if (scanf("%d %d", &r, &c) != 2) return 0;
+    vector<string> grid(r);
+    {
+        vector<char> buf(c + 8);
+        for (int i = 0; i < r; i++) { scanf("%s", buf.data()); grid[i] = buf.data(); }
+    }
+
+    printf("%d\\n", minutesToSpread(grid));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* grid[i].charAt(j) is one of . # R. Return -1 if somebody never hears it. */
+    static int minutesToSpread(String[] grid) {
+        // write your code here
+
+        return -1;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int r = in.nextInt(), c = in.nextInt();
+        String[] grid = new String[r];
+        for (int i = 0; i < r; i++) grid[i] = in.next();
+
+        System.out.println(minutesToSpread(grid));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m32 = {
+  cpp: `${CPP_HEAD}
+/* cables[i] = {u, v} for cable i+1. events[j] is the cable number unplugged
+   at step j. Return the cluster count after each unplugging, in order. */
+vector<int> clustersAfterEachRemoval(int n,
+                                     const vector<pair<int,int>>& cables,
+                                     const vector<int>& events) {
+    // write your code here
+
+    return vector<int>(events.size(), n);
+}
+
+int main() {
+    int n, m, q;
+    if (scanf("%d %d %d", &n, &m, &q) != 3) return 0;
+    vector<pair<int,int>> cables(m);
+    for (auto &e : cables) scanf("%d %d", &e.first, &e.second);
+    vector<int> events(q);
+    for (auto &x : events) scanf("%d", &x);
+
+    string out;
+    for (int v : clustersAfterEachRemoval(n, cables, events)) { out += to_string(v); out += '\\n'; }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* cables[i] = {u, v} for cable i+1. events[j] is the cable number unplugged
+       at step j. Return the cluster count after each unplugging, in order. */
+    static int[] clustersAfterEachRemoval(int n, int[][] cables, int[] events) {
+        // write your code here
+
+        int[] res = new int[events.length];
+        Arrays.fill(res, n);
+        return res;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), m = in.nextInt(), q = in.nextInt();
+        int[][] cables = new int[m][2];
+        for (int i = 0; i < m; i++) { cables[i][0] = in.nextInt(); cables[i][1] = in.nextInt(); }
+        int[] events = new int[q];
+        for (int i = 0; i < q; i++) events[i] = in.nextInt();
+
+        StringBuilder sb = new StringBuilder();
+        for (int v : clustersAfterEachRemoval(n, cables, events)) sb.append(v).append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m33 = {
+  cpp: `${CPP_HEAD}
+/* f[i] is the person employee i referred, for i from 1 to n; f[0] is unused.
+   Return chain sizes for employees 1..n, counting the employee themselves. */
+vector<long long> chainSizes(int n, const vector<int>& f) {
+    // write your code here
+
+    return vector<long long>(n, 1);
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<int> f(n + 1, 1);
+    for (int i = 1; i <= n; i++) scanf("%d", &f[i]);
+
+    vector<long long> res = chainSizes(n, f);
+    string out;
+    for (size_t i = 0; i < res.size(); i++) { if (i) out += ' '; out += to_string(res[i]); }
+    out += '\\n';
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* f[i] is the person employee i referred, for i from 1 to n; f[0] is unused.
+       Return chain sizes for employees 1..n, counting the employee themselves. */
+    static long[] chainSizes(int n, int[] f) {
+        // write your code here
+
+        long[] res = new long[n];
+        Arrays.fill(res, 1);
+        return res;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        int[] f = new int[n + 1];
+        for (int i = 1; i <= n; i++) f[i] = in.nextInt();
+
+        long[] res = chainSizes(n, f);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < res.length; i++) { if (i > 0) sb.append(' '); sb.append(res[i]); }
+        sb.append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m34 = {
+  cpp: `${CPP_HEAD}
+/* flights[i] = {u, v, cost}, one way only. Return -1 if city n is unreachable. */
+long long cheapestFare(int n, const vector<array<long long,3>>& flights) {
+    // write your code here
+
+    return -1;
+}
+
+int main() {
+    int n, m;
+    if (scanf("%d %d", &n, &m) != 2) return 0;
+    vector<array<long long,3>> flights(m);
+    for (auto &e : flights) scanf("%lld %lld %lld", &e[0], &e[1], &e[2]);
+
+    printf("%lld\\n", cheapestFare(n, flights));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* flights[i] = {u, v, cost}, one way only. Return -1 if n is unreachable. */
+    static long cheapestFare(int n, long[][] flights) {
+        // write your code here
+
+        return -1;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), m = in.nextInt();
+        long[][] flights = new long[m][3];
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < 3; j++) flights[i][j] = in.nextLong();
+
+        System.out.println(cheapestFare(n, flights));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m35 = {
+  cpp: `${CPP_HEAD}
+/* pairs[i] = {staff, shift}: that staff member can work that shift.
+   Return true if every one of the m shifts can be covered. */
+bool canCoverEveryShift(int n, int m, const vector<pair<int,int>>& pairs) {
+    // write your code here
+
+    return false;
+}
+
+int main() {
+    int n, m, p;
+    if (scanf("%d %d %d", &n, &m, &p) != 3) return 0;
+    vector<pair<int,int>> pairs(p);
+    for (auto &x : pairs) scanf("%d %d", &x.first, &x.second);
+
+    printf("%s\\n", canCoverEveryShift(n, m, pairs) ? "YES" : "NO");
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* pairs[i] = {staff, shift}: that staff member can work that shift.
+       Return true if every one of the m shifts can be covered. */
+    static boolean canCoverEveryShift(int n, int m, int[][] pairs) {
+        // write your code here
+
+        return false;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), m = in.nextInt(), p = in.nextInt();
+        int[][] pairs = new int[p][2];
+        for (int i = 0; i < p; i++) { pairs[i][0] = in.nextInt(); pairs[i][1] = in.nextInt(); }
+
+        System.out.println(canCoverEveryShift(n, m, pairs) ? "YES" : "NO");
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
 /**
  * The /** ... *\/ blocks above each function are kept in THIS file so the
  * signatures stay self-documenting for whoever edits the templates, but they

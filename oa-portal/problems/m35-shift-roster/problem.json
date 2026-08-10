@@ -1,0 +1,11 @@
+{
+  "id": "m35",
+  "docId": "Q78",
+  "order": 35,
+  "title": "Shift Roster",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["bipartite matching", "augmenting paths"]
+}

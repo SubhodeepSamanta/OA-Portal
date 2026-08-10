@@ -98,6 +98,22 @@ const WRONG = {
   // m30: finds a profitable loop ANYWHERE, without checking you can reach it
   //      from currency 1 and get back to currency 1 afterwards
   m30: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,m;scanf("%d %d",&n,&m);vector<int>U(m),V(m);vector<long double>W(m);for(int i=0;i<m;i++){long long p,q;scanf("%d %d %lld %lld",&U[i],&V[i],&p,&q);W[i]=logl((long double)q)-logl((long double)p);}vector<long double>d(n+1,0.0L);bool rel=false;for(int it=0;it<=n;it++){rel=false;for(int i=0;i<m;i++)if(d[U[i]]+W[i]<d[V[i]]-1e-9L){d[V[i]]=d[U[i]]+W[i];rel=true;}if(!rel)break;}printf(rel?"YES\\n":"NO\\n");}`,
+
+  // m31: BFS from only the FIRST R it finds, ignoring every other source
+  m31: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int r,c;scanf("%d %d",&r,&c);vector<string>g(r);{vector<char>b(c+8);for(int i=0;i<r;i++){scanf("%s",b.data());g[i]=b.data();}}long long people=0;int sr=-1,sc=-1;for(int i=0;i<r;i++)for(int j=0;j<c;j++){if(g[i][j]=='#')continue;people++;if(g[i][j]=='R'&&sr<0){sr=i;sc=j;}}if(sr<0){printf("%d\\n",people==0?0:-1);return 0;}vector<int>d((size_t)r*c,-1);vector<int>q;d[(size_t)sr*c+sc]=0;q.push_back(sr*c+sc);int DR[4]={-1,1,0,0},DC[4]={0,0,-1,1};long long inf=1;int best=0;for(size_t h=0;h<q.size();h++){int cell=q[h],i=cell/c,j=cell%c,dd=d[cell];best=max(best,dd);for(int k=0;k<4;k++){int ni=i+DR[k],nj=j+DC[k];if(ni<0||nj<0||ni>=r||nj>=c)continue;if(g[ni][nj]=='#')continue;size_t ns=(size_t)ni*c+nj;if(d[ns]!=-1)continue;d[ns]=dd+1;inf++;q.push_back((int)ns);}}printf("%d\\n",inf==people?best:-1);}`,
+
+  // m32: assumes every unplugging splits a cluster, so it just counts upward
+  m32: `#include <bits/stdc++.h>\nusing namespace std;\nint par[200005];int fr(int x){while(par[x]!=x){par[x]=par[par[x]];x=par[x];}return x;}\nint main(){int n,m,q;scanf("%d %d %d",&n,&m,&q);vector<int>U(m+1),V(m+1);for(int i=1;i<=m;i++)scanf("%d %d",&U[i],&V[i]);for(int i=1;i<=n;i++)par[i]=i;int comps=n;for(int i=1;i<=m;i++){int a=fr(U[i]),b=fr(V[i]);if(a!=b){par[b]=a;comps--;}}string o;for(int i=0;i<q;i++){int x;scanf("%d",&x);comps++;o+=to_string(comps);o+='\\n';}fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // m33: counts only the tail, forgetting the ring the chain settles into
+  m33: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<int>f(n+1);for(int i=1;i<=n;i++)scanf("%d",&f[i]);vector<char>onCyc(n+1,0);vector<int>st(n+1,0);for(int s=1;s<=n;s++){if(st[s])continue;vector<int>path;int u=s;while(st[u]==0){st[u]=1;path.push_back(u);u=f[u];}if(st[u]==1){bool go=false;for(int v:path){if(v==u)go=true;if(go)onCyc[v]=1;}}for(int v:path)st[v]=2;}string o;for(int i=1;i<=n;i++){long long c=0;int u=i;while(!onCyc[u]){c++;u=f[u];}if(i>1)o+=' ';o+=to_string(c+1);}o+='\\n';fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // m34: shortest path first, then halve its single most expensive leg
+  m34: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,m;scanf("%d %d",&n,&m);vector<vector<pair<int,long long>>>g(n+1);for(int i=0;i<m;i++){int u,v;long long c;scanf("%d %d %lld",&u,&v,&c);g[u].push_back({v,c});}const long long INF=LLONG_MAX/4;vector<long long>d(n+1,INF),mx(n+1,0),pw(n+1,0);priority_queue<pair<long long,int>,vector<pair<long long,int>>,greater<pair<long long,int>>>pq;d[1]=0;pq.push({0,1});while(!pq.empty()){auto t=pq.top();pq.pop();if(t.first!=d[t.second])continue;for(auto&e:g[t.second])if(t.first+e.second<d[e.first]){d[e.first]=t.first+e.second;mx[e.first]=max(mx[t.second],e.second);pq.push({d[e.first],e.first});}}if(d[n]>=INF){printf("-1\\n");return 0;}printf("%lld\\n",d[n]-mx[n]+mx[n]/2);}`,
+
+  // m35: one greedy pass per shift with no displacement, so an early free
+  //      choice can block a later forced one
+  m35: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,m,p;scanf("%d %d %d",&n,&m,&p);vector<vector<int>>cw(m+1);for(int i=0;i<p;i++){int a,b;scanf("%d %d",&a,&b);cw[b].push_back(a);}vector<char>used(n+1,0);for(int s=1;s<=m;s++){bool ok=false;for(int a:cw[s])if(!used[a]){used[a]=1;ok=true;break;}if(!ok){printf("NO\\n");return 0;}}printf("YES\\n");}`,
 };
 // m4's "wrong" one is actually correct except it never dedupes -> duplicates break the run count.
 // m5's stores the LAST index instead of the first -> shorter answers.

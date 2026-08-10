@@ -1,0 +1,11 @@
+{
+  "id": "m32",
+  "docId": "Q75",
+  "order": 32,
+  "title": "Network Rollback",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["dsu", "offline reversed"]
+}
