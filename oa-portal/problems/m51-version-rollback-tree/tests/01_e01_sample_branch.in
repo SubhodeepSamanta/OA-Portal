@@ -1,0 +1,6 @@
+5
+EDIT 0 a
+EDIT 1 b
+QUERY 2 1
+QUERY 2 2
+EDIT 1 c

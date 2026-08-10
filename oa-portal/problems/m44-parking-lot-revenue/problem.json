@@ -1,0 +1,11 @@
+{
+  "id": "m44",
+  "docId": "Q131",
+  "order": 44,
+  "title": "Parking Lot Revenue",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["heap", "simulation"]
+}

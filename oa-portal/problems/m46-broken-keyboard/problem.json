@@ -1,0 +1,11 @@
+{
+  "id": "m46",
+  "docId": "Q133",
+  "order": 46,
+  "title": "Broken Keyboard",
+  "difficulty": "Medium",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["scan", "strings"]
+}

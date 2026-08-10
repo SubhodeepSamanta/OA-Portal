@@ -1,0 +1,11 @@
+{
+  "id": "m42",
+  "docId": "Q127",
+  "order": 42,
+  "title": "Playlist Symmetry",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["palindromic tree", "strings"]
+}

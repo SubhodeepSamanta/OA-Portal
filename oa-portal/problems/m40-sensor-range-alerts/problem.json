@@ -1,0 +1,11 @@
+{
+  "id": "m40",
+  "docId": "Q119",
+  "order": 40,
+  "title": "Sensor Range Alerts",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["segment tree", "lazy propagation"]
+}

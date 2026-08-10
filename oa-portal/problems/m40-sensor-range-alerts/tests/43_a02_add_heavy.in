@@ -1,0 +1,14 @@
+8 12
+10 6 3 3 0 9 6 1
+ADD 8 8 -4
+ADD 3 7 -9
+ADD 6 6 -10
+MAX 6 7
+ADD 3 5 -5
+ADD 6 7 -8
+ADD 8 8 6
+ADD 3 8 5
+ADD 5 8 4
+ADD 4 8 -1
+MAX 8 8
+MAX 5 7

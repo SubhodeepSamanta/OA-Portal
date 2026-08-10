@@ -1,0 +1,8 @@
+7
+EDIT 0 a
+EDIT 1 b
+EDIT 2 c
+EDIT 3 d
+QUERY 4 1
+QUERY 4 4
+QUERY 4 2

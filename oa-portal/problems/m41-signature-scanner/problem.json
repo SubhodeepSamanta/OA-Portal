@@ -1,0 +1,11 @@
+{
+  "id": "m41",
+  "docId": "Q126",
+  "order": 41,
+  "title": "Signature Scanner",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["kmp", "string matching"]
+}

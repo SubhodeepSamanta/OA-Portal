@@ -1,0 +1,11 @@
+{
+  "id": "m39",
+  "docId": "Q118",
+  "order": 39,
+  "title": "Live Leaderboard",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["fenwick", "coordinate compression"]
+}

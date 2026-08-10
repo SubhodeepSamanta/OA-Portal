@@ -1,0 +1,11 @@
+{
+  "id": "m47",
+  "docId": "Q134",
+  "order": 47,
+  "title": "Token Refill",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["simulation", "rate limiting"]
+}

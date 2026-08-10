@@ -114,6 +114,61 @@ const WRONG = {
   // m35: one greedy pass per shift with no displacement, so an early free
   //      choice can block a later forced one
   m35: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,m,p;scanf("%d %d %d",&n,&m,&p);vector<vector<int>>cw(m+1);for(int i=0;i<p;i++){int a,b;scanf("%d %d",&a,&b);cw[b].push_back(a);}vector<char>used(n+1,0);for(int s=1;s<=m;s++){bool ok=false;for(int a:cw[s])if(!used[a]){used[a]=1;ok=true;break;}if(!ok){printf("NO\\n");return 0;}}printf("YES\\n");}`,
+
+  // m36: greedy - each server takes its cheapest still-free position
+  m36: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<vector<long long>>c(n,vector<long long>(n));for(auto&r:c)for(auto&x:r)scanf("%lld",&x);vector<char>used(n,0);long long tot=0;for(int i=0;i<n;i++){int b=-1;for(int j=0;j<n;j++)if(!used[j]&&(b<0||c[i][j]<c[i][b]))b=j;used[b]=1;tot+=c[i][b];}printf("%lld\\n",tot);}`,
+
+  // m37: minimises the TOTAL climb instead of the worst single step
+  m37: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int r,c;scanf("%d %d",&r,&c);vector<vector<long long>>h(r,vector<long long>(c));for(auto&row:h)for(auto&x:row)scanf("%lld",&x);const long long INF=LLONG_MAX/4;vector<vector<long long>>d(r,vector<long long>(c,INF));d[0][0]=0;for(int i=0;i<r;i++)for(int j=0;j<c;j++){if(!i&&!j)continue;long long v=INF;if(i&&d[i-1][j]<INF)v=min(v,d[i-1][j]+llabs(h[i][j]-h[i-1][j]));if(j&&d[i][j-1]<INF)v=min(v,d[i][j-1]+llabs(h[i][j]-h[i][j-1]));d[i][j]=v;}printf("%lld\\n",d[r-1][c-1]);}`,
+
+  // m38: stops at the FIRST rule it passes, reporting the shortest match
+  m38: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,q;scanf("%d %d",&n,&q);vector<array<int,2>>nx;vector<char>ir;nx.push_back({-1,-1});ir.push_back(0);vector<char>b(64);for(int i=0;i<n;i++){scanf("%s",b.data());int cur=0;for(int k=0;b[k];k++){int t=b[k]-'0';if(nx[cur][t]==-1){nx[cur][t]=(int)nx.size();nx.push_back({-1,-1});ir.push_back(0);}cur=nx[cur][t];}ir[cur]=1;}string o;for(int i=0;i<q;i++){scanf("%s",b.data());int cur=0,best=-1;for(int k=0;b[k];k++){int t=b[k]-'0';if(nx[cur][t]==-1)break;cur=nx[cur][t];if(ir[cur]){best=k+1;break;}}o+=to_string(best);o+='\\n';}fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // m39: counts players with score >= instead of strictly greater
+  m39: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,q;scanf("%d %d",&n,&q);vector<long long>sc(n+1,0);char op[16];string o;for(int i=0;i<q;i++){scanf("%s",op);if(op[0]=='U'){int p;long long s;scanf("%d %lld",&p,&s);sc[p]=s;}else{int p;scanf("%d",&p);int h=0;for(int j=1;j<=n;j++)if(j!=p&&sc[j]>=sc[p])h++;o+=to_string(h);o+='\\n';}}fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // m40: starts the running maximum at 0, so all-negative ranges come out wrong
+  m40: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,q;scanf("%d %d",&n,&q);vector<long long>a(n+1);for(int i=1;i<=n;i++)scanf("%lld",&a[i]);char op[16];string o;for(int i=0;i<q;i++){scanf("%s",op);if(op[0]=='A'){int l,r;long long x;scanf("%d %d %lld",&l,&r,&x);for(int j=l;j<=r;j++)a[j]+=x;}else{int l,r;scanf("%d %d",&l,&r);long long b=0;for(int j=l;j<=r;j++)b=max(b,a[j]);o+=to_string(b);o+='\\n';}}fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // m48: reports the peak overlap, forgetting the cancellation entirely
+  m48: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<pair<long long,int>>ev;for(int i=0;i<n;i++){long long a,d;scanf("%lld %lld",&a,&d);ev.push_back({a,1});ev.push_back({d+1,-1});}sort(ev.begin(),ev.end());int c=0,p=0;for(auto&e:ev){c+=e.second;p=max(p,c);}printf("%d\\n",p);}`,
+
+  // m49: sums the signed gap traffic instead of the absolute values
+  m49: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<long long>a(n);long long t=0;for(int i=0;i<n;i++){scanf("%lld",&a[i]);t+=a[i];}if(t%n!=0){printf("-1\\n");return 0;}long long av=t/n,pre=0,ops=0;for(int i=0;i<n-1;i++){pre+=a[i];ops+=pre-(long long)(i+1)*av;}printf("%lld\\n",ops);}`,
+
+  // m50: pairs the biggest discounts with the CHEAPEST items
+  m50: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,m;scanf("%d %d",&n,&m);vector<long long>p(n),d(m);long long t=0;for(int i=0;i<n;i++){scanf("%lld",&p[i]);t+=p[i];}for(int j=0;j<m;j++)scanf("%lld",&d[j]);sort(p.begin(),p.end());sort(d.rbegin(),d.rend());long long s=0;int k=min(n,m);for(int i=0;i<k;i++)s+=p[i]*d[i];printf("%lld\\n",100LL*t-s);}`,
+
+  // m51: reads the k-th character by counting DOWN from the newest end
+  m51: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int q;scanf("%d",&q);vector<int>par(q+1,0),dep(q+1,0);vector<char>ch(q+1,0);int vs=0;string o;char op[16];for(int i=0;i<q;i++){scanf("%s",op);if(op[0]=='E'){int v;char c[8];scanf("%d %s",&v,c);int cur=++vs;par[cur]=v;dep[cur]=dep[v]+1;ch[cur]=c[0];}else{int v,k;scanf("%d %d",&v,&k);int node=v;for(int s=1;s<k;s++)node=par[node];o+=ch[node];o+='\\n';}}fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // m52: uses a STRICTLY increasing subsequence, so equal shifted values are
+  //      wrongly treated as incompatible
+  m52: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<long long>t;for(int i=0;i<n;i++){long long a;scanf("%lld",&a);long long b=a-i;auto it=lower_bound(t.begin(),t.end(),b);if(it==t.end())t.push_back(b);else *it=b;}printf("%d\\n",n-(int)t.size());}`,
+
+  // m53: forgets that the running total starts at 0 before anything is read
+  m53: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){static char b[200006];scanf("%s",b);int n=strlen(b);vector<long long>seen(2*n+2,0);int cur=n;long long ans=0;for(int i=0;i<n;i++){cur+=(b[i]=='1')?1:-1;ans+=seen[cur];seen[cur]++;}printf("%lld\\n",ans);}`,
+
+  // m42: counts palindromic substrings by POSITION, not distinct content
+  m42: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){static char b[200006];scanf("%s",b);string s=b;int n=s.size();long long cnt=0;for(int i=0;i<n;i++){for(int j=i;j<n;j++){bool p=true;for(int a=i,c=j;a<c;a++,c--)if(s[a]!=s[c]){p=false;break;}if(p)cnt++;}}printf("%lld\\n",cnt);}`,
+
+  // m43: nearest-unvisited-stop greedy instead of an exact tour
+  m43: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);int m=n+1;vector<vector<long long>>d(m,vector<long long>(m));for(int i=0;i<m;i++)for(int j=0;j<m;j++)scanf("%lld",&d[i][j]);vector<char>vis(m,0);vis[0]=1;int at=0;long long tot=0;for(int s=0;s<n;s++){int b=-1;for(int j=1;j<m;j++)if(!vis[j]&&(b<0||d[at][j]<d[at][b]))b=j;vis[b]=1;tot+=d[at][b];at=b;}tot+=d[at][0];printf("%lld\\n",tot);}`,
+
+  // m44: charges for every car, including the ones turned away
+  m44: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,k;scanf("%d %d",&n,&k);long long r=0;for(int i=0;i<n;i++){long long a,d;scanf("%lld %lld",&a,&d);r+=d-a;}printf("%lld\\n",r);}`,
+
+  // m45: sorted greedy - hand each item to whichever heir is behind
+  m45: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<int>a(n);for(auto&x:a)scanf("%d",&x);if(n==1){printf("-1\\n");return 0;}sort(a.rbegin(),a.rend());long long x=0,y=0;for(int v:a){if(x<=y)x+=v;else y+=v;}printf("%lld\\n",llabs(x-y));}`,
+
+  // m46: resets the run length to 1 at a broken key instead of 0
+  m46: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){static char b[1000006];scanf("%s",b);int n=strlen(b);int k;scanf("%d",&k);bool w[26]={false};for(int i=0;i<k;i++){char c[8];scanf("%s",c);w[c[0]-'a']=true;}int best=0,run=0;for(int i=0;i<n;i++){if(w[b[i]-'a'])run++;else run=1;if(run>best)best=run;}printf("%d\\n",best);}`,
+
+  // m47: a rejected request still drains what it could
+  m47: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;long long C;scanf("%d %lld",&n,&C);long long lv=C,pv=0;int ok=0;for(int i=0;i<n;i++){long long t,c;scanf("%lld %lld",&t,&c);lv=min(C,lv+(t-pv));pv=t;if(lv>=c){lv-=c;ok++;}else lv=0;}printf("%d\\n",ok);}`,
+
+  // m41: restarts from scratch after a match, so overlaps are missed
+  m41: `#include <bits/stdc++.h>\nusing namespace std;\nstatic char pb[1000006],sb[1000006];\nint main(){scanf("%s",pb);scanf("%s",sb);int np=(int)strlen(pb),ns=(int)strlen(sb);vector<int>f(np,0);for(int i=1;i<np;i++){int j=f[i-1];while(j>0&&pb[i]!=pb[j])j=f[j-1];if(pb[i]==pb[j])j++;f[i]=j;}vector<int>hits;int j=0;for(int i=0;i<ns;i++){while(j>0&&sb[i]!=pb[j])j=f[j-1];if(sb[i]==pb[j])j++;if(j==np){hits.push_back(i-np+2);j=0;}}string o;o+=to_string(hits.size());o+='\\n';for(size_t k=0;k<hits.size();k++){if(k)o+=' ';o+=to_string(hits[k]);}o+='\\n';fwrite(o.data(),1,o.size(),stdout);}`,
 };
 // m4's "wrong" one is actually correct except it never dedupes -> duplicates break the run count.
 // m5's stores the LAST index instead of the first -> shorter answers.

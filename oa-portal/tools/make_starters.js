@@ -1818,6 +1818,867 @@ ${FAST_READER_JAVA}}
 `,
 };
 
+S.m36 = {
+  cpp: `${CPP_HEAD}
+/* c[i][j] is the cost of putting server i+1 in position j+1. */
+long long minTotalCost(const vector<vector<long long>>& c) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<vector<long long>> c(n, vector<long long>(n));
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++) scanf("%lld", &c[i][j]);
+
+    printf("%lld\\n", minTotalCost(c));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* c[i][j] is the cost of putting server i+1 in position j+1. */
+    static long minTotalCost(long[][] c) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long[][] c = new long[n][n];
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++) c[i][j] = in.nextLong();
+
+        System.out.println(minTotalCost(c));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m37 = {
+  cpp: `${CPP_HEAD}
+/* h[i][j] is the height of the cell in row i, column j.
+   Return the smallest possible worst single step. */
+long long minStrain(const vector<vector<long long>>& h) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int r, c;
+    if (scanf("%d %d", &r, &c) != 2) return 0;
+    vector<vector<long long>> h(r, vector<long long>(c));
+    for (int i = 0; i < r; i++)
+        for (int j = 0; j < c; j++) scanf("%lld", &h[i][j]);
+
+    printf("%lld\\n", minStrain(h));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* h[i][j] is the height of the cell in row i, column j.
+       Return the smallest possible worst single step. */
+    static long minStrain(long[][] h) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int r = in.nextInt(), c = in.nextInt();
+        long[][] h = new long[r][c];
+        for (int i = 0; i < r; i++)
+            for (int j = 0; j < c; j++) h[i][j] = in.nextLong();
+
+        System.out.println(minStrain(h));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m38 = {
+  cpp: `${CPP_HEAD}
+/* One answer per address: the length of the longest rule that is a prefix
+   of it, or -1 when none is. */
+vector<int> longestMatches(const vector<string>& rules, const vector<string>& addresses) {
+    // write your code here
+
+    return vector<int>(addresses.size(), -1);
+}
+
+int main() {
+    int n, q;
+    if (scanf("%d %d", &n, &q) != 2) return 0;
+    vector<char> buf(64);
+    vector<string> rules(n), addresses(q);
+    for (int i = 0; i < n; i++) { scanf("%s", buf.data()); rules[i] = buf.data(); }
+    for (int i = 0; i < q; i++) { scanf("%s", buf.data()); addresses[i] = buf.data(); }
+
+    string out;
+    for (int v : longestMatches(rules, addresses)) { out += to_string(v); out += '\\n'; }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* One answer per address: the length of the longest rule that is a prefix
+       of it, or -1 when none is. */
+    static int[] longestMatches(String[] rules, String[] addresses) {
+        // write your code here
+
+        int[] res = new int[addresses.length];
+        Arrays.fill(res, -1);
+        return res;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), q = in.nextInt();
+        String[] rules = new String[n], addresses = new String[q];
+        for (int i = 0; i < n; i++) rules[i] = in.next();
+        for (int i = 0; i < q; i++) addresses[i] = in.next();
+
+        StringBuilder sb = new StringBuilder();
+        for (int v : longestMatches(rules, addresses)) sb.append(v).append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m39 = {
+  cpp: `${CPP_HEAD}
+/* ops[i] = {type, player, score}: type 1 is UPDATE (score is meaningful),
+   type 0 is RANK (score is 0 and unused).
+   Return one answer per RANK operation, in order. */
+vector<long long> answerRanks(int n, const vector<array<long long,3>>& ops) {
+    // write your code here
+
+    return vector<long long>();
+}
+
+int main() {
+    int n, q;
+    if (scanf("%d %d", &n, &q) != 2) return 0;
+    vector<array<long long,3>> ops(q);
+    char word[16];
+    for (int i = 0; i < q; i++) {
+        scanf("%s", word);
+        if (word[0] == 'U') { ops[i][0] = 1; scanf("%lld %lld", &ops[i][1], &ops[i][2]); }
+        else { ops[i][0] = 0; scanf("%lld", &ops[i][1]); ops[i][2] = 0; }
+    }
+
+    string out;
+    for (long long v : answerRanks(n, ops)) { out += to_string(v); out += '\\n'; }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* ops[i] = {type, player, score}: type 1 is UPDATE (score is meaningful),
+       type 0 is RANK (score is 0 and unused).
+       Return one answer per RANK operation, in order. */
+    static long[] answerRanks(int n, long[][] ops) {
+        // write your code here
+
+        return new long[0];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), q = in.nextInt();
+        long[][] ops = new long[q][3];
+        for (int i = 0; i < q; i++) {
+            String w = in.next();
+            if (w.charAt(0) == 'U') { ops[i][0] = 1; ops[i][1] = in.nextLong(); ops[i][2] = in.nextLong(); }
+            else { ops[i][0] = 0; ops[i][1] = in.nextLong(); }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (long v : answerRanks(n, ops)) sb.append(v).append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m40 = {
+  cpp: `${CPP_HEAD}
+/* a[i] is sensor i+1's starting reading.
+   ops[i] = {type, l, r, x}: type 1 is ADD (x is the amount), type 0 is MAX
+   (x is 0 and unused). Return one answer per MAX operation, in order. */
+vector<long long> answerMaxQueries(const vector<long long>& a,
+                                   const vector<array<long long,4>>& ops) {
+    // write your code here
+
+    return vector<long long>();
+}
+
+int main() {
+    int n, q;
+    if (scanf("%d %d", &n, &q) != 2) return 0;
+    vector<long long> a(n);
+    for (auto &x : a) scanf("%lld", &x);
+    vector<array<long long,4>> ops(q);
+    char word[16];
+    for (int i = 0; i < q; i++) {
+        scanf("%s", word);
+        if (word[0] == 'A') { ops[i][0] = 1; scanf("%lld %lld %lld", &ops[i][1], &ops[i][2], &ops[i][3]); }
+        else { ops[i][0] = 0; scanf("%lld %lld", &ops[i][1], &ops[i][2]); ops[i][3] = 0; }
+    }
+
+    string out;
+    for (long long v : answerMaxQueries(a, ops)) { out += to_string(v); out += '\\n'; }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* a[i] is sensor i+1's starting reading.
+       ops[i] = {type, l, r, x}: type 1 is ADD (x is the amount), type 0 is MAX
+       (x is 0 and unused). Return one answer per MAX operation, in order. */
+    static long[] answerMaxQueries(long[] a, long[][] ops) {
+        // write your code here
+
+        return new long[0];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), q = in.nextInt();
+        long[] a = new long[n];
+        for (int i = 0; i < n; i++) a[i] = in.nextLong();
+        long[][] ops = new long[q][4];
+        for (int i = 0; i < q; i++) {
+            String w = in.next();
+            if (w.charAt(0) == 'A') {
+                ops[i][0] = 1; ops[i][1] = in.nextLong(); ops[i][2] = in.nextLong(); ops[i][3] = in.nextLong();
+            } else {
+                ops[i][0] = 0; ops[i][1] = in.nextLong(); ops[i][2] = in.nextLong();
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (long v : answerMaxQueries(a, ops)) sb.append(v).append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m41 = {
+  cpp: `${CPP_HEAD}
+/* Return every 1-based start position where p occurs in s, increasing.
+   Overlapping occurrences all count. */
+vector<int> findOccurrences(const string& p, const string& s) {
+    // write your code here
+
+    return vector<int>();
+}
+
+int main() {
+    static char pbuf[1000006], sbuf[1000006];
+    if (scanf("%s", pbuf) != 1) return 0;
+    if (scanf("%s", sbuf) != 1) return 0;
+
+    vector<int> hits = findOccurrences(pbuf, sbuf);
+    string out = to_string(hits.size());
+    out += '\\n';
+    for (size_t i = 0; i < hits.size(); i++) { if (i) out += ' '; out += to_string(hits[i]); }
+    out += '\\n';
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* Return every 1-based start position where p occurs in s, increasing.
+       Overlapping occurrences all count. */
+    static int[] findOccurrences(String p, String s) {
+        // write your code here
+
+        return new int[0];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        String p = in.next(), s = in.next();
+
+        int[] hits = findOccurrences(p, s);
+        StringBuilder sb = new StringBuilder();
+        sb.append(hits.length).append('\\n');
+        for (int i = 0; i < hits.length; i++) { if (i > 0) sb.append(' '); sb.append(hits[i]); }
+        sb.append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m42 = {
+  cpp: `${CPP_HEAD}
+long long countDistinctPalindromes(const string& s) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    static char buf[200006];
+    if (scanf("%s", buf) != 1) return 0;
+
+    printf("%lld\\n", countDistinctPalindromes(buf));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    static long countDistinctPalindromes(String s) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        System.out.println(countDistinctPalindromes(in.next()));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m43 = {
+  cpp: `${CPP_HEAD}
+/* dist[i][j] is the distance from location i to location j, 0 being the
+   depot. Not symmetric. Return the best round trip. */
+long long shortestRoute(const vector<vector<long long>>& dist) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<vector<long long>> dist(n + 1, vector<long long>(n + 1));
+    for (int i = 0; i <= n; i++)
+        for (int j = 0; j <= n; j++) scanf("%lld", &dist[i][j]);
+
+    printf("%lld\\n", shortestRoute(dist));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* dist[i][j] is the distance from location i to location j, 0 being the
+       depot. Not symmetric. Return the best round trip. */
+    static long shortestRoute(long[][] dist) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long[][] dist = new long[n + 1][n + 1];
+        for (int i = 0; i <= n; i++)
+            for (int j = 0; j <= n; j++) dist[i][j] = in.nextLong();
+
+        System.out.println(shortestRoute(dist));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m44 = {
+  cpp: `${CPP_HEAD}
+/* cars[i] = {arrival, departure}, already in non-decreasing arrival order. */
+long long totalRevenue(int k, const vector<pair<long long,long long>>& cars) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n, k;
+    if (scanf("%d %d", &n, &k) != 2) return 0;
+    vector<pair<long long,long long>> cars(n);
+    for (auto &c : cars) scanf("%lld %lld", &c.first, &c.second);
+
+    printf("%lld\\n", totalRevenue(k, cars));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* arrival[i] / departure[i], already in non-decreasing arrival order. */
+    static long totalRevenue(int k, long[] arrival, long[] departure) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), k = in.nextInt();
+        long[] arrival = new long[n], departure = new long[n];
+        for (int i = 0; i < n; i++) { arrival[i] = in.nextLong(); departure[i] = in.nextLong(); }
+
+        System.out.println(totalRevenue(k, arrival, departure));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m45 = {
+  cpp: `${CPP_HEAD}
+/* Return the smallest achievable difference, or -1 if no split exists. */
+long long smallestDifference(const vector<int>& a) {
+    // write your code here
+
+    return -1;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<int> a(n);
+    for (auto &x : a) scanf("%d", &x);
+
+    printf("%lld\\n", smallestDifference(a));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* Return the smallest achievable difference, or -1 if no split exists. */
+    static long smallestDifference(int[] a) {
+        // write your code here
+
+        return -1;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) a[i] = in.nextInt();
+
+        System.out.println(smallestDifference(a));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m46 = {
+  cpp: `${CPP_HEAD}
+/* works[c - 'a'] is true when that key still functions. */
+int longestTypeableRun(const string& s, const vector<bool>& works) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    static char buf[1000006];
+    if (scanf("%s", buf) != 1) return 0;
+    int k;
+    if (scanf("%d", &k) != 1) return 0;
+    vector<bool> works(26, false);
+    for (int i = 0; i < k; i++) { char c[8]; scanf("%s", c); works[c[0] - 'a'] = true; }
+
+    printf("%d\\n", longestTypeableRun(buf, works));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* works[c - 'a'] is true when that key still functions. */
+    static int longestTypeableRun(String s, boolean[] works) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        String s = in.next();
+        int k = in.nextInt();
+        boolean[] works = new boolean[26];
+        for (int i = 0; i < k; i++) works[in.next().charAt(0) - 'a'] = true;
+
+        System.out.println(longestTypeableRun(s, works));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m47 = {
+  cpp: `${CPP_HEAD}
+/* requests[i] = {arrival time, tokens needed}, times strictly increasing.
+   The bucket holds at most C and starts full at time 0. */
+int servedCount(long long C, const vector<pair<long long,long long>>& requests) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n;
+    long long C;
+    if (scanf("%d %lld", &n, &C) != 2) return 0;
+    vector<pair<long long,long long>> requests(n);
+    for (auto &r : requests) scanf("%lld %lld", &r.first, &r.second);
+
+    printf("%d\\n", servedCount(C, requests));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* time[i] / need[i], times strictly increasing.
+       The bucket holds at most C and starts full at time 0. */
+    static int servedCount(long C, long[] time, long[] need) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long C = in.nextLong();
+        long[] time = new long[n], need = new long[n];
+        for (int i = 0; i < n; i++) { time[i] = in.nextLong(); need[i] = in.nextLong(); }
+
+        System.out.println(servedCount(C, time, need));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m48 = {
+  cpp: `${CPP_HEAD}
+/* trains[i] = {arrival, departure}, both inclusive. At most one train may be
+   cancelled. Return the minimum number of platforms. */
+int minPlatforms(const vector<pair<long long,long long>>& trains) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<pair<long long,long long>> trains(n);
+    for (auto &t : trains) scanf("%lld %lld", &t.first, &t.second);
+
+    printf("%d\\n", minPlatforms(trains));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* arrival[i] / departure[i], both inclusive. At most one train may be
+       cancelled. Return the minimum number of platforms. */
+    static int minPlatforms(long[] arrival, long[] departure) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long[] arrival = new long[n], departure = new long[n];
+        for (int i = 0; i < n; i++) { arrival[i] = in.nextLong(); departure[i] = in.nextLong(); }
+
+        System.out.println(minPlatforms(arrival, departure));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m49 = {
+  cpp: `${CPP_HEAD}
+/* Return the minimum number of one-step moves, or -1 if impossible. */
+long long minMoves(const vector<long long>& a) {
+    // write your code here
+
+    return -1;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<long long> a(n);
+    for (auto &x : a) scanf("%lld", &x);
+
+    printf("%lld\\n", minMoves(a));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* Return the minimum number of one-step moves, or -1 if impossible. */
+    static long minMoves(long[] a) {
+        // write your code here
+
+        return -1;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long[] a = new long[n];
+        for (int i = 0; i < n; i++) a[i] = in.nextLong();
+
+        System.out.println(minMoves(a));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m50 = {
+  cpp: `${CPP_HEAD}
+/* Return the minimum total spend in PAISE (1 rupee = 100 paise). */
+long long minSpendPaise(const vector<long long>& prices, const vector<long long>& discounts) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n, m;
+    if (scanf("%d %d", &n, &m) != 2) return 0;
+    vector<long long> prices(n), discounts(m);
+    for (auto &x : prices) scanf("%lld", &x);
+    for (auto &x : discounts) scanf("%lld", &x);
+
+    printf("%lld\\n", minSpendPaise(prices, discounts));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* Return the minimum total spend in PAISE (1 rupee = 100 paise). */
+    static long minSpendPaise(long[] prices, long[] discounts) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), m = in.nextInt();
+        long[] prices = new long[n], discounts = new long[m];
+        for (int i = 0; i < n; i++) prices[i] = in.nextLong();
+        for (int i = 0; i < m; i++) discounts[i] = in.nextLong();
+
+        System.out.println(minSpendPaise(prices, discounts));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m51 = {
+  cpp: `${CPP_HEAD}
+/* ops[i] = {type, v, x}: type 1 is EDIT (x is the character), type 0 is
+   QUERY (x is k). Return one character per QUERY, in order. */
+vector<char> answerQueries(const vector<array<int,3>>& ops) {
+    // write your code here
+
+    return vector<char>();
+}
+
+int main() {
+    int q;
+    if (scanf("%d", &q) != 1) return 0;
+    vector<array<int,3>> ops(q);
+    char word[16];
+    for (int i = 0; i < q; i++) {
+        scanf("%s", word);
+        if (word[0] == 'E') {
+            char c[8];
+            scanf("%d %s", &ops[i][1], c);
+            ops[i][0] = 1;
+            ops[i][2] = c[0];
+        } else {
+            scanf("%d %d", &ops[i][1], &ops[i][2]);
+            ops[i][0] = 0;
+        }
+    }
+
+    string out;
+    for (char c : answerQueries(ops)) { out += c; out += '\\n'; }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* ops[i] = {type, v, x}: type 1 is EDIT (x is the character code), type 0
+       is QUERY (x is k). Return one character per QUERY, in order. */
+    static char[] answerQueries(int[][] ops) {
+        // write your code here
+
+        return new char[0];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int q = in.nextInt();
+        int[][] ops = new int[q][3];
+        for (int i = 0; i < q; i++) {
+            String w = in.next();
+            if (w.charAt(0) == 'E') { ops[i][0] = 1; ops[i][1] = in.nextInt(); ops[i][2] = in.next().charAt(0); }
+            else { ops[i][0] = 0; ops[i][1] = in.nextInt(); ops[i][2] = in.nextInt(); }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (char c : answerQueries(ops)) sb.append(c).append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m52 = {
+  cpp: `${CPP_HEAD}
+int minRewrites(const vector<long long>& a) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<long long> a(n);
+    for (auto &x : a) scanf("%lld", &x);
+
+    printf("%d\\n", minRewrites(a));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    static int minRewrites(long[] a) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long[] a = new long[n];
+        for (int i = 0; i < n; i++) a[i] = in.nextLong();
+
+        System.out.println(minRewrites(a));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m53 = {
+  cpp: `${CPP_HEAD}
+long long countBalancedWindows(const string& s) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    static char buf[200006];
+    if (scanf("%s", buf) != 1) return 0;
+
+    printf("%lld\\n", countBalancedWindows(buf));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    static long countBalancedWindows(String s) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        System.out.println(countBalancedWindows(in.next()));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
 /**
  * The /** ... *\/ blocks above each function are kept in THIS file so the
  * signatures stay self-documenting for whoever edits the templates, but they

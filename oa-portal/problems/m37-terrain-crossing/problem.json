@@ -1,0 +1,11 @@
+{
+  "id": "m37",
+  "docId": "Q110",
+  "order": 37,
+  "title": "Terrain Crossing",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["minimax path", "grid dp"]
+}

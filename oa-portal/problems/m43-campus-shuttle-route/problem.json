@@ -1,0 +1,11 @@
+{
+  "id": "m43",
+  "docId": "Q130",
+  "order": 43,
+  "title": "Campus Shuttle Route",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["bitmask dp", "tsp"]
+}

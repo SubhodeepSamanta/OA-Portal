@@ -1,0 +1,11 @@
+{
+  "id": "m48",
+  "docId": "Q135",
+  "order": 48,
+  "title": "Minimum Platform Rebuild",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["sweep line", "intervals"]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "m36",
+  "docId": "Q109",
+  "order": 36,
+  "title": "Rack Assembly",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["bitmask dp", "assignment"]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "m50",
+  "docId": "Q137",
+  "order": 50,
+  "title": "Coupon Stacking",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["sorting", "rearrangement inequality"]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "m52",
+  "docId": "Q139",
+  "order": 52,
+  "title": "Sensor Calibration",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["lis", "patience sorting"]
+}

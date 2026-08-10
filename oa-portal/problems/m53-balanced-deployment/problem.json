@@ -1,0 +1,11 @@
+{
+  "id": "m53",
+  "docId": "Q140",
+  "order": 53,
+  "title": "Balanced Deployment",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["prefix sums", "hashmap"]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "m51",
+  "docId": "Q138",
+  "order": 51,
+  "title": "Version Rollback Tree",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["binary lifting", "persistent structure"]
+}

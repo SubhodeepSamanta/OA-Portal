@@ -26,12 +26,23 @@ function record(group, name, ok, detail = '') {
   console.log(`  ${ok ? C.g('PASS') : C.r('FAIL')}  ${name.padEnd(44)} ${C.d(detail)}`);
 }
 
+// The heavy suites grow with the problem count: check_all runs every
+// reference against every hidden test, and the starter check compiles and
+// judges 2 files per problem. A cap that was generous at 17 problems is not
+// at 41, and a timed-out suite reports FAIL with an EMPTY note - which reads
+// like a regression when it is really just the clock. Keep it well ahead of
+// the suites, and say so when it does fire.
+const SUITE_TIMEOUT_MS = 45 * 60 * 1000;
+
 function runSuite(label, file) {
   const r = spawnSync('node', [path.join('tools', file)], {
-    cwd: ROOT, encoding: 'utf8', windowsHide: true, timeout: 15 * 60 * 1000,
+    cwd: ROOT, encoding: 'utf8', windowsHide: true, timeout: SUITE_TIMEOUT_MS,
   });
   const out = (r.stdout || '') + (r.stderr || '');
-  const line = out.split(/\r?\n/).reverse().find((l) => /ALL .*(PASSED|CORRECT|COMPILE|JUDGE)|FAILED|BROKEN|WRONG/.test(l)) || '';
+  let line = out.split(/\r?\n/).reverse().find((l) => /ALL .*(PASSED|CORRECT|COMPILE|JUDGE|MATCH)|FAILED|BROKEN|WRONG|DO NOT MATCH/.test(l)) || '';
+  if (r.error && r.error.code === 'ETIMEDOUT') {
+    line = `TIMED OUT after ${SUITE_TIMEOUT_MS / 60000} min - not necessarily a failure`;
+  }
   record('suites', label, r.status === 0, line.trim());
 }
 
@@ -44,13 +55,31 @@ async function call(p, opts = {}) {
   return { status: r.status, body: await r.json().catch(() => ({})) };
 }
 
+/**
+ * Photograph the user's workspace so we can prove afterwards that nothing in
+ * it moved. This has to happen BEFORE any suite runs.
+ */
+function snapshotWorkspace() {
+  const ws = path.join(ROOT, 'workspace');
+  const snap = new Map();
+  if (!fs.existsSync(ws)) return snap;
+  for (const f of fs.readdirSync(ws)) {
+    const p = path.join(ws, f);
+    if (fs.statSync(p).isFile()) snap.set(f, fs.readFileSync(p, 'utf8'));
+  }
+  return snap;
+}
+
 (async () => {
   console.log('\n' + C.b('  OA PORTAL — FULL VERIFICATION') + '\n');
+
+  const wsBefore = snapshotWorkspace();
 
   // ---------------------------------------------------------------- suites
   console.log(C.c('  Test suites'));
   console.log('  ' + '-'.repeat(66));
   runSuite('judge verdict paths (AC/WA/TLE/RE/CE)', 'test_judge.js');
+  runSuite('statements show the samples the judge uses', 'check_statements.js');
   runSuite('every problem: C++ reference + wrong soln', 'check_all.js');
   runSuite('Java toolchain end to end', 'test_java.js');
   runSuite('starter templates compile', 'test_starters.js');
@@ -162,17 +191,22 @@ async function call(p, opts = {}) {
   // ---------------------------------------------------------------- workspace
   console.log('\n' + C.c('  Your workspace'));
   console.log('  ' + '-'.repeat(66));
-  const ws = path.join(ROOT, 'workspace');
-  const files = fs.existsSync(ws) ? fs.readdirSync(ws).filter((f) => fs.statSync(path.join(ws, f)).isFile()) : [];
-  const touched = files.filter((f) => {
-    const c = fs.readFileSync(path.join(ws, f), 'utf8');
-    return !c.includes('write your code here');
-  });
+  // Compare against the photograph taken before the suites ran.
+  //
+  // The old version asked whether each file still contained the starter's
+  // "write your code here" marker, which is exactly backwards: solving a
+  // problem REMOVES that comment, so the check fired on precisely the files
+  // the user had done real work in. It only ever passed because the
+  // workspace happened to still be all starters.
+  const wsAfter = snapshotWorkspace();
+  const files = [...new Set([...wsBefore.keys(), ...wsAfter.keys()])];
+  const touched = files.filter((f) => wsBefore.get(f) !== wsAfter.get(f));
   record('workspace', 'test runs left your files alone',
          touched.length === 0,
-         touched.length ? `modified: ${touched.join(', ')}` : `${files.length} files, all starter`);
+         touched.length ? `MODIFIED BY THE TESTS: ${touched.join(', ')}`
+                        : `${files.length} file(s) byte-identical before and after`);
   record('workspace', 'test sandbox is separate',
-         fs.existsSync(path.join(ws, '.selftest')), 'workspace/.selftest');
+         fs.existsSync(path.join(ROOT, 'workspace', '.selftest')), 'workspace/.selftest');
 
   // ---------------------------------------------------------------- summary
   const bad = results.filter((x) => !x.ok);

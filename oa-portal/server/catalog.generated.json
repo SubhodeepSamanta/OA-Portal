@@ -2030,7 +2030,8 @@
   "statement": "`n` servers must go into `n` rack positions. Placing server `i` at position `j` costs `c[i][j]`. Each server gets exactly one position. Minimum total cost?\n**Constraints:** `1 ≤ n ≤ 18`, `0 ≤ c[i][j] ≤ 1e6`. *The bound 18 is the entire hint.*",
   "section": "Dynamic programming",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m36",
+  "playable": true
  },
  {
   "docId": "Q110",
@@ -2049,7 +2050,8 @@
   "statement": "A grid `r × c` of heights. Start top-left, end bottom-right, moving only right or down. The cost of a path is the **maximum absolute height difference** between consecutive cells on it. Minimise that cost.\n**Constraints:** `1 ≤ r, c ≤ 500`, heights up to `1e9`. *This is not pure DP. Read it twice.*",
   "section": "Dynamic programming",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m37",
+  "playable": true
  },
  {
   "docId": "Q111",
@@ -2104,7 +2106,8 @@
   "statement": "`n` routing rules, each a binary prefix string. Then `q` IP addresses as 32-bit binary strings. For each address, print the length of the **longest** rule that is a prefix of it, or `−1`.\n**Constraints:** `1 ≤ n, q ≤ 2e5`, total rule length ≤ `1e6`.",
   "section": "Trie, range structures, strings, bitmask",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m38",
+  "playable": true
  },
  {
   "docId": "Q114",
@@ -2195,7 +2198,8 @@
   "statement": "`n` players start at score 0. `q` operations, each either `UPDATE p s` (set player `p`'s score to `s`) or `RANK p` (print how many players currently have a strictly higher score than `p`).\n**Constraints:** `1 ≤ n, q ≤ 2e5`, `0 ≤ s ≤ 1e9`.",
   "section": "Trie, range structures, strings, bitmask",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m39",
+  "playable": true
  },
  {
   "docId": "Q119",
@@ -2214,7 +2218,8 @@
   "statement": "`n` sensors in a line. `q` operations: `ADD l r x` (add `x` to every sensor in `[l, r]`) or `MAX l r` (print the maximum reading in `[l, r]`).\n**Constraints:** `1 ≤ n, q ≤ 2e5`.",
   "section": "Trie, range structures, strings, bitmask",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m40",
+  "playable": true
  },
  {
   "docId": "Q120",
@@ -2341,7 +2346,8 @@
   "statement": "An antivirus holds one signature `p`. Given a stream `s`, print every start index where `p` occurs in `s`. Overlapping occurrences count.\n**Constraints:** `1 ≤ |p| ≤ |s| ≤ 1e6`.",
   "section": "Trie, range structures, strings, bitmask",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m41",
+  "playable": true
  },
  {
   "docId": "Q127",
@@ -2360,7 +2366,8 @@
   "statement": "A playlist is a string of lowercase letters. Count the number of **distinct** substrings that are palindromes.\n**Constraints:** `1 ≤ |s| ≤ 2e5`.",
   "section": "Trie, range structures, strings, bitmask",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m42",
+  "playable": true
  },
  {
   "docId": "Q128",
@@ -2415,7 +2422,8 @@
   "statement": "`n` stops plus a depot (stop 0), with `dist[i][j]` given. A shuttle starts at the depot, visits every stop exactly once, and returns. Minimum total distance?\n**Constraints:** `1 ≤ n ≤ 15`.",
   "section": "Trie, range structures, strings, bitmask",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m43",
+  "playable": true
  },
  {
   "docId": "Q131",
@@ -2434,7 +2442,8 @@
   "statement": "A lot has `k` identical bays. `n` cars; car `i` arrives at `a_i` and leaves at `d_i`. A car that finds all bays full drives away. Cars are processed in arrival order. Revenue is ₹1 per minute per occupied bay. Total revenue?\n**Constraints:** `1 ≤ n ≤ 2e5`, `1 ≤ k ≤ 1e5`, times up to `1e9`.",
   "section": "Mixed — deliberately unrelated",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m44",
+  "playable": true
  },
  {
   "docId": "Q132",
@@ -2453,7 +2462,8 @@
   "statement": "An array of `n` positive integers. Split into two **non-empty** groups (not necessarily contiguous) minimising the absolute difference of their sums.\n**Constraints:** `1 ≤ n ≤ 100`, `1 ≤ a_i ≤ 1000`.",
   "section": "Mixed — deliberately unrelated",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m45",
+  "playable": true
  },
  {
   "docId": "Q133",
@@ -2472,7 +2482,8 @@
   "statement": "A string `s` and a set of `k` working keys. You may type only substrings composed of working keys. Length of the longest such substring?\n**Constraints:** `1 ≤ |s| ≤ 1e6`, lowercase only.",
   "section": "Mixed — deliberately unrelated",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m46",
+  "playable": true
  },
  {
   "docId": "Q134",
@@ -2491,7 +2502,8 @@
   "statement": "A bucket holds at most `C` tokens and starts full. `n` requests; request `i` at time `t_i` consumes `c_i` tokens. The bucket refills 1 token per second up to `C`. A request with insufficient tokens is rejected and consumes nothing. How many are served?\n**Constraints:** `1 ≤ n ≤ 2e5`, `1 ≤ C ≤ 1e9`, `t_i` strictly increasing.",
   "section": "Mixed — deliberately unrelated",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m47",
+  "playable": true
  },
  {
   "docId": "Q135",
@@ -2510,7 +2522,8 @@
   "statement": "`n` trains; train `i` occupies `[a_i, d_i]`. You may **cancel at most one** train. Minimise the number of platforms needed.\n**Constraints:** `1 ≤ n ≤ 2e5`.",
   "section": "Mixed — deliberately unrelated",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m48",
+  "playable": true
  },
  {
   "docId": "Q136",
@@ -2529,7 +2542,8 @@
   "statement": "`n` shelves with `a_i` books. One operation moves one book between adjacent shelves. Minimum operations to make all shelves equal, or `−1`.\n**Constraints:** `1 ≤ n ≤ 2e5`, `0 ≤ a_i ≤ 1e9`.",
   "section": "Mixed — deliberately unrelated",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m49",
+  "playable": true
  },
  {
   "docId": "Q137",
@@ -2548,7 +2562,8 @@
   "statement": "`n` items with prices. `m` coupons; coupon `j` gives `d_j`% off exactly one item. Each item takes at most one coupon and each coupon is used at most once. Minimise total spend.\n**Constraints:** `1 ≤ n, m ≤ 2e5`.",
   "section": "Mixed — deliberately unrelated",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m50",
+  "playable": true
  },
  {
   "docId": "Q138",
@@ -2567,7 +2582,8 @@
   "statement": "A document starts empty at version 0. `q` operations: `EDIT v c` creates a new version from version `v` by appending character `c`; `QUERY v k` prints the `k`-th character of version `v`.\n**Constraints:** `1 ≤ q ≤ 2e5`.",
   "section": "Mixed — deliberately unrelated",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m51",
+  "playable": true
  },
  {
   "docId": "Q139",
@@ -2586,7 +2602,8 @@
   "statement": "`n` readings. In one operation you pick any element and change it to any value. Minimum operations to make the array strictly increasing?\n**Constraints:** `1 ≤ n ≤ 2e5`, `1 ≤ a_i ≤ 1e9`. *This is a famous problem wearing a hat.*",
   "section": "Mixed — deliberately unrelated",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m52",
+  "playable": true
  },
  {
   "docId": "Q140",
@@ -2605,7 +2622,8 @@
   "statement": "A binary string of length `n` (`0` = staging, `1` = prod). Count substrings with equal numbers of `0`s and `1`s.\n**Constraints:** `1 ≤ n ≤ 2e5`.",
   "section": "Mixed — deliberately unrelated",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m53",
+  "playable": true
  },
  {
   "docId": "Q141",

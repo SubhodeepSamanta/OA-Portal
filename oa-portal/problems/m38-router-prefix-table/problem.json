@@ -1,0 +1,11 @@
+{
+  "id": "m38",
+  "docId": "Q113",
+  "order": 38,
+  "title": "Router Prefix Table",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["trie", "strings"]
+}

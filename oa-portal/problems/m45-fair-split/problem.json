@@ -1,0 +1,11 @@
+{
+  "id": "m45",
+  "docId": "Q132",
+  "order": 45,
+  "title": "Fair Split",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["subset sum", "dp"]
+}
