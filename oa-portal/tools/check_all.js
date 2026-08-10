@@ -130,6 +130,63 @@ const WRONG = {
   // m40: starts the running maximum at 0, so all-negative ranges come out wrong
   m40: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,q;scanf("%d %d",&n,&q);vector<long long>a(n+1);for(int i=1;i<=n;i++)scanf("%lld",&a[i]);char op[16];string o;for(int i=0;i<q;i++){scanf("%s",op);if(op[0]=='A'){int l,r;long long x;scanf("%d %d %lld",&l,&r,&x);for(int j=l;j<=r;j++)a[j]+=x;}else{int l,r;scanf("%d %d",&l,&r);long long b=0;for(int j=l;j<=r;j++)b=max(b,a[j]);o+=to_string(b);o+='\\n';}}fwrite(o.data(),1,o.size(),stdout);}`,
 
+  // m74: builds the lcm first, so a*b overflows long before the division
+  m74: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){long long a,b;scanf("%lld %lld",&a,&b);long long g=__gcd(a,b);long long l=a*b/g;printf("%lld\\n",l/a);}`,
+
+  // m75: counts ORDERED seatings, n!/(n-r)!, instead of choices
+  m75: `#include <bits/stdc++.h>\nusing namespace std;\nconst long long MOD=1000000007LL;const int MX=200005;long long pw(long long b,long long e){long long r=1;b%=MOD;while(e){if(e&1)r=r*b%MOD;b=b*b%MOD;e>>=1;}return r;}\nint main(){vector<long long>f(MX),iv(MX);f[0]=1;for(int i=1;i<MX;i++)f[i]=f[i-1]*i%MOD;iv[MX-1]=pw(f[MX-1],MOD-2);for(int i=MX-1;i>0;i--)iv[i-1]=iv[i]*i%MOD;int q;scanf("%d",&q);string o;for(int i=0;i<q;i++){int n,r;scanf("%d %d",&n,&r);long long a=(r>n)?0:f[n]*iv[n-r]%MOD;o+=to_string(a);o+='\\n';}fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // m76: treats 1 as prime
+  m76: `#include <bits/stdc++.h>\nusing namespace std;\nconst int LIM=1000000;\nint main(){vector<char>comp(LIM+1,0);comp[0]=1;for(int i=2;(long long)i*i<=LIM;i++)if(!comp[i])for(long long j=(long long)i*i;j<=LIM;j+=i)comp[j]=1;vector<int>up(LIM+1,0);for(int i=1;i<=LIM;i++)up[i]=up[i-1]+(comp[i]?0:1);int q;scanf("%d",&q);string o;for(int i=0;i<q;i++){int l,r;scanf("%d %d",&l,&r);o+=to_string(up[r]-up[l-1]);o+='\\n';}fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // m77: looks only at the total's parity, missing n == 1 and odd n entirely
+  m77: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);long long s=0;for(int i=0;i<n;i++){long long v;scanf("%lld",&v);s+=v;}printf(s%2==0?"YES\\n":"NO\\n");}`,
+
+  // m78: counts digit sums up to s rather than exactly s
+  m78: `#include <bits/stdc++.h>\nusing namespace std;\nconst long long MOD=1000000007LL;string D;int S,L;long long memo[20][170][2];\nlong long go(int p,int s,int t){if(s>S)return 0;if(p==L)return 1;long long&m=memo[p][s][t];if(m>=0)return m;int hi=t?D[p]-'0':9;long long r=0;for(int d=0;d<=hi;d++)r=(r+go(p+1,s+d,(t&&d==hi)?1:0))%MOD;return m=r;}\nint main(){long long N;scanf("%lld %d",&N,&S);D=to_string(N);L=D.size();memset(memo,-1,sizeof(memo));printf("%lld\\n",go(0,0,1));}`,
+
+  // m79: prints the larger shares first, breaking the required order
+  m79: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){long long n,m;scanf("%lld %lld",&n,&m);long long b=m/n,e=m%n;string o;for(long long i=0;i<n;i++){if(i)o+=' ';o+=to_string(i<e?b+1:b);}o+='\\n';fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // m67: drops the max(0, ...) so an over-stocked shelf pays for an empty one
+  m67: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;long long T;scanf("%d %lld",&n,&T);vector<long long>s(n),c(n);for(int i=0;i<n;i++)scanf("%lld %lld",&s[i],&c[i]);const long long M=1000000;auto ok=[&](long long m){long long need=0;for(int i=0;i<n;i++){long long want=(m*c[i]+M-1)/M;need+=want-s[i];}return need<=T;};long long lo=0,hi=M;while(lo<hi){long long mid=lo+(hi-lo+1)/2;if(ok(mid))lo=mid;else hi=mid-1;}printf("%lld\\n",lo);}`,
+
+  // m68: only reports groups that actually traded, losing the isolated ones
+  m68: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,m;scanf("%d %d",&n,&m);vector<long long>bal(n+1,0);vector<vector<int>>adj(n+1);vector<char>has(n+1,0);for(int j=0;j<m;j++){int a,b;long long x;scanf("%d %d %lld",&a,&b,&x);bal[a]-=x;bal[b]+=x;adj[a].push_back(b);adj[b].push_back(a);has[a]=1;has[b]=1;}vector<char>seen(n+1,0);string body;long long g=0;for(int s=1;s<=n;s++){if(seen[s]||!has[s])continue;g++;long long nz=0,mv=0;vector<int>st{s};seen[s]=1;while(!st.empty()){int u=st.back();st.pop_back();if(bal[u]!=0)nz++;if(bal[u]>0)mv+=bal[u];for(int v:adj[u])if(!seen[v]){seen[v]=1;st.push_back(v);}}body+=to_string(s);body+=' ';body+=to_string(nz);body+=' ';body+=to_string(mv);body+='\\n';}string o=to_string(g);o+='\\n';o+=body;fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // m69: charges for the deficits as well as the surpluses, doubling the bill
+  m69: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);long long h=0,w=0,cost=0;for(int i=0;i<n;i++){long long c,t,f;scanf("%lld %lld %lld",&c,&t,&f);h+=c;w+=t;cost+=llabs(c-t)*f;}printf("%lld\\n",h==w?cost:-1LL);}`,
+
+  // m70: subtracts each lower layer's FULL area, never clipping to the top one
+  m70: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<array<long long,4>>r(n);for(int i=0;i<n;i++)scanf("%lld %lld %lld %lld",&r[i][0],&r[i][1],&r[i][2],&r[i][3]);long long a=(r[n-1][2]-r[n-1][0])*(r[n-1][3]-r[n-1][1]);for(int i=0;i<n-1;i++)a-=(r[i][2]-r[i][0])*(r[i][3]-r[i][1]);printf("%lld\\n",a);}`,
+
+  // m71: merges only on overlap, so adjacent ranges never combine
+  m71: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);map<long long,long long>cv;int sh=0;char act[16];for(int i=0;i<n;i++){long long l,r;scanf("%lld %lld %s",&l,&r,act);auto it=cv.upper_bound(l);if(it!=cv.begin()){--it;if(it->second>=r){sh++;continue;}}long long nl=l,nr=r;auto jt=cv.lower_bound(l);if(jt!=cv.begin()){auto p=prev(jt);if(p->second>=l)jt=p;}while(jt!=cv.end()&&jt->first<=r){nl=min(nl,jt->first);nr=max(nr,jt->second);jt=cv.erase(jt);}cv[nl]=nr;}printf("%d\\n",sh);}`,
+
+  // m72: cuts at the SMALLEST gaps instead of the largest
+  m72: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,k;scanf("%d %d",&n,&k);vector<long long>a(n);for(int i=0;i<n;i++)scanf("%lld",&a[i]);sort(a.begin(),a.end());if(k>=n){printf("0\\n");return 0;}vector<long long>g(n-1);for(int i=0;i+1<n;i++)g[i]=a[i+1]-a[i];sort(g.begin(),g.end());long long t=a[n-1]-a[0];for(int i=0;i<k-1;i++)t-=g[i];printf("%lld\\n",t);}`,
+
+  // m73: finds the candidate block but never verifies that reversing it works
+  m73: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<long long>a(n);for(int i=0;i<n;i++)scanf("%lld",&a[i]);int f=-1,l=-1;for(int i=0;i+1<n;i++)if(a[i]>=a[i+1]){if(f<0)f=i;l=i;}if(f<0){printf("1 1\\n");return 0;}printf("%d %d\\n",f+1,l+2);}`,
+
+  // m61: returns the number of distinct brands instead of the window length
+  m61: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<int>b(n);for(int i=0;i<n;i++)scanf("%d",&b[i]);set<int>s(b.begin(),b.end());printf("%d\\n",(int)s.size());}`,
+
+  // m62: only checks each service against its own window, never the overload
+  m62: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);bool ok=true;for(int i=0;i<n;i++){long long l,r,t;scanf("%lld %lld %lld",&l,&r,&t);if(t>r-l)ok=false;}printf(ok?"YES\\n":"NO\\n");}`,
+
+  // m63: assumes stage 1 is the only start and stage n the only end
+  m63: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,m;scanf("%d %d",&n,&m);vector<long long>w(n+1);for(int i=1;i<=n;i++)scanf("%lld",&w[i]);vector<vector<int>>g(n+1);vector<int>deg(n+1,0);for(int i=0;i<m;i++){int a,b;scanf("%d %d",&a,&b);g[a].push_back(b);deg[b]++;}const long long INF=LLONG_MAX/4;vector<long long>best(n+1,INF);best[1]=w[1];vector<int>q;for(int v=1;v<=n;v++)if(deg[v]==0&&v!=1)q.push_back(v);q.insert(q.begin(),1);vector<int>d(deg);vector<int>order;for(int v=1;v<=n;v++)if(d[v]==0)order.push_back(v);for(size_t h=0;h<order.size();h++){int u=order[h];for(int v:g[u]){if(best[u]!=INF&&best[u]+w[v]<best[v])best[v]=best[u]+w[v];if(--d[v]==0)order.push_back(v);}}printf("%lld\\n",best[n]>=INF?-1LL:best[n]);}`,
+
+  // m64: earliest-ending-first greedy, which ignores the values
+  m64: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<array<long long,3>>j(n);for(int i=0;i<n;i++){long long s,e,v;scanf("%lld %lld %lld",&s,&e,&v);j[i]={e,s,v};}sort(j.begin(),j.end());long long last=LLONG_MIN,tot=0;for(int i=0;i<n;i++)if(j[i][1]>=last){tot+=j[i][2];last=j[i][0];}printf("%lld\\n",tot);}`,
+
+  // m65: splits the PATIENTS evenly, ignoring that equal scores are indivisible
+  m65: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,k;scanf("%d %d",&n,&k);for(int i=0;i<n;i++){int x;scanf("%d",&x);}printf("%d\\n",(n+k-1)/k);}`,
+
+  // m66: always splits down the middle instead of searching
+  m66: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<long long>c(n+1,0),pre(n+1,0);for(int i=1;i<=n;i++){scanf("%lld",&c[i]);pre[i]=pre[i-1]+c[i];}vector<vector<long long>>dp(n+2,vector<long long>(n+2,0));for(int len=2;len<=n;len++)for(int i=1;i+len-1<=n;i++){int j=i+len-1,k=(i+j)/2;dp[i][j]=dp[i][k]+dp[k+1][j]+pre[j]-pre[i-1]+(j-i);}printf("%lld\\n",dp[1][n]);}`,
+
   // m54: ignores the travel needed to reach the passenger in the first place
   m54: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int f,e,n;scanf("%d %d %d",&f,&e,&n);vector<long long>fr(e,0),at(e,1);string o;for(int i=0;i<n;i++){long long t,a,b;scanf("%lld %lld %lld",&t,&a,&b);int best=0;long long bv=LLONG_MAX;for(int j=0;j<e;j++){long long ar=max(t,fr[j]);if(ar<bv){bv=ar;best=j;}}long long d=bv+llabs(a-b);fr[best]=d;at[best]=b;o+=to_string(d);o+='\\n';}fwrite(o.data(),1,o.size(),stdout);}`,
 

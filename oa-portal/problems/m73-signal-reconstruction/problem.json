@@ -1,0 +1,11 @@
+{
+  "id": "m73",
+  "docId": "Q168",
+  "order": 73,
+  "title": "Signal Reconstruction",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["scan", "reversal detection"]
+}

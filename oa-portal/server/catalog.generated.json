@@ -1343,7 +1343,7 @@
   "note": "",
   "url": null,
   "urlExact": false,
-  "statement": "`n` currencies and `m` directed conversion offers; offer `i` converts 1 unit of `u` into `r_i` units of `v`. Starting with 1 unit of currency 1, can you end with strictly more than 1 unit of currency 1? If yes, print the cycle.\n**Constraints:** `1 ≤ n ≤ 500`, `1 ≤ m ≤ 5000`. *Multiplication, not addition. What transform fixes that?*",
+  "statement": "`n` currencies and `m` directed conversion offers; offer `i` turns 1 unit of `u` into `p_i / q_i` units of `v`. Starting with 1 unit of currency 1, can you end holding strictly more than 1 unit of currency 1? Print `YES` or `NO`.\n**Constraints:** `1 ≤ n ≤ 500`, `1 ≤ m ≤ 5000`, `1 ≤ p_i, q_i ≤ 100`. *Multiplication, not addition. What transform fixes that?*\n*Note: \"print the cycle\" is not auto-gradable — many different cycles are equally valid answers. The decision version needs the identical algorithm. Also note the profitable loop must be reachable from currency 1 **and** able to lead back to it; a loop stranded elsewhere earns nothing.*",
   "section": "Graph modelling",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
   "id": "m30",
@@ -2926,7 +2926,8 @@
   "statement": "A stream of `n` mentions, each tagged with a brand ID. Find the shortest contiguous window containing at least one mention of **every** brand present in the stream.\n**Constraints:** `1 ≤ n ≤ 2e5`.",
   "section": "OA-style applied problems",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m61",
+  "playable": true
  },
  {
   "docId": "Q157",
@@ -2942,10 +2943,11 @@
   "note": "devops",
   "url": null,
   "urlExact": false,
-  "statement": "`n` services; service `i` needs `t_i` minutes and must deploy inside a maintenance window `[l_i, r_i]`. One deployer, no overlap, no preemption. Can all services deploy?\n**Constraints:** `1 ≤ n ≤ 2e5`.",
+  "statement": "`n` services; service `i` needs `t_i` minutes and must deploy inside a maintenance window `[l_i, r_i]`. One deployer, no overlap. A deployment **may be paused and resumed** at whole minutes. Can all services deploy?\n**Constraints:** `1 ≤ n ≤ 2e5`.\n*Note: the pausing is what makes this decidable — earliest-deadline-first is optimal for the preemptive version. Forbid pausing and it becomes 1|r_j,d_j|feasibility, which is strongly NP-hard, so no OA can be asking for that at this size.*",
   "section": "OA-style applied problems",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m62",
+  "playable": true
  },
  {
   "docId": "Q158",
@@ -2961,10 +2963,11 @@
   "note": "devops",
   "url": null,
   "urlExact": false,
-  "statement": "A deployment DAG of `n` stages; stage `i` has success probability `p_i`. The pipeline succeeds if **some** root-to-leaf path has all stages succeed. Maximise success probability by choosing the path.\n**Constraints:** `1 ≤ n ≤ 2e5`.",
+  "statement": "A deployment DAG of `n` stages; stage `i` carries an integer **risk** `w_i`, and a path completes without incident with probability `2^(−sum of its risks)`. Report the smallest total risk over all start-to-end paths — starts are the stages with nothing feeding them, ends the stages with nothing after them.\n**Constraints:** `1 ≤ n ≤ 2e5`, `1 ≤ m ≤ 5e5`, `0 ≤ w_i ≤ 1e9`.\n*Note: stated with raw probabilities the answer is a float, and two correct programs disagree in the last decimal depending on multiplication order. Risks are the logs handed to you as integers — same problem, exact answer. Watch that starts are not just stage 1 and ends not just stage n.*",
   "section": "OA-style applied problems",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m63",
+  "playable": true
  },
  {
   "docId": "Q159",
@@ -2983,7 +2986,8 @@
   "statement": "`n` client meetings with `[start, end]` and value `v_i`. One consultant, no overlaps. Maximise total value.\n**Constraints:** `1 ≤ n ≤ 2e5`, `1 ≤ v_i ≤ 1e9`.",
   "section": "OA-style applied problems",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m64",
+  "playable": true
  },
  {
   "docId": "Q160",
@@ -3002,7 +3006,8 @@
   "statement": "`n` patients with an integer score. Bucket them into `k` contiguous score ranges so the largest bucket is as small as possible. Print that size.\n**Constraints:** `1 ≤ k ≤ n ≤ 2e5`.",
   "section": "OA-style applied problems",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m65",
+  "playable": true
  },
  {
   "docId": "Q161",
@@ -3021,7 +3026,8 @@
   "statement": "A query plan is a binary tree of `n` operators; leaf `i` costs `c_i`, and an internal node costs the sum of its children plus 1. Given only the leaf costs in order, choose the tree shape minimising total cost.\n**Constraints:** `1 ≤ n ≤ 3000`.",
   "section": "OA-style applied problems",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m66",
+  "playable": true
  },
  {
   "docId": "Q162",
@@ -3037,10 +3043,11 @@
   "note": "retail",
   "url": null,
   "urlExact": false,
-  "statement": "`n` shelves with current stock and capacity. A restock truck carries `T` units total. Distribute to maximise the **minimum** fill ratio across shelves.\n**Constraints:** `1 ≤ n ≤ 2e5`, `1 ≤ T ≤ 1e9`.",
+  "statement": "`n` shelves with current stock `s_i` and capacity `c_i`. A restock truck carries `T` whole units. Distribute them to maximise the **minimum** fill ratio `stock / capacity`, and report that ratio **in millionths** (times `10^6`, rounded down).\n**Constraints:** `1 ≤ n ≤ 2e5`, `0 ≤ T ≤ 1e9`, `0 ≤ s_i ≤ c_i ≤ 1e9`.\n*Note: reported in millionths so the answer is an integer and the binary search stays in exact arithmetic — `⌈m·c / 10^6⌉` is precisely where a floating-point version goes wrong. Do not forget that a shelf already above the target needs nothing.*",
   "section": "OA-style applied problems",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m67",
+  "playable": true
  },
  {
   "docId": "Q163",
@@ -3056,10 +3063,11 @@
   "note": "finance",
   "url": null,
   "urlExact": false,
-  "statement": "`n` counterparties and `m` trades; trade `j` means `a` owes `b` amount `x`. Net all obligations within each connected group and report, per group, the minimum number of payments needed to settle everyone.\n**Constraints:** `1 ≤ n ≤ 1e5`, `1 ≤ m ≤ 2e5`.",
+  "statement": "`n` counterparties and `m` trades; trade `j` means `a` owes `b` amount `x`. Net all obligations within each connected group and report, per group, how many members hold a non-zero net position and the total amount that must change hands.\n**Constraints:** `1 ≤ n ≤ 1e5`, `1 ≤ m ≤ 2e5`.\n*Note: \"fewest payments\" is NP-hard — the minimum is the non-zero count minus the largest number of disjoint zero-sum subsets, which is set partitioning. `z` non-zero members can always be settled in `z − 1` payments, so that is the bound worth knowing. Counterparties with no trades are still groups of one.*",
   "section": "OA-style applied problems",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m68",
+  "playable": true
  },
  {
   "docId": "Q164",
@@ -3078,7 +3086,8 @@
   "statement": "`n` assets with current and target weights. Each trade moves weight between two assets at cost proportional to the amount. Minimum total cost to hit all targets.\n**Constraints:** `1 ≤ n ≤ 2e5`.",
   "section": "OA-style applied problems",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m69",
+  "playable": true
  },
  {
   "docId": "Q165",
@@ -3097,7 +3106,8 @@
   "statement": "`n` rectangular layers on a canvas, drawn in order. Compute the number of pixels visible from the topmost layer only.\n**Constraints:** `1 ≤ n ≤ 2e5`, coordinates up to `1e9`.",
   "section": "OA-style applied problems",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m70",
+  "playable": true
  },
  {
   "docId": "Q166",
@@ -3116,7 +3126,8 @@
   "statement": "`n` firewall rules in priority order, each an IP range `[l, r]` with allow/deny. Rule `i` is *shadowed* if every address it matches is already matched by an earlier rule. Count shadowed rules.\n**Constraints:** `1 ≤ n ≤ 2e5`, ranges up to `2³²`.",
   "section": "OA-style applied problems",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m71",
+  "playable": true
  },
  {
   "docId": "Q167",
@@ -3135,7 +3146,8 @@
   "statement": "`n` trainees with skill scores and `k` batches. Each batch takes a contiguous block after sorting. Minimise the sum over batches of (max − min) within the batch.\n**Constraints:** `1 ≤ k ≤ n ≤ 2e5`.",
   "section": "OA-style applied problems",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m72",
+  "playable": true
  },
  {
   "docId": "Q168",
@@ -3154,7 +3166,8 @@
   "statement": "An array `a` of `n` values was corrupted: exactly one contiguous block was reversed. Knowing the original was strictly increasing, find the reversed block, or report impossible.\n**Constraints:** `1 ≤ n ≤ 2e5`.",
   "section": "OA-style applied problems",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m73",
+  "playable": true
  },
  {
   "docId": "Q169",

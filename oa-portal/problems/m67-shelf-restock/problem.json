@@ -1,0 +1,11 @@
+{
+  "id": "m67",
+  "docId": "Q162",
+  "order": 67,
+  "title": "Shelf Restock",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["binary search on answer", "integer ceiling"]
+}

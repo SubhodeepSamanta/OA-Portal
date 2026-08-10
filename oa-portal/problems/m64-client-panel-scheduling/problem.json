@@ -1,0 +1,11 @@
+{
+  "id": "m64",
+  "docId": "Q159",
+  "order": 64,
+  "title": "Client Panel Scheduling",
+  "difficulty": "Medium",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["weighted interval scheduling", "binary search dp"]
+}

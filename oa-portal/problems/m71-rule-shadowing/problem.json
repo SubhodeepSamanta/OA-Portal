@@ -1,0 +1,11 @@
+{
+  "id": "m71",
+  "docId": "Q166",
+  "order": 71,
+  "title": "Rule Shadowing",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["interval merging", "ordered map"]
+}

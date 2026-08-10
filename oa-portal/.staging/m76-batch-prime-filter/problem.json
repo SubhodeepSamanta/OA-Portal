@@ -1,0 +1,11 @@
+{
+  "id": "m76",
+  "docId": "Q175",
+  "order": 76,
+  "title": "Batch Prime Filter",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["sieve", "prefix sums"]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "m77",
+  "docId": "Q176",
+  "order": 77,
+  "title": "Parity Lock",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["invariant", "parity"]
+}

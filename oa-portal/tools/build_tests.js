@@ -129,6 +129,33 @@ const SAMPLES = {
   m59: ['3\n1 2\n1 1\n2 2\n', '1\n5 5\n', '3\n1 10\n1 10\n1 10\n', '4\n1 1\n1 1\n2 2\n3 3\n'],
   m60: ['3\nListen!\nSilent\nenlist\n', '2\nhello\nworld\n',
         '4\nDormitory\nDirty Room!!\nabc\ncab\n', '3\n!!!\n...\n123\n'],
+  m61: ['7\n1 2 1 3 2 1 3\n', '1\n5\n', '4\n7 7 7 7\n', '5\n1 2 3 4 5\n'],
+  m62: ['2\n0 5 3\n0 5 3\n', '2\n0 10 3\n0 10 3\n', '1\n5 7 2\n', '2\n0 10 5\n4 6 2\n'],
+  m63: ['4 4\n1 5 2 3\n1 2\n1 3\n2 4\n3 4\n', '1 0\n7\n', '3 2\n1 1 1\n1 2\n2 3\n',
+        '5 3\n10 1 1 1 100\n1 3\n2 3\n3 4\n'],
+  m64: ['4\n1 3 5\n2 5 6\n4 6 5\n7 8 4\n', '1\n1 10 100\n', '2\n1 5 10\n5 9 20\n',
+        '3\n1 10 1\n2 3 5\n4 5 5\n'],
+  m65: ['6 2\n1 1 2 3 3 3\n', '4 1\n1 2 3 4\n', '5 5\n7 7 7 7 7\n', '6 3\n1 2 3 4 5 6\n'],
+  m66: ['3\n1 2 3\n', '1\n5\n', '2\n4 7\n', '4\n1 1 1 1\n'],
+  m67: ['2 5\n0 10\n0 10\n', '1 0\n5 10\n', '2 100\n0 1\n0 1000000000\n',
+        '3 6\n1 4\n2 4\n0 4\n'],
+  m68: ['3 2\n1 2 10\n2 3 10\n', '4 2\n1 2 5\n3 4 7\n', '2 0\n',
+        '3 3\n1 2 5\n2 3 5\n3 1 5\n'],
+  m69: ['3\n10 0 1\n5 10 1\n5 10 1\n', '2\n10 0 5\n0 10 3\n', '2\n5 5 100\n7 7 100\n',
+        '2\n1 2 1\n3 3 1\n'],
+  m70: ['2\n0 0 10 10\n5 5 15 15\n', '1\n0 0 4 5\n', '2\n0 0 10 10\n0 0 10 10\n',
+        '3\n0 0 2 2\n5 5 7 7\n0 0 10 10\n'],
+  m71: ['3\n0 100 ALLOW\n50 60 DENY\n0 200 ALLOW\n', '2\n0 10 ALLOW\n11 20 DENY\n',
+        '4\n0 10 ALLOW\n20 30 DENY\n5 25 ALLOW\n0 30 DENY\n',
+        '3\n0 10 ALLOW\n11 20 ALLOW\n5 15 DENY\n'],
+  m72: ['5 2\n1 3 6 10 11\n', '4 1\n1 2 3 10\n', '3 3\n5 1 9\n', '6 3\n1 2 3 100 101 200\n'],
+  m73: ['5\n1 4 3 2 5\n', '4\n1 2 3 4\n', '4\n1 3 2 4\n', '5\n1 5 3 4 2\n'],
+  m74: ['4 6\n', '1 1\n', '12 8\n', '1000000000000000000 999999999999999999\n'],
+  m75: ['4\n5 2\n5 0\n5 5\n6 3\n', '2\n3 5\n0 0\n', '1\n10 5\n'],
+  m76: ['3\n1 10\n2 2\n1 1\n', '1\n1 1000000\n', '2\n999983 1000000\n4 4\n'],
+  m77: ['3\n1 2 3\n', '2\n1 2\n', '4\n1 1 1 2\n', '1\n7\n'],
+  m78: ['20 2\n', '9 9\n', '100 1\n', '1000000000000000000 1\n'],
+  m79: ['3 10\n', '4 8\n', '5 3\n', '1 1000000000000000000\n'],
 };
 
 // expected sample answers, straight from the statements - a second check
@@ -193,6 +220,25 @@ const SAMPLE_EXPECT = {
   m58: ['2', '1', '-1', '1'],
   m59: ['2', '1', '3', '3'],
   m60: ['1', '2', '2', '1'],
+  m61: ['3', '1', '1', '5'],
+  m62: ['NO', 'YES', 'YES', 'YES'],
+  m63: ['6', '7', '3', '3'],
+  m64: ['14', '100', '30', '10'],
+  m65: ['3', '4', '5', '2'],
+  m66: ['12', '0', '12', '13'],
+  m67: ['200000', '500000', '0', '750000'],
+  m68: ['1 1 2 10', '2 1 2 5 3 2 7', '2 1 0 0 2 0 0', '1 1 0 0'],
+  m69: ['10', '50', '0', '-1'],
+  m70: ['75', '20', '0', '92'],
+  m71: ['1', '0', '1', '1'],
+  m72: ['6', '9', '0', '3'],
+  m73: ['2 4', '1 1', '2 3', '-1'],
+  m74: ['3', '1', '2', '999999999999999999'],
+  m75: ['10 1 1 20', '0 1', '252'],
+  m76: ['4 1 0', '78498', '1 0'],
+  m77: ['YES', 'NO', 'NO', 'YES'],
+  m78: ['3', '1', '3', '19'],
+  m79: ['3 3 4', '2 2 2 2', '0 0 1 1 1', '1000000000000000000'],
 };
 
 function compile(src, out) {
@@ -217,8 +263,26 @@ function runFile(exe, inFile) {
   return { ok: true, ms, out: r.stdout.toString() };
 }
 
-function runString(exe, input) {
-  const r = spawnSync(exe, [], { input, maxBuffer: MAXBUF, windowsHide: true });
+/**
+ * The stress loop only skips cases over 4 KB, which is a proxy for "small"
+ * that fails badly on combinatorial and coordinate-heavy inputs: an 18x18
+ * cost table is 2.6 KB but 18! permutations, and two rectangles spanning the
+ * plane is 60 bytes but a 2e9 x 2e9 pixel grid.
+ *
+ * Without a timeout such a case hangs the whole build with no output, or
+ * crashes and looks exactly like a wrong answer. A bounded run turns both
+ * into an immediate, specific diagnostic pointing at the real culprit -
+ * the generator or the brute, not the reference.
+ */
+const BRUTE_TIMEOUT_MS = 20000;
+
+function runString(exe, input, timeoutMs) {
+  const opts = { input, maxBuffer: MAXBUF, windowsHide: true };
+  if (timeoutMs) opts.timeout = timeoutMs;
+  const r = spawnSync(exe, [], opts);
+  if (r.error && r.error.code === 'ETIMEDOUT') {
+    return { ok: false, timedOut: true, err: `no result within ${timeoutMs / 1000}s` };
+  }
   if (r.status !== 0) return { ok: false, err: `exit ${r.status}` };
   return { ok: true, out: r.stdout.toString() };
 }
@@ -269,29 +333,47 @@ for (const d of dirs) {
   if (sampleFail) grandFail += sampleFail;
 
   // ---- 2. stress: brute vs ref over many random small cases ------------
-  let stressRun = 0, stressBad = 0;
+  let stressRun = 0, stressBad = 0, bruteUnusable = 0;
+  const unusableSeen = new Set();
   for (let seed = 1; seed <= (FAST ? 0 : 25); seed++) {
     const cases = gen(makeRng(seed * 7919 + 13));
     for (const c of cases) {
-      if (c.input.length > 4000) continue;      // small cases only
-      const a = runString(refExe, c.input);
-      const b = runString(brtExe, c.input);
+      if (c.input.length > 4000) continue;      // small cases only, by BYTES
+      const a = runString(refExe, c.input, meta.timeLimitMs * 4);
+      const b = runString(brtExe, c.input, BRUTE_TIMEOUT_MS);
       stressRun++;
-      if (!a.ok || !b.ok || norm(a.out) !== norm(b.out)) {
+
+      // Separate "the brute could not cope" from "they disagree". The first
+      // means this case is too big for the brute even though it is small on
+      // disk - a generator or brute problem, never a wrong reference.
+      if (!b.ok) {
+        bruteUnusable++;
+        if (!unusableSeen.has(c.name)) {
+          unusableSeen.add(c.name);
+          console.log(`  BRUTE CANNOT HANDLE ${c.name}: ${b.err}`);
+          console.log(`    input: ${JSON.stringify(c.input.slice(0, 120))}`);
+          console.log('    This case is under 4 KB but too big for the brute.');
+          console.log('    Bound the brute\'s exhaustive mode, or shrink the case.');
+        }
+        continue;
+      }
+      if (!a.ok || norm(a.out) !== norm(b.out)) {
         stressBad++;
         if (stressBad <= 3) {
           console.log(`  STRESS MISMATCH (seed ${seed}, ${c.name})`);
           console.log(`    input: ${JSON.stringify(c.input.slice(0, 160))}`);
           console.log(`    ref:   ${a.ok ? norm(a.out).slice(0, 120) : a.err}`);
-          console.log(`    brute: ${b.ok ? norm(b.out).slice(0, 120) : b.err}`);
+          console.log(`    brute: ${norm(b.out).slice(0, 120)}`);
         }
       }
     }
   }
+  const compared = stressRun - bruteUnusable;
   console.log(FAST ? 'stress brute-vs-ref: SKIPPED (--fast)'
-                   : `stress brute-vs-ref: ${stressRun - stressBad}/${stressRun} agree` +
-              (stressBad ? '   *** FAILURES ***' : '   OK'));
-  grandFail += stressBad;
+                   : `stress brute-vs-ref: ${compared - stressBad}/${compared} agree` +
+              (stressBad ? '   *** FAILURES ***' : '   OK') +
+              (bruteUnusable ? `   (${bruteUnusable} case(s) the brute could not run)` : ''));
+  grandFail += stressBad + bruteUnusable;
 
   // ---- 3. write samples -------------------------------------------------
   const sDir = path.join(dir, 'samples');

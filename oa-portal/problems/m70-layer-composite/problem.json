@@ -1,0 +1,11 @@
+{
+  "id": "m70",
+  "docId": "Q165",
+  "order": 70,
+  "title": "Layer Composite",
+  "difficulty": "Hard",
+  "timeLimitMs": 4000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["sweep line", "segment tree", "union of rectangles"]
+}

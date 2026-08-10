@@ -1,0 +1,11 @@
+{
+  "id": "m75",
+  "docId": "Q174",
+  "order": 75,
+  "title": "Seating Arrangements",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["combinatorics", "modular inverse", "factorials"]
+}

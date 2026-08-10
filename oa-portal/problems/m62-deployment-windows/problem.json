@@ -1,0 +1,11 @@
+{
+  "id": "m62",
+  "docId": "Q157",
+  "order": 62,
+  "title": "Deployment Windows",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["edf", "preemptive scheduling", "heap"]
+}

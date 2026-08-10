@@ -631,8 +631,9 @@ You extend this yourself. Entries you write after losing marks encode the trigge
 > **Constraints:** `1 ≤ n ≤ 1e5`, `1 ≤ m ≤ 5e5`. *Dijkstra works. Something faster and simpler exists.*
 
 **Q72** `[MODELLED]` · `H` — **Currency Desk**
-> `n` currencies and `m` directed conversion offers; offer `i` converts 1 unit of `u` into `r_i` units of `v`. Starting with 1 unit of currency 1, can you end with strictly more than 1 unit of currency 1? If yes, print the cycle.
-> **Constraints:** `1 ≤ n ≤ 500`, `1 ≤ m ≤ 5000`. *Multiplication, not addition. What transform fixes that?*
+> `n` currencies and `m` directed conversion offers; offer `i` turns 1 unit of `u` into `p_i / q_i` units of `v`. Starting with 1 unit of currency 1, can you end holding strictly more than 1 unit of currency 1? Print `YES` or `NO`.
+> **Constraints:** `1 ≤ n ≤ 500`, `1 ≤ m ≤ 5000`, `1 ≤ p_i, q_i ≤ 100`. *Multiplication, not addition. What transform fixes that?*
+> *Note: "print the cycle" is not auto-gradable — many different cycles are equally valid answers. The decision version needs the identical algorithm. Also note the profitable loop must be reachable from currency 1 **and** able to lead back to it; a loop stranded elsewhere earns nothing.*
 
 **Q73** `[MODELLED]` · `M` — **Build Pipeline**
 > `n` build tasks; task `i` takes `t_i` seconds. `m` dependency pairs `(a, b)`: `a` must fully finish before `b` starts. Unlimited parallel workers. Minimum total wall-clock time?
@@ -846,12 +847,14 @@ You extend this yourself. Entries you write after losing marks encode the trigge
 > **Constraints:** `1 ≤ n ≤ 2e5`.
 
 **Q157** `[MODELLED]` · `H` — **Deployment Windows** *(devops)*
-> `n` services; service `i` needs `t_i` minutes and must deploy inside a maintenance window `[l_i, r_i]`. One deployer, no overlap, no preemption. Can all services deploy?
+> `n` services; service `i` needs `t_i` minutes and must deploy inside a maintenance window `[l_i, r_i]`. One deployer, no overlap. A deployment **may be paused and resumed** at whole minutes. Can all services deploy?
 > **Constraints:** `1 ≤ n ≤ 2e5`.
+> *Note: the pausing is what makes this decidable — earliest-deadline-first is optimal for the preemptive version. Forbid pausing and it becomes 1|r_j,d_j|feasibility, which is strongly NP-hard, so no OA can be asking for that at this size.*
 
 **Q158** `[MODELLED]` · `X` — **Pipeline Reliability** *(devops)*
-> A deployment DAG of `n` stages; stage `i` has success probability `p_i`. The pipeline succeeds if **some** root-to-leaf path has all stages succeed. Maximise success probability by choosing the path.
-> **Constraints:** `1 ≤ n ≤ 2e5`.
+> A deployment DAG of `n` stages; stage `i` carries an integer **risk** `w_i`, and a path completes without incident with probability `2^(−sum of its risks)`. Report the smallest total risk over all start-to-end paths — starts are the stages with nothing feeding them, ends the stages with nothing after them.
+> **Constraints:** `1 ≤ n ≤ 2e5`, `1 ≤ m ≤ 5e5`, `0 ≤ w_i ≤ 1e9`.
+> *Note: stated with raw probabilities the answer is a float, and two correct programs disagree in the last decimal depending on multiplication order. Risks are the logs handed to you as integers — same problem, exact answer. Watch that starts are not just stage 1 and ends not just stage n.*
 
 **Q159** `[MODELLED]` · `M` — **Client Panel Scheduling** *(consulting)*
 > `n` client meetings with `[start, end]` and value `v_i`. One consultant, no overlaps. Maximise total value.
@@ -866,12 +869,14 @@ You extend this yourself. Entries you write after losing marks encode the trigge
 > **Constraints:** `1 ≤ n ≤ 3000`.
 
 **Q162** `[MODELLED]` · `H` — **Shelf Restock** *(retail)*
-> `n` shelves with current stock and capacity. A restock truck carries `T` units total. Distribute to maximise the **minimum** fill ratio across shelves.
-> **Constraints:** `1 ≤ n ≤ 2e5`, `1 ≤ T ≤ 1e9`.
+> `n` shelves with current stock `s_i` and capacity `c_i`. A restock truck carries `T` whole units. Distribute them to maximise the **minimum** fill ratio `stock / capacity`, and report that ratio **in millionths** (times `10^6`, rounded down).
+> **Constraints:** `1 ≤ n ≤ 2e5`, `0 ≤ T ≤ 1e9`, `0 ≤ s_i ≤ c_i ≤ 1e9`.
+> *Note: reported in millionths so the answer is an integer and the binary search stays in exact arithmetic — `⌈m·c / 10^6⌉` is precisely where a floating-point version goes wrong. Do not forget that a shelf already above the target needs nothing.*
 
 **Q163** `[MODELLED]` · `H` — **Trade Netting** *(finance)*
-> `n` counterparties and `m` trades; trade `j` means `a` owes `b` amount `x`. Net all obligations within each connected group and report, per group, the minimum number of payments needed to settle everyone.
+> `n` counterparties and `m` trades; trade `j` means `a` owes `b` amount `x`. Net all obligations within each connected group and report, per group, how many members hold a non-zero net position and the total amount that must change hands.
 > **Constraints:** `1 ≤ n ≤ 1e5`, `1 ≤ m ≤ 2e5`.
+> *Note: "fewest payments" is NP-hard — the minimum is the non-zero count minus the largest number of disjoint zero-sum subsets, which is set partitioning. `z` non-zero members can always be settled in `z − 1` payments, so that is the bound worth knowing. Counterparties with no trades are still groups of one.*
 
 **Q164** `[MODELLED]` · `X` — **Portfolio Rebalance** *(finance)*
 > `n` assets with current and target weights. Each trade moves weight between two assets at cost proportional to the amount. Minimum total cost to hit all targets.

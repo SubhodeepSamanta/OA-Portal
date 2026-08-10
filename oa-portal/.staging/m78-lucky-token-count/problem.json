@@ -1,0 +1,11 @@
+{
+  "id": "m78",
+  "docId": "Q177",
+  "order": 78,
+  "title": "Lucky Token Count",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["digit dp", "counting"]
+}

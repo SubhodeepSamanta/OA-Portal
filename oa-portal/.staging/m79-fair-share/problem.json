@@ -1,0 +1,11 @@
+{
+  "id": "m79",
+  "docId": "Q178",
+  "order": 79,
+  "title": "Fair Share",
+  "difficulty": "Medium",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["division", "remainder"]
+}

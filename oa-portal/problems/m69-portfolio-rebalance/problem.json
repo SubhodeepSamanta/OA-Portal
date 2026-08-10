@@ -1,0 +1,11 @@
+{
+  "id": "m69",
+  "docId": "Q164",
+  "order": 69,
+  "title": "Portfolio Rebalance",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["lower bound argument", "greedy"]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "m65",
+  "docId": "Q160",
+  "order": 65,
+  "title": "Cohort Bucketing",
+  "difficulty": "Medium",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["binary search on answer", "grouping"]
+}

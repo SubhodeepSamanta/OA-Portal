@@ -1,0 +1,11 @@
+{
+  "id": "m68",
+  "docId": "Q163",
+  "order": 68,
+  "title": "Trade Netting",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["dsu", "netting", "grouped aggregation"]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "m66",
+  "docId": "Q161",
+  "order": 66,
+  "title": "Query Plan Cost",
+  "difficulty": "Hard",
+  "timeLimitMs": 4000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["interval dp", "knuth optimisation"]
+}

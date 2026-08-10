@@ -1,0 +1,11 @@
+{
+  "id": "m72",
+  "docId": "Q167",
+  "order": 72,
+  "title": "Batch Allocation",
+  "difficulty": "Medium",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["sorting", "largest gaps"]
+}

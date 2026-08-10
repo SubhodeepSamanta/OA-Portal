@@ -1,0 +1,11 @@
+{
+  "id": "m74",
+  "docId": "Q173",
+  "order": 74,
+  "title": "Gear Ratios",
+  "difficulty": "Medium",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["gcd", "overflow"]
+}
