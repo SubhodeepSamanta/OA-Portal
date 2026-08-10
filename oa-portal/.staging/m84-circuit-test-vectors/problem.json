@@ -1,0 +1,11 @@
+{
+  "id": "m84",
+  "docId": "Q204",
+  "order": 84,
+  "title": "Circuit Test Vectors",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["weighted dsu", "parity", "counting"]
+}

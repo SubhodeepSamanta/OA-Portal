@@ -1,0 +1,11 @@
+{
+  "id": "m80",
+  "docId": "Q183",
+  "order": 80,
+  "title": "Sensor Fault Isolation",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["xor", "bit partition"]
+}

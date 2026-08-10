@@ -1,0 +1,11 @@
+{
+  "id": "m83",
+  "docId": "Q199",
+  "order": 83,
+  "title": "Undo-Redo Editor",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["binary lifting", "persistent versions"]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "m85",
+  "docId": "Q206",
+  "order": 85,
+  "title": "Coin Row Duel",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["interval dp", "game theory"]
+}

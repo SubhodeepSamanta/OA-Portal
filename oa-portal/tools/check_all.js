@@ -130,6 +130,24 @@ const WRONG = {
   // m40: starts the running maximum at 0, so all-negative ranges come out wrong
   m40: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,q;scanf("%d %d",&n,&q);vector<long long>a(n+1);for(int i=1;i<=n;i++)scanf("%lld",&a[i]);char op[16];string o;for(int i=0;i<q;i++){scanf("%s",op);if(op[0]=='A'){int l,r;long long x;scanf("%d %d %lld",&l,&r,&x);for(int j=l;j<=r;j++)a[j]+=x;}else{int l,r;scanf("%d %d",&l,&r);long long b=0;for(int j=l;j<=r;j++)b=max(b,a[j]);o+=to_string(b);o+='\\n';}}fwrite(o.data(),1,o.size(),stdout);}`,
 
+  // m80: XORs everything and prints that, never splitting the two apart
+  m80: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);long long all=0,mn=LLONG_MAX;for(int i=0;i<n;i++){long long v;scanf("%lld",&v);all^=v;mn=min(mn,v);}printf("%lld %lld\\n",mn,all);}`,
+
+  // m81: forgets that a role covering everything pairs with itself in the count
+  m81: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,b;scanf("%d %d",&n,&b);int F=(1<<b)-1;vector<int>m(n);vector<long long>c(1<<b,0);for(int i=0;i<n;i++){scanf("%d",&m[i]);c[m[i]]++;}for(int t=0;t<b;t++)for(int x=0;x<=F;x++)if(!(x&(1<<t)))c[x]+=c[x|(1<<t)];long long tot=0;for(int i=0;i<n;i++)tot+=c[F^m[i]];printf("%lld\\n",tot/2);}`,
+
+  // m82: records rejected requests too, so the limiter is far too strict
+  m82: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int q;long long k,w;scanf("%d %lld %lld",&q,&k,&w);unordered_map<int,deque<long long>>s;string o;o.reserve(q+1);for(int i=0;i<q;i++){int u;long long t;scanf("%d %lld",&u,&t);auto&d=s[u];while(!d.empty()&&d.front()<=t-w)d.pop_front();if((long long)d.size()<k)o+='1';else o+='0';d.push_back(t);}o+='\\n';fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // m83: a fresh edit does not clear the redo history
+  m83: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int q;scanf("%d",&q);string doc;vector<string>un,re;string o;char c[16];static char b[200005];for(int i=0;i<q;i++){scanf("%s",c);if(c[0]=='A'){scanf("%s",b);un.push_back(doc);doc+=b;}else if(c[0]=='D'){int k;scanf("%d",&k);un.push_back(doc);doc.erase(doc.size()-k);}else if(c[0]=='U'){if(!un.empty()){re.push_back(doc);doc=un.back();un.pop_back();}}else if(c[0]=='R'){if(!re.empty()){un.push_back(doc);doc=re.back();re.pop_back();}}else{int x;scanf("%d",&x);o+=doc[x-1];o+='\\n';}}fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // m84: counts components but never checks the parity, so contradictions pass
+  m84: `#include <bits/stdc++.h>\nusing namespace std;\nconst long long MOD=1000000007LL;vector<int>p;int f(int x){while(p[x]!=x){p[x]=p[p[x]];x=p[x];}return x;}\nint main(){int n,m;scanf("%d %d",&n,&m);p.resize(n+1);for(int i=1;i<=n;i++)p[i]=i;int g=n;for(int e=0;e<m;e++){int a,b,t;scanf("%d %d %d",&a,&b,&t);int ra=f(a),rb=f(b);if(ra!=rb){p[ra]=rb;g--;}}long long r=1,base=2;long long ex=g;while(ex){if(ex&1)r=r*base%MOD;base=base*base%MOD;ex>>=1;}printf("%lld\\n",r);}`,
+
+  // m85: greedily takes the larger end
+  m85: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<long long>v(n);for(int i=0;i<n;i++)scanf("%lld",&v[i]);int i=0,j=n-1;long long me=0;bool mine=true;while(i<=j){long long take;if(v[i]>=v[j])take=v[i++];else take=v[j--];if(mine)me+=take;mine=!mine;}printf("%lld\\n",me);}`,
+
   // m74: builds the lcm first, so a*b overflows long before the division
   m74: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){long long a,b;scanf("%lld %lld",&a,&b);long long g=__gcd(a,b);long long l=a*b/g;printf("%lld\\n",l/a);}`,
 

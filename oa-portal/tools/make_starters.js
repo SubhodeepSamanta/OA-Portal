@@ -3884,6 +3884,294 @@ ${FAST_READER_JAVA}}
 `,
 };
 
+S.m80 = {
+  cpp: `${CPP_HEAD}
+/* Return the two IDs that appear once, in increasing order. */
+pair<long long,long long> findFaulty(const vector<long long>& ids) {
+    // write your code here
+
+    return make_pair(0, 0);
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<long long> ids(n);
+    for (auto &x : ids) scanf("%lld", &x);
+
+    pair<long long,long long> r = findFaulty(ids);
+    printf("%lld %lld\\n", r.first, r.second);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* Return the two IDs that appear once, in increasing order. */
+    static long[] findFaulty(long[] ids) {
+        // write your code here
+
+        return new long[] { 0, 0 };
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long[] ids = new long[n];
+        for (int i = 0; i < n; i++) ids[i] = in.nextLong();
+
+        long[] r = findFaulty(ids);
+        System.out.println(r[0] + " " + r[1]);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m81 = {
+  cpp: `${CPP_HEAD}
+/* Count pairs i < j whose masks together set all b bits. */
+long long countCoveringPairs(const vector<int>& masks, int b) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n, b;
+    if (scanf("%d %d", &n, &b) != 2) return 0;
+    vector<int> masks(n);
+    for (auto &x : masks) scanf("%d", &x);
+
+    printf("%lld\\n", countCoveringPairs(masks, b));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* Count pairs i < j whose masks together set all b bits. */
+    static long countCoveringPairs(int[] masks, int b) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), b = in.nextInt();
+        int[] masks = new int[n];
+        for (int i = 0; i < n; i++) masks[i] = in.nextInt();
+
+        System.out.println(countCoveringPairs(masks, b));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m82 = {
+  cpp: `${CPP_HEAD}
+/* requests[i] = {userId, timestamp}, timestamps non-decreasing.
+   Return true where the request is accepted. */
+vector<char> decide(long long k, long long w, const vector<pair<int,long long>>& requests) {
+    // write your code here
+
+    return vector<char>(requests.size(), '0');
+}
+
+int main() {
+    int q;
+    long long k, w;
+    if (scanf("%d %lld %lld", &q, &k, &w) != 3) return 0;
+    vector<pair<int,long long>> requests(q);
+    for (auto &r : requests) scanf("%d %lld", &r.first, &r.second);
+
+    string out;
+    for (char c : decide(k, w, requests)) out += c;
+    out += '\\n';
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* user[i] / time[i], timestamps non-decreasing.
+       Return '1' where the request is accepted and '0' where rejected. */
+    static char[] decide(long k, long w, int[] user, long[] time) {
+        // write your code here
+
+        char[] r = new char[user.length];
+        Arrays.fill(r, '0');
+        return r;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int q = in.nextInt();
+        long k = in.nextLong(), w = in.nextLong();
+        int[] user = new int[q];
+        long[] time = new long[q];
+        for (int i = 0; i < q; i++) { user[i] = in.nextInt(); time[i] = in.nextLong(); }
+
+        System.out.println(new String(decide(k, w, user, time)));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m83 = {
+  cpp: `${CPP_HEAD}
+/* ops[i] is one command line, exactly as read.
+   Return one character per PRINT, in order. */
+vector<char> runEditor(const vector<string>& ops) {
+    // write your code here
+
+    return vector<char>();
+}
+
+int main() {
+    int q;
+    if (scanf("%d", &q) != 1) return 0;
+    vector<string> ops(q);
+    {
+        char cmd[16];
+        static char buf[200005];
+        for (int i = 0; i < q; i++) {
+            scanf("%s", cmd);
+            ops[i] = cmd;
+            if (cmd[0] == 'A' || cmd[0] == 'D' || cmd[0] == 'P') {
+                scanf("%s", buf);
+                ops[i] += ' ';
+                ops[i] += buf;
+            }
+        }
+    }
+
+    string out;
+    for (char c : runEditor(ops)) { out += c; out += '\\n'; }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* ops[i] is one command line. Return one character per PRINT, in order. */
+    static char[] runEditor(String[] ops) {
+        // write your code here
+
+        return new char[0];
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int q = Integer.parseInt(br.readLine().trim());
+        String[] ops = new String[q];
+        for (int i = 0; i < q; i++) ops[i] = br.readLine().trim();
+
+        StringBuilder sb = new StringBuilder();
+        for (char c : runEditor(ops)) sb.append(c).append('\\n');
+        System.out.print(sb);
+    }
+}
+`,
+};
+
+S.m84 = {
+  cpp: `${CPP_HEAD}
+/* constraints[j] = {i, j, type}: type 0 means equal, 1 means differ.
+   Return the count of satisfying assignments modulo 1e9+7. */
+long long countAssignments(int n, const vector<array<int,3>>& constraints) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n, m;
+    if (scanf("%d %d", &n, &m) != 2) return 0;
+    vector<array<int,3>> constraints(m);
+    for (auto &c : constraints) scanf("%d %d %d", &c[0], &c[1], &c[2]);
+
+    printf("%lld\\n", countAssignments(n, constraints));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* constraints[j] = {i, j, type}: type 0 means equal, 1 means differ.
+       Return the count of satisfying assignments modulo 1e9+7. */
+    static long countAssignments(int n, int[][] constraints) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), m = in.nextInt();
+        int[][] constraints = new int[m][3];
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < 3; j++) constraints[i][j] = in.nextInt();
+
+        System.out.println(countAssignments(n, constraints));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m85 = {
+  cpp: `${CPP_HEAD}
+long long firstPlayerTotal(const vector<long long>& v) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<long long> v(n);
+    for (auto &x : v) scanf("%lld", &x);
+
+    printf("%lld\\n", firstPlayerTotal(v));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    static long firstPlayerTotal(long[] v) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long[] v = new long[n];
+        for (int i = 0; i < n; i++) v[i] = in.nextLong();
+
+        System.out.println(firstPlayerTotal(v));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
 /**
  * The /** ... *\/ blocks above each function are kept in THIS file so the
  * signatures stay self-documenting for whoever edits the templates, but they

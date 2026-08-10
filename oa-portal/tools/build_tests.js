@@ -156,6 +156,15 @@ const SAMPLES = {
   m77: ['3\n1 2 3\n', '2\n1 2\n', '4\n1 1 1 2\n', '1\n7\n'],
   m78: ['20 2\n', '9 9\n', '100 1\n', '1000000000000000000 1\n'],
   m79: ['3 10\n', '4 8\n', '5 3\n', '1 1000000000000000000\n'],
+  m80: ['6\n1 2 1 3 2 5\n', '2\n7 9\n', '4\n1000000000 5 5 1\n'],
+  m81: ['3 3\n3 5 6\n', '2 2\n1 1\n', '4 2\n3 3 0 1\n', '1 5\n31\n'],
+  m82: ['5 2 10\n1 1\n1 2\n1 3\n1 11\n2 3\n', '3 1 5\n1 1\n1 5\n1 6\n',
+        '4 1 100\n1 1\n2 1\n1 2\n2 2\n'],
+  m83: ['6\nAPPEND abc\nPRINT 2\nDELETE 1\nPRINT 2\nUNDO\nPRINT 3\n',
+        '7\nAPPEND xy\nAPPEND z\nUNDO\nPRINT 2\nREDO\nPRINT 3\nUNDO\n',
+        '5\nUNDO\nAPPEND ab\nUNDO\nREDO\nPRINT 1\n'],
+  m84: ['3 2\n1 2 1\n2 3 1\n', '3 3\n1 2 1\n2 3 1\n1 3 1\n', '3 0\n', '2 1\n1 2 0\n'],
+  m85: ['4\n1 2 9 3\n', '1\n5\n', '2\n3 7\n', '4\n1 1 1 1\n'],
 };
 
 // expected sample answers, straight from the statements - a second check
@@ -239,6 +248,12 @@ const SAMPLE_EXPECT = {
   m77: ['YES', 'NO', 'NO', 'YES'],
   m78: ['3', '1', '3', '19'],
   m79: ['3 3 4', '2 2 2 2', '0 0 1 1 1', '1000000000000000000'],
+  m80: ['3 5', '7 9', '1 1000000000'],
+  m81: ['3', '0', '5', '0'],
+  m82: ['11011', '101', '1100'],
+  m83: ['b b c', 'y z', 'a'],
+  m84: ['2', '0', '8', '2'],
+  m85: ['10', '5', '7', '2'],
 };
 
 function compile(src, out) {

@@ -1,0 +1,11 @@
+{
+  "id": "m82",
+  "docId": "Q198",
+  "order": 82,
+  "title": "Rate Limiter",
+  "difficulty": "Hard",
+  "timeLimitMs": 4000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["sliding window", "per-key deque"]
+}

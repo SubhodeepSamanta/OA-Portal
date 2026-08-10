@@ -1,0 +1,11 @@
+{
+  "id": "m81",
+  "docId": "Q184",
+  "order": 81,
+  "title": "Permission Merge",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["sum over subsets", "bitmask counting"]
+}
