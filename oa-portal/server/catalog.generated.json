@@ -2786,7 +2786,8 @@
   "statement": "A building has `f` floors and `e` lifts. `n` requests; request `i` is `(time, from, to)`. A lift moves 1 floor per second and takes 0 time to open or close. Each request is assigned to the lift that can reach `from` soonest (ties → lowest lift index). Print each request's completion time.\n**Constraints:** `1 ≤ f ≤ 200`, `1 ≤ e ≤ 10`, `1 ≤ n ≤ 1e5`.",
   "section": "OA-style applied problems",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m54",
+  "playable": true
  },
  {
   "docId": "Q150",
@@ -2805,7 +2806,8 @@
   "statement": "`n` payment gateways; gateway `i` has success rate `p_i` and cost `c_i`. `q` transactions, each with a minimum acceptable success rate `r`. Route each transaction to the cheapest gateway with `p_i ≥ r`; report the total cost. Gateways may be added or removed between transactions.\n**Constraints:** `1 ≤ n, q ≤ 2e5`.",
   "section": "OA-style applied problems",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m55",
+  "playable": true
  },
  {
   "docId": "Q151",
@@ -2824,7 +2826,8 @@
   "statement": "`n` warehouses in a line with stock `s_i`. Moving one unit between adjacent warehouses costs ₹1. Every warehouse must end with at least `m` units. Minimum cost, or `−1`.\n**Constraints:** `1 ≤ n ≤ 2e5`, `0 ≤ s_i ≤ 1e9`.",
   "section": "OA-style applied problems",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m56",
+  "playable": true
  },
  {
   "docId": "Q152",
@@ -2843,7 +2846,8 @@
   "statement": "`n` tickets with priorities. Every hour, the highest-priority ticket is resolved and every remaining ticket's priority rises by 1. Print the resolution order.\n**Constraints:** `1 ≤ n ≤ 2e5`. *The +1 applies to everyone — does it actually change anything?*",
   "section": "OA-style applied problems",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m57",
+  "playable": true
  },
  {
   "docId": "Q153",
@@ -2862,7 +2866,8 @@
   "statement": "`n` warehouses on a 2D plane and `m` customers. Each customer must be served by a warehouse within distance `d`. Minimise the number of warehouses opened.\n**Constraints:** `1 ≤ n ≤ 20`, `1 ≤ m ≤ 1e5`.",
   "section": "OA-style applied problems",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m58",
+  "playable": true
  },
  {
   "docId": "Q154",
@@ -2881,7 +2886,8 @@
   "statement": "`n` deliveries; delivery `i` must happen within `[s_i, e_i]` and takes 1 hour. One van, integer start hours. Maximise deliveries completed.\n**Constraints:** `1 ≤ n ≤ 2e5`.",
   "section": "OA-style applied problems",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m59",
+  "playable": true
  },
  {
   "docId": "Q155",
@@ -2900,7 +2906,8 @@
   "statement": "`n` social posts as strings. Two posts are duplicates if one is an anagram of the other **after removing all non-alphabetic characters and lowercasing**. Print the number of distinct posts.\n**Constraints:** `1 ≤ n ≤ 1e5`, total length ≤ `1e6`.",
   "section": "OA-style applied problems",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m60",
+  "playable": true
  },
  {
   "docId": "Q156",

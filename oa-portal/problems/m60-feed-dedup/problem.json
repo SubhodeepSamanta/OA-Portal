@@ -1,0 +1,11 @@
+{
+  "id": "m60",
+  "docId": "Q155",
+  "order": 60,
+  "title": "Feed Dedup",
+  "difficulty": "Medium",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["canonical form", "hashing", "strings"]
+}

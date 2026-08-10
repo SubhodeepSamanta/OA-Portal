@@ -1,0 +1,11 @@
+{
+  "id": "m58",
+  "docId": "Q153",
+  "order": 58,
+  "title": "Fulfilment Zones",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["bitmask", "set cover", "sum over subsets"]
+}

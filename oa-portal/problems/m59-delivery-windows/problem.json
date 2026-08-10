@@ -1,0 +1,11 @@
+{
+  "id": "m59",
+  "docId": "Q154",
+  "order": 59,
+  "title": "Delivery Windows",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["greedy by deadline", "dsu next-free"]
+}

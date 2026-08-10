@@ -118,6 +118,17 @@ const SAMPLES = {
         '7\nEDIT 0 a\nEDIT 1 b\nEDIT 2 c\nEDIT 3 d\nQUERY 4 1\nQUERY 4 4\nQUERY 4 2\n'],
   m52: ['5\n1 2 3 4 5\n', '5\n5 4 3 2 1\n', '1\n7\n', '6\n1 5 2 4 3 6\n'],
   m53: ['0011\n', '01\n', '000\n', '010101\n'],
+  m54: ['5 1 3\n1 1 3\n2 3 1\n10 1 5\n', '10 2 3\n1 1 5\n1 10 2\n1 3 4\n', '3 1 1\n5 2 2\n'],
+  m55: ['3 4\n90 50\n95 80\n99 200\nROUTE 90\nROUTE 96\nROUTE 100\nREMOVE 1\n',
+        '2 5\n80 10\n90 100\nROUTE 85\nREMOVE 2\nROUTE 85\nADD 95 20\nROUTE 85\n',
+        '3 2\n99 500\n95 10\n90 1\nROUTE 92\nROUTE 90\n'],
+  m56: ['3 2\n5 1 10\n', '3 1\n3 0 0\n', '2 5\n1 1\n', '4 1\n4 0 0 0\n'],
+  m57: ['3\n5 3 9\n', '4\n2 2 2 2\n', '1\n7\n', '5\n1 2 3 4 5\n'],
+  m58: ['2 3 5\n0 0\n10 0\n0 0\n1 1\n10 1\n', '1 1 0\n5 5\n5 5\n', '1 1 1\n0 0\n10 10\n',
+        '3 2 100\n0 0\n50 50\n100 100\n1 1\n2 2\n'],
+  m59: ['3\n1 2\n1 1\n2 2\n', '1\n5 5\n', '3\n1 10\n1 10\n1 10\n', '4\n1 1\n1 1\n2 2\n3 3\n'],
+  m60: ['3\nListen!\nSilent\nenlist\n', '2\nhello\nworld\n',
+        '4\nDormitory\nDirty Room!!\nabc\ncab\n', '3\n!!!\n...\n123\n'],
 };
 
 // expected sample answers, straight from the statements - a second check
@@ -175,6 +186,13 @@ const SAMPLE_EXPECT = {
   m51: ['a b', 'y z x', 'a d b'],
   m52: ['0', '4', '0', '3'],
   m53: ['2', '1', '0', '9'],
+  m54: ['3 5 14', '5 18 4', '6'],
+  m55: ['50 200 -1', '100 -1 20', '10 1'],
+  m56: ['1', '3', '-1', '6'],
+  m57: ['3 1 2', '1 2 3 4', '1', '5 4 3 2 1'],
+  m58: ['2', '1', '-1', '1'],
+  m59: ['2', '1', '3', '3'],
+  m60: ['1', '2', '2', '1'],
 };
 
 function compile(src, out) {

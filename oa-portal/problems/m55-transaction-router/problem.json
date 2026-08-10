@@ -1,0 +1,11 @@
+{
+  "id": "m55",
+  "docId": "Q150",
+  "order": 55,
+  "title": "Transaction Router",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["segment tree", "coordinate compression", "multiset"]
+}

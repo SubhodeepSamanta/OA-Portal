@@ -130,6 +130,28 @@ const WRONG = {
   // m40: starts the running maximum at 0, so all-negative ranges come out wrong
   m40: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,q;scanf("%d %d",&n,&q);vector<long long>a(n+1);for(int i=1;i<=n;i++)scanf("%lld",&a[i]);char op[16];string o;for(int i=0;i<q;i++){scanf("%s",op);if(op[0]=='A'){int l,r;long long x;scanf("%d %d %lld",&l,&r,&x);for(int j=l;j<=r;j++)a[j]+=x;}else{int l,r;scanf("%d %d",&l,&r);long long b=0;for(int j=l;j<=r;j++)b=max(b,a[j]);o+=to_string(b);o+='\\n';}}fwrite(o.data(),1,o.size(),stdout);}`,
 
+  // m54: ignores the travel needed to reach the passenger in the first place
+  m54: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int f,e,n;scanf("%d %d %d",&f,&e,&n);vector<long long>fr(e,0),at(e,1);string o;for(int i=0;i<n;i++){long long t,a,b;scanf("%lld %lld %lld",&t,&a,&b);int best=0;long long bv=LLONG_MAX;for(int j=0;j<e;j++){long long ar=max(t,fr[j]);if(ar<bv){bv=ar;best=j;}}long long d=bv+llabs(a-b);fr[best]=d;at[best]=b;o+=to_string(d);o+='\\n';}fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // m55: routes to the HIGHEST qualifying success rate rather than the cheapest
+  m55: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,q;scanf("%d %d",&n,&q);vector<long long>P,C;vector<char>L;for(int i=0;i<n;i++){long long p,c;scanf("%lld %lld",&p,&c);P.push_back(p);C.push_back(c);L.push_back(1);}string o;char op[16];for(int i=0;i<q;i++){scanf("%s",op);if(op[0]=='A'){long long p,c;scanf("%lld %lld",&p,&c);P.push_back(p);C.push_back(c);L.push_back(1);}else if(op[1]=='E'){int id;scanf("%d",&id);L[id-1]=0;}else{long long r;scanf("%lld",&r);int bi=-1;for(size_t j=0;j<P.size();j++)if(L[j]&&P[j]>=r&&(bi<0||P[j]>P[bi]))bi=(int)j;o+=to_string(bi<0?-1LL:C[bi]);o+='\\n';}}fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // m56: clamps into the box but skips the isotonic step entirely
+  m56: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;long long m;scanf("%d %lld",&n,&m);vector<long long>s(n);long long t=0;for(int i=0;i<n;i++){scanf("%lld",&s[i]);t+=s[i];}if(t<(long long)n*m){printf("-1\\n");return 0;}long long cap=t-(long long)n*m,cost=0,pre=0;for(int i=1;i<=n-1;i++){pre+=s[i-1];long long A=pre-(long long)i*m;if(A<0)cost+=-A;else if(A>cap)cost+=A-cap;}printf("%lld\\n",cost);}`,
+
+  // m57: breaks priority ties towards the HIGHEST ticket number
+  m57: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<pair<long long,int>>t(n);for(int i=0;i<n;i++){long long p;scanf("%lld",&p);t[i]=make_pair(-p,-(i+1));}sort(t.begin(),t.end());string o;for(int i=0;i<n;i++){if(i)o+=' ';o+=to_string(-t[i].second);}o+='\\n';fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // m58: counts only the warehouses that are some customer's ONLY option,
+  //      which is a lower bound and never reports -1
+  m58: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,m;long long d;scanf("%d %d %lld",&n,&m,&d);vector<long long>wx(n),wy(n);for(int i=0;i<n;i++)scanf("%lld %lld",&wx[i],&wy[i]);long long d2=d*d;vector<char>need(n,0);for(int j=0;j<m;j++){long long cx,cy;scanf("%lld %lld",&cx,&cy);int cnt=0,last=-1;for(int i=0;i<n;i++){long long dx=cx-wx[i],dy=cy-wy[i];if(dx*dx+dy*dy<=d2){cnt++;last=i;}}if(cnt==1)need[last]=1;}int c=0;for(int i=0;i<n;i++)c+=need[i];printf("%d\\n",c);}`,
+
+  // m59: sorts by START time instead of deadline
+  m59: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<pair<long long,long long>>j(n);for(int i=0;i<n;i++){long long s,e;scanf("%lld %lld",&s,&e);j[i]=make_pair(s,e);}sort(j.begin(),j.end());set<long long>used;int done=0;for(int i=0;i<n;i++){long long t=j[i].first;while(used.count(t))t++;if(t<=j[i].second){used.insert(t);done++;}}printf("%d\\n",done);}`,
+
+  // m60: lowercases but forgets to delete the non-letters
+  m60: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){ios::sync_with_stdio(false);cin.tie(nullptr);int n;cin>>n;cin.ignore(numeric_limits<streamsize>::max(),'\\n');set<string>seen;string line;for(int i=0;i<n;i++){if(!getline(cin,line))line.clear();string t;for(char ch:line)t+=(char)tolower((unsigned char)ch);sort(t.begin(),t.end());seen.insert(t);}cout<<seen.size()<<'\\n';}`,
+
   // m48: reports the peak overlap, forgetting the cancellation entirely
   m48: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<pair<long long,int>>ev;for(int i=0;i<n;i++){long long a,d;scanf("%lld %lld",&a,&d);ev.push_back({a,1});ev.push_back({d+1,-1});}sort(ev.begin(),ev.end());int c=0,p=0;for(auto&e:ev){c+=e.second;p=max(p,c);}printf("%d\\n",p);}`,
 

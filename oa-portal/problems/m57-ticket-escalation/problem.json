@@ -1,0 +1,11 @@
+{
+  "id": "m57",
+  "docId": "Q152",
+  "order": 57,
+  "title": "Ticket Escalation",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["invariant", "sorting"]
+}

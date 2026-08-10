@@ -2679,6 +2679,362 @@ ${FAST_READER_JAVA}}
 `,
 };
 
+S.m54 = {
+  cpp: `${CPP_HEAD}
+/* reqs[i] = {time, from, to}, in non-decreasing time order.
+   Return the completion time of each request, in input order. */
+vector<long long> completionTimes(int f, int e, const vector<array<long long,3>>& reqs) {
+    // write your code here
+
+    return vector<long long>(reqs.size(), 0);
+}
+
+int main() {
+    int f, e, n;
+    if (scanf("%d %d %d", &f, &e, &n) != 3) return 0;
+    vector<array<long long,3>> reqs(n);
+    for (auto &r : reqs) scanf("%lld %lld %lld", &r[0], &r[1], &r[2]);
+
+    string out;
+    for (long long v : completionTimes(f, e, reqs)) { out += to_string(v); out += '\\n'; }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* reqs[i] = {time, from, to}, in non-decreasing time order.
+       Return the completion time of each request, in input order. */
+    static long[] completionTimes(int f, int e, long[][] reqs) {
+        // write your code here
+
+        return new long[reqs.length];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int f = in.nextInt(), e = in.nextInt(), n = in.nextInt();
+        long[][] reqs = new long[n][3];
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < 3; j++) reqs[i][j] = in.nextLong();
+
+        StringBuilder sb = new StringBuilder();
+        for (long v : completionTimes(f, e, reqs)) sb.append(v).append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m55 = {
+  cpp: `${CPP_HEAD}
+/* initial[i] = {p, c} for gateway i+1.
+   ops[j] = {type, a, b}: type 0 is ADD (a=p, b=c), type 1 is REMOVE (a=id),
+   type 2 is ROUTE (a=r). Return one answer per ROUTE, in order. */
+vector<long long> answerRoutes(const vector<pair<long long,long long>>& initial,
+                               const vector<array<long long,3>>& ops) {
+    // write your code here
+
+    return vector<long long>();
+}
+
+int main() {
+    int n, q;
+    if (scanf("%d %d", &n, &q) != 2) return 0;
+    vector<pair<long long,long long>> initial(n);
+    for (auto &g : initial) scanf("%lld %lld", &g.first, &g.second);
+
+    vector<array<long long,3>> ops(q);
+    char word[16];
+    for (int i = 0; i < q; i++) {
+        scanf("%s", word);
+        if (word[0] == 'A') { ops[i][0] = 0; scanf("%lld %lld", &ops[i][1], &ops[i][2]); }
+        else if (word[1] == 'E') { ops[i][0] = 1; scanf("%lld", &ops[i][1]); ops[i][2] = 0; }
+        else { ops[i][0] = 2; scanf("%lld", &ops[i][1]); ops[i][2] = 0; }
+    }
+
+    string out;
+    for (long long v : answerRoutes(initial, ops)) { out += to_string(v); out += '\\n'; }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* initial[i] = {p, c} for gateway i+1.
+       ops[j] = {type, a, b}: type 0 is ADD (a=p, b=c), type 1 is REMOVE (a=id),
+       type 2 is ROUTE (a=r). Return one answer per ROUTE, in order. */
+    static long[] answerRoutes(long[][] initial, long[][] ops) {
+        // write your code here
+
+        return new long[0];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), q = in.nextInt();
+        long[][] initial = new long[n][2];
+        for (int i = 0; i < n; i++) { initial[i][0] = in.nextLong(); initial[i][1] = in.nextLong(); }
+        long[][] ops = new long[q][3];
+        for (int i = 0; i < q; i++) {
+            String w = in.next();
+            if (w.charAt(0) == 'A') { ops[i][0] = 0; ops[i][1] = in.nextLong(); ops[i][2] = in.nextLong(); }
+            else if (w.charAt(1) == 'E') { ops[i][0] = 1; ops[i][1] = in.nextLong(); }
+            else { ops[i][0] = 2; ops[i][1] = in.nextLong(); }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (long v : answerRoutes(initial, ops)) sb.append(v).append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m56 = {
+  cpp: `${CPP_HEAD}
+/* Return the minimum cost, or -1 if the requirement cannot be met. */
+long long minCost(const vector<long long>& s, long long m) {
+    // write your code here
+
+    return -1;
+}
+
+int main() {
+    int n;
+    long long m;
+    if (scanf("%d %lld", &n, &m) != 2) return 0;
+    vector<long long> s(n);
+    for (auto &x : s) scanf("%lld", &x);
+
+    printf("%lld\\n", minCost(s, m));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* Return the minimum cost, or -1 if the requirement cannot be met. */
+    static long minCost(long[] s, long m) {
+        // write your code here
+
+        return -1;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long m = in.nextLong();
+        long[] s = new long[n];
+        for (int i = 0; i < n; i++) s[i] = in.nextLong();
+
+        System.out.println(minCost(s, m));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m57 = {
+  cpp: `${CPP_HEAD}
+/* p[i] is ticket i+1's priority. Return the ticket NUMBERS in resolution order. */
+vector<int> resolutionOrder(const vector<long long>& p) {
+    // write your code here
+
+    return vector<int>();
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<long long> p(n);
+    for (auto &x : p) scanf("%lld", &x);
+
+    string out;
+    vector<int> order = resolutionOrder(p);
+    for (size_t i = 0; i < order.size(); i++) { if (i) out += ' '; out += to_string(order[i]); }
+    out += '\\n';
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* p[i] is ticket i+1's priority. Return the ticket NUMBERS in resolution order. */
+    static int[] resolutionOrder(long[] p) {
+        // write your code here
+
+        return new int[0];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long[] p = new long[n];
+        for (int i = 0; i < n; i++) p[i] = in.nextLong();
+
+        int[] order = resolutionOrder(p);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < order.length; i++) { if (i > 0) sb.append(' '); sb.append(order[i]); }
+        sb.append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m58 = {
+  cpp: `${CPP_HEAD}
+/* Return the fewest sites to open, or -1 if some customer cannot be served. */
+int minWarehouses(const vector<pair<long long,long long>>& sites,
+                  const vector<pair<long long,long long>>& customers,
+                  long long d) {
+    // write your code here
+
+    return -1;
+}
+
+int main() {
+    int n, m;
+    long long d;
+    if (scanf("%d %d %lld", &n, &m, &d) != 3) return 0;
+    vector<pair<long long,long long>> sites(n), customers(m);
+    for (auto &p : sites) scanf("%lld %lld", &p.first, &p.second);
+    for (auto &p : customers) scanf("%lld %lld", &p.first, &p.second);
+
+    printf("%d\\n", minWarehouses(sites, customers, d));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* Return the fewest sites to open, or -1 if some customer cannot be served. */
+    static int minWarehouses(long[][] sites, long[][] customers, long d) {
+        // write your code here
+
+        return -1;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), m = in.nextInt();
+        long d = in.nextLong();
+        long[][] sites = new long[n][2], customers = new long[m][2];
+        for (int i = 0; i < n; i++) { sites[i][0] = in.nextLong(); sites[i][1] = in.nextLong(); }
+        for (int i = 0; i < m; i++) { customers[i][0] = in.nextLong(); customers[i][1] = in.nextLong(); }
+
+        System.out.println(minWarehouses(sites, customers, d));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m59 = {
+  cpp: `${CPP_HEAD}
+/* windows[i] = {s, e}. Each delivery takes one whole hour. */
+int maxDeliveries(const vector<pair<long long,long long>>& windows) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<pair<long long,long long>> windows(n);
+    for (auto &w : windows) scanf("%lld %lld", &w.first, &w.second);
+
+    printf("%d\\n", maxDeliveries(windows));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* start[i] / end[i]. Each delivery takes one whole hour. */
+    static int maxDeliveries(long[] start, long[] end) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long[] start = new long[n], end = new long[n];
+        for (int i = 0; i < n; i++) { start[i] = in.nextLong(); end[i] = in.nextLong(); }
+
+        System.out.println(maxDeliveries(start, end));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m60 = {
+  cpp: `${CPP_HEAD}
+/* Each post is one whole line and may contain spaces. */
+int distinctPosts(const vector<string>& posts) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n;
+    if (!(cin >> n)) return 0;
+    cin.ignore(numeric_limits<streamsize>::max(), '\\n');
+    vector<string> posts(n);
+    for (int i = 0; i < n; i++) getline(cin, posts[i]);
+
+    cout << distinctPosts(posts) << '\\n';
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /* Each post is one whole line and may contain spaces. */
+    static int distinctPosts(String[] posts) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine().trim());
+        String[] posts = new String[n];
+        for (int i = 0; i < n; i++) {
+            String line = br.readLine();
+            posts[i] = line == null ? "" : line;
+        }
+
+        System.out.println(distinctPosts(posts));
+    }
+}
+`,
+};
+
 /**
  * The /** ... *\/ blocks above each function are kept in THIS file so the
  * signatures stay self-documenting for whoever edits the templates, but they

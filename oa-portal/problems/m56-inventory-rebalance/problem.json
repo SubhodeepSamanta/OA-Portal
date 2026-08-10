@@ -1,0 +1,11 @@
+{
+  "id": "m56",
+  "docId": "Q151",
+  "order": 56,
+  "title": "Inventory Rebalance",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["slope trick", "isotonic regression", "prefix sums"]
+}

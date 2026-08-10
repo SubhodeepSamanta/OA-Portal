@@ -1,0 +1,11 @@
+{
+  "id": "m54",
+  "docId": "Q149",
+  "order": 54,
+  "title": "Lift Controller",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["simulation", "state tracking"]
+}
