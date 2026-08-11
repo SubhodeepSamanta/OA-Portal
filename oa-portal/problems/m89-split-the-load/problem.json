@@ -1,0 +1,11 @@
+{
+  "id": "m89",
+  "docId": "Q210",
+  "order": 89,
+  "title": "Split the Load",
+  "difficulty": "Hard",
+  "timeLimitMs": 4000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["meet in the middle", "subset sums"]
+}

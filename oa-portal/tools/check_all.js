@@ -148,6 +148,76 @@ const WRONG = {
   // m85: greedily takes the larger end
   m85: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<long long>v(n);for(int i=0;i<n;i++)scanf("%lld",&v[i]);int i=0,j=n-1;long long me=0;bool mine=true;while(i<=j){long long take;if(v[i]>=v[j])take=v[i++];else take=v[j--];if(mine)me+=take;mine=!mine;}printf("%lld\\n",me);}`,
 
+  // m86: takes T mod the whole visited length, forgetting the tail before the cycle
+  m86: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){long long n,s,T;scanf("%lld %lld %lld",&n,&s,&T);vector<int>nx(n);for(int i=0;i<n;i++)scanf("%d",&nx[i]);vector<int>seen(n,-1);vector<int>ord;int cur=(int)s;while(seen[cur]<0){seen[cur]=(int)ord.size();ord.push_back(cur);cur=nx[cur];}long long L=(long long)ord.size();printf("%d\\n",ord[(int)(T<L?T:T%L)]);}`,
+
+  // m87: raises the matrix to T instead of T-1, so it reports p(T+1)
+  m87: `#include <bits/stdc++.h>\nusing namespace std;\nconst long long MOD=1000000007LL;struct M{long long a[2][2];};M mul(M x,M y){M r;for(int i=0;i<2;i++)for(int j=0;j<2;j++){long long s=0;for(int k=0;k<2;k++)s=(s+x.a[i][k]*y.a[k][j])%MOD;r.a[i][j]=s;}return r;}\nint main(){long long p0,p1,a,b,T;scanf("%lld %lld %lld %lld %lld",&p0,&p1,&a,&b,&T);p0%=MOD;p1%=MOD;a%=MOD;b%=MOD;if(T==0){printf("%lld\\n",p0);return 0;}if(T==1){printf("%lld\\n",p1);return 0;}M base;base.a[0][0]=a;base.a[0][1]=b;base.a[1][0]=1;base.a[1][1]=0;M r;r.a[0][0]=1;r.a[0][1]=0;r.a[1][0]=0;r.a[1][1]=1;long long e=T;while(e){if(e&1)r=mul(r,base);base=mul(base,base);e>>=1;}printf("%lld\\n",(r.a[0][0]*p1+r.a[0][1]*p0)%MOD);}`,
+
+  // m88: subtracts count(L) instead of count(L-1), so it drops L itself
+  m88: `#include <bits/stdc++.h>\nusing namespace std;\nstring S;long long memo[20][11][2];bool vis[20][11][2];\nlong long go(int pos,int prev,int st,int tight){if(pos==(int)S.size())return 1;if(!tight&&vis[pos][prev][st])return memo[pos][prev][st];int hi=tight?S[pos]-'0':9;long long r=0;for(int d=0;d<=hi;d++){int nst=st||d>0;if(st&&nst&&d==prev)continue;r+=go(pos+1,nst?d:10,nst,tight&&d==hi);}if(!tight){vis[pos][prev][st]=1;memo[pos][prev][st]=r;}return r;}\nlong long cnt(long long x){if(x<0)return 0;S=to_string(x);memset(vis,0,sizeof(vis));return go(0,10,0,1);}\nint main(){long long L,R;scanf("%lld %lld",&L,&R);printf("%lld\\n",cnt(R)-cnt(L));}`,
+
+  // m89: greedy - heaviest first onto whichever machine is lighter
+  m89: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<long long>w(n);for(int i=0;i<n;i++)scanf("%lld",&w[i]);sort(w.rbegin(),w.rend());long long A=0,B=0;for(int i=0;i<n;i++){if(A<=B)A+=w[i];else B+=w[i];}printf("%lld\\n",llabs(A-B));}`,
+
+  // m90: puts the antenna at the median, which minimises absolute distance, not squared
+  m90: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<long long>x(n);for(int i=0;i<n;i++)scanf("%lld",&x[i]);sort(x.begin(),x.end());long long p=x[n/2];long long s=0;for(int i=0;i<n;i++){long long d=x[i]-p;s+=d*d;}printf("%lld\\n",s);}`,
+
+  // m91: sum minus n(n+1)/2 - only correct when the duplicate appears exactly twice
+  m91: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){long long n;scanf("%lld",&n);long long s=0;for(long long i=0;i<=n;i++){long long v;scanf("%lld",&v);s+=v;}printf("%lld\\n",s-n*(n+1)/2);}`,
+
+  // c1: keys the map on pref % n without normalising, so a prefix of -2 and a
+  // prefix of 3 land in different buckets even though both are residue 3 mod 5
+  c1: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);unordered_map<long long,long long>cnt;cnt[0]=1;long long pref=0,ans=0;for(int i=0;i<n;i++){long long v;scanf("%lld",&v);pref+=v;long long r=pref%n;ans+=cnt[r];cnt[r]++;}printf("%lld\\n",ans);}`,
+
+  // c2: reuses a room when it frees up ON the arrival day, so it under-counts
+  // rooms and hands out overlapping stays
+  c2: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<int>a(n),b(n),idx(n);for(int i=0;i<n;i++){scanf("%d %d",&a[i],&b[i]);idx[i]=i;}sort(idx.begin(),idx.end(),[&](int p,int q){if(a[p]!=a[q])return a[p]<a[q];return b[p]<b[q];});priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>q;vector<int>room(n);int k=0;for(int t=0;t<n;t++){int i=idx[t];if(!q.empty()&&q.top().first<=a[i]){int r=q.top().second;q.pop();room[i]=r;q.push({b[i],r});}else{room[i]=++k;q.push({b[i],k});}}printf("%d\\n",k);for(int i=0;i<n;i++)printf("%d%c",room[i],i+1==n?'\\n':' ');}`,
+
+  // c3: predicate asks for strictly MORE than t products, so it lands one
+  // second late whenever the answer is exact
+  c3: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){long long n,t;scanf("%lld %lld",&n,&t);vector<long long>k(n);long long mn=LLONG_MAX;for(long long i=0;i<n;i++){scanf("%lld",&k[i]);mn=min(mn,k[i]);}auto ok=[&](long long T){long long m=0;for(long long i=0;i<n;i++){m+=T/k[i];if(m>t)return true;}return m>t;};long long lo=1,hi=t*mn;while(lo<hi){long long mid=lo+(hi-lo)/2;if(ok(mid))hi=mid;else lo=mid+1;}printf("%lld\\n",lo);}`,
+
+  // c4: closes the current piece when the sum REACHES the cap instead of
+  // exceeding it, so it over-splits and reports a larger maximum
+  c4: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){long long n,k;scanf("%lld %lld",&n,&k);vector<long long>x(n);long long lo=0,hi=0;for(long long i=0;i<n;i++){scanf("%lld",&x[i]);lo=max(lo,x[i]);hi+=x[i];}auto need=[&](long long cap){long long p=1,cur=0;for(long long i=0;i<n;i++){if(cur+x[i]>=cap){p++;cur=x[i];}else cur+=x[i];}return p;};while(lo<hi){long long mid=lo+(hi-lo)/2;if(need(mid)<=k)hi=mid;else lo=mid+1;}printf("%lld\\n",lo);}`,
+
+  // c5: erases by VALUE, so selling one ticket removes every ticket that
+  // happens to share its price
+  c5: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,m;scanf("%d %d",&n,&m);multiset<int>s;for(int i=0;i<n;i++){int h;scanf("%d",&h);s.insert(h);}string o;for(int j=0;j<m;j++){int t;scanf("%d",&t);auto it=s.upper_bound(t);if(it==s.begin())o+="-1\\n";else{--it;int v=*it;o+=to_string(v);o+='\\n';s.erase(v);}}fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // c6: counts DIRECT reports only, never the whole subtree
+  c6: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<int>par(n+1,0),cnt(n+1,0);for(int i=2;i<=n;i++){scanf("%d",&par[i]);cnt[par[i]]++;}for(int i=1;i<=n;i++)printf("%d%c",cnt[i],i==n?'\\n':' ');}`,
+
+  // c7: uses only ONE diameter endpoint, so nodes on that endpoint's side
+  // report distances that are far too small
+  c7: `#include <bits/stdc++.h>\nusing namespace std;\nint n;vector<vector<int>>adj;\nint bfs(int s,vector<int>&d){d.assign(n+1,-1);vector<int>q;q.push_back(s);d[s]=0;int b=s;for(size_t i=0;i<q.size();i++){int u=q[i];if(d[u]>d[b])b=u;for(int v:adj[u])if(d[v]==-1){d[v]=d[u]+1;q.push_back(v);}}return b;}\nint main(){scanf("%d",&n);adj.assign(n+1,{});for(int i=0;i<n-1;i++){int a,b;scanf("%d %d",&a,&b);adj[a].push_back(b);adj[b].push_back(a);}vector<int>d0,dA;int a=bfs(1,d0);bfs(a,dA);string o;for(int v=1;v<=n;v++){o+=to_string(dA[v]);o+=(v==n?'\\n':' ');}fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // c8: stops one step short - after rising together both nodes sit just BELOW
+  // the common boss, and this returns that child instead of up[a][0]
+  c8: `#include <bits/stdc++.h>\nusing namespace std;\nstatic const int LG=18;\nint main(){int n,q;scanf("%d %d",&n,&q);vector<array<int,LG>>up(n+1);vector<int>dep(n+1,0);for(int k=0;k<LG;k++)up[1][k]=1;for(int i=2;i<=n;i++){int p;scanf("%d",&p);up[i][0]=p;dep[i]=dep[p]+1;for(int k=1;k<LG;k++)up[i][k]=up[up[i][k-1]][k-1];}string o;for(int i=0;i<q;i++){int a,b;scanf("%d %d",&a,&b);if(dep[a]<dep[b])swap(a,b);int d=dep[a]-dep[b];for(int k=0;k<LG;k++)if(d>>k&1)a=up[a][k];if(a!=b){for(int k=LG-1;k>=0;k--)if(up[a][k]!=up[b][k]){a=up[a][k];b=up[b][k];}}o+=to_string(a);o+='\\n';}fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // c9: DFS instead of BFS - it finds A route to B, just not a shortest one
+  c9: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,m;scanf("%d %d",&n,&m);vector<string>g(n);for(int i=0;i<n;i++){char b[1024];scanf("%s",b);g[i]=b;}int st=-1,go=-1;for(int r=0;r<n;r++)for(int c=0;c<m;c++){if(g[r][c]=='A')st=r*m+c;else if(g[r][c]=='B')go=r*m+c;}const int dr[4]={1,-1,0,0},dc[4]={0,0,1,-1};const char mv[4]={'D','U','R','L'};vector<char>from(n*m,0),seen(n*m,0);vector<int>stk;stk.push_back(st);seen[st]=1;while(!stk.empty()){int cur=stk.back();stk.pop_back();if(cur==go)break;int r=cur/m,c=cur%m;for(int d=0;d<4;d++){int nr=r+dr[d],nc=c+dc[d];if(nr<0||nr>=n||nc<0||nc>=m)continue;int nx=nr*m+nc;if(seen[nx]||g[nr][nc]=='#')continue;seen[nx]=1;from[nx]=mv[d];stk.push_back(nx);}}if(!seen[go]){printf("NO\\n");return 0;}string p;for(int cur=go;cur!=st;){char c=from[cur];p+=c;int r=cur/m,cc=cur%m;if(c=='D')r--;else if(c=='U')r++;else if(c=='R')cc--;else cc++;cur=r*m+cc;}reverse(p.begin(),p.end());printf("YES\\n%d\\n%s\\n",(int)p.size(),p.c_str());}`,
+
+  // c10: chains the components in a RING, so it builds one road too many
+  c10: `#include <bits/stdc++.h>\nusing namespace std;\nvector<int>p;int f(int x){while(p[x]!=x){p[x]=p[p[x]];x=p[x];}return x;}\nint main(){int n,m;scanf("%d %d",&n,&m);p.resize(n+1);for(int i=1;i<=n;i++)p[i]=i;for(int i=0;i<m;i++){int a,b;scanf("%d %d",&a,&b);p[f(a)]=f(b);}vector<int>r;for(int i=1;i<=n;i++)if(f(i)==i)r.push_back(i);string o=to_string((int)r.size());o+='\\n';for(size_t i=0;i<r.size();i++){o+=to_string(r[i]);o+=' ';o+=to_string(r[(i+1)%r.size()]);o+='\\n';}fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // c11: plain Dijkstra - it never spends the coupon at all
+  c11: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,m;scanf("%d %d",&n,&m);vector<vector<pair<int,long long>>>adj(n+1);for(int i=0;i<m;i++){int a,b;long long c;scanf("%d %d %lld",&a,&b,&c);adj[a].push_back({b,c});}const long long INF=(long long)4e18;vector<long long>d(n+1,INF);priority_queue<pair<long long,int>,vector<pair<long long,int>>,greater<pair<long long,int>>>q;d[1]=0;q.push({0,1});while(!q.empty()){auto[dd,u]=q.top();q.pop();if(dd>d[u])continue;for(auto[v,c]:adj[u])if(dd+c<d[v]){d[v]=dd+c;q.push({d[v],v});}}printf("%lld\\n",d[n]);}`,
+
+  // c12: never checks whether the order covers every course, so a cyclic
+  // graph makes it print a short list instead of IMPOSSIBLE
+  c12: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,m;scanf("%d %d",&n,&m);vector<vector<int>>adj(n+1);vector<int>ind(n+1,0);for(int i=0;i<m;i++){int a,b;scanf("%d %d",&a,&b);adj[a].push_back(b);ind[b]++;}vector<int>o;for(int v=1;v<=n;v++)if(!ind[v])o.push_back(v);for(size_t i=0;i<o.size();i++)for(int v:adj[o[i]])if(--ind[v]==0)o.push_back(v);string s;for(size_t i=0;i<o.size();i++){s+=to_string(o[i]);s+=(i+1==o.size()?'\\n':' ');}fwrite(s.data(),1,s.size(),stdout);}`,
+
+  // c13: drops the "reachable from city 1" guard, so it happily builds a
+  // route starting from some city that city 1 can never get to
+  c13: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,m;scanf("%d %d",&n,&m);vector<vector<int>>adj(n+1);vector<int>ind(n+1,0);for(int i=0;i<m;i++){int a,b;scanf("%d %d",&a,&b);adj[a].push_back(b);ind[b]++;}vector<int>o;for(int v=1;v<=n;v++)if(!ind[v])o.push_back(v);for(size_t i=0;i<o.size();i++)for(int w:adj[o[i]])if(--ind[w]==0)o.push_back(w);vector<int>best(n+1,0),fr(n+1,0);best[1]=1;for(int v:o)for(int w:adj[v])if(best[v]+1>best[w]){best[w]=best[v]+1;fr[w]=v;}if(!best[n]){printf("IMPOSSIBLE\\n");return 0;}vector<int>r;for(int v=n;v;v=fr[v])r.push_back(v);reverse(r.begin(),r.end());string s=to_string((int)r.size());s+='\\n';for(size_t i=0;i<r.size();i++){s+=to_string(r[i]);s+=(i+1==r.size()?'\\n':' ');}fwrite(s.data(),1,s.size(),stdout);}`,
+
+  // c15: LOG = 18 copied from the tree problems, but here the bound follows
+  // k (up to 1e9), not n - so every query with k >= 262144 is wrong
+  c15: `#include <bits/stdc++.h>\nusing namespace std;\nstatic const int LG=18;\nint main(){int n,q;scanf("%d %d",&n,&q);vector<vector<int>>up(LG,vector<int>(n+1));for(int v=1;v<=n;v++)scanf("%d",&up[0][v]);for(int j=1;j<LG;j++)for(int v=1;v<=n;v++)up[j][v]=up[j-1][up[j-1][v]];string o;for(int i=0;i<q;i++){int x;long long k;scanf("%d %lld",&x,&k);for(int j=0;j<LG;j++)if(k>>j&1)x=up[j][x];o+=to_string(x);o+='\\n';}fwrite(o.data(),1,o.size(),stdout);}`,
+
   // m74: builds the lcm first, so a*b overflows long before the division
   m74: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){long long a,b;scanf("%lld %lld",&a,&b);long long g=__gcd(a,b);long long l=a*b/g;printf("%lld\\n",l/a);}`,
 
@@ -290,8 +360,18 @@ function snapshotWorkspace() {
   }
   return snap;
 }
+/**
+ * Write back only what actually differs. A blanket rewrite churns the mtime of
+ * every file, which makes VS Code reload buffers and - worse - races with the
+ * portal or an editor saving in another window. Untouched files are left
+ * completely alone.
+ */
 function restoreWorkspace(snap) {
-  for (const [p, content] of Object.entries(snap)) fs.writeFileSync(p, content, 'utf8');
+  for (const [p, content] of Object.entries(snap)) {
+    let cur = null;
+    try { cur = fs.readFileSync(p, 'utf8'); } catch (_) {}
+    if (cur !== content) fs.writeFileSync(p, content, 'utf8');
+  }
 }
 
 (async () => {
@@ -311,9 +391,14 @@ function restoreWorkspace(snap) {
   const dirs = fs.readdirSync(PROBLEMS).filter((d) =>
     fs.existsSync(path.join(PROBLEMS, d, 'problem.json')));
 
+  // Optional id filter, same as build_tests.js: `node tools/check_all.js c5 c8`.
+  // A full run is ~25 minutes, which is a long way to go to re-read one line.
+  const only = process.argv.slice(2).filter((a) => !a.startsWith('--'));
+
   const rows = [];
   for (const d of dirs) {
     const meta = JSON.parse(fs.readFileSync(path.join(PROBLEMS, d, 'problem.json'), 'utf8'));
+    if (only.length && !only.includes(meta.id)) continue;
     const ref = fs.readFileSync(path.join(PROBLEMS, d, 'solutions', 'ref.cpp'), 'utf8');
 
     const good = await call(`/api/judge/${meta.id}`, {

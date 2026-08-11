@@ -53,4 +53,12 @@ export const api = {
   submissions: (id) => call(`/api/submissions/${id}`),
   setPlatform: (docId, status) =>
     call(`/api/platform/${docId}`, { method: 'POST', body: JSON.stringify({ status }) }),
+
+  // ---- Round Zero ----
+  rz: () => call('/api/rz'),
+  rzSheet: (id) => call(`/api/rz/sheet/${id}`),
+  rzTick: (sheetId, index, status) =>
+    call('/api/rz/tick', { method: 'POST', body: JSON.stringify({ sheetId, index, status }) }),
+  rzTickSheet: (sheetId, status) =>
+    call('/api/rz/tick-sheet', { method: 'POST', body: JSON.stringify({ sheetId, status }) }),
 };

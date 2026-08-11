@@ -38,6 +38,35 @@ function parseSamples(md) {
 let problems = 0, checked = 0, bad = 0;
 const failures = [];
 
+const { spawnSync } = require('node:child_process');
+const os = require('node:os');
+const { compileCpp } = require('../server/compile');
+
+const TMP = path.join(os.tmpdir(), 'oa-portal-stmtcheck');
+fs.mkdirSync(TMP, { recursive: true });
+const checkerCache = new Map();
+
+/** Compile a problem's checker once, then ask it about the statement's answer. */
+function runChecker(base, meta, inFile, expFile, statementOut) {
+  let exe = checkerCache.get(meta.id);
+  if (exe === undefined) {
+    exe = path.join(TMP, meta.id + '_checker' + (os.platform() === 'win32' ? '.exe' : ''));
+    const r = compileCpp(path.join(base, meta.checker), exe, meta.checker);
+    if (!r.ok) exe = null;
+    checkerCache.set(meta.id, exe);
+  }
+  if (!exe) return { ok: false, why: `${meta.checker} failed to compile` };
+
+  const gotFile = path.join(TMP, meta.id + '_statement.out');
+  fs.writeFileSync(gotFile, statementOut.endsWith('\n') ? statementOut : statementOut + '\n');
+  const r = spawnSync(exe, [inFile, expFile, gotFile], {
+    maxBuffer: 8 * 1024 * 1024, windowsHide: true,
+  });
+  if (r.error) return { ok: false, why: 'checker could not run: ' + r.error.message };
+  if (r.status === 0) return { ok: true };
+  return { ok: false, why: (r.stdout ? r.stdout.toString() : '').trim() || `exit ${r.status}` };
+}
+
 for (const dir of fs.readdirSync(PROBLEMS)) {
   const base = path.join(PROBLEMS, dir);
   const pj = path.join(base, 'problem.json');
@@ -78,6 +107,23 @@ for (const dir of fs.readdirSync(PROBLEMS)) {
                     `      test file: ${norm(realIn).slice(0, 90)}`);
       return;
     }
+    // Problems with several correct answers are graded by their own checker,
+    // and the answer printed in the statement is often a different valid one
+    // from what the reference happens to emit. Comparing tokens there would
+    // report a failure for a statement that is perfectly correct, so ask the
+    // checker instead: is the statement's answer acceptable for this input?
+    if (meta.checker) {
+      const v = runChecker(base, meta, path.join(sDir, stem + '.in'),
+                           path.join(sDir, stem + '.out'), s.output);
+      if (!v.ok) {
+        bad++;
+        failures.push(`${meta.id} (${meta.docId}) sample ${i + 1} OUTPUT rejected by ${meta.checker}\n` +
+                      `      statement: ${norm(s.output).slice(0, 90)}\n` +
+                      `      checker:   ${v.why.slice(0, 120)}`);
+      }
+      return;
+    }
+
     if (norm(s.output) !== norm(realOut)) {
       bad++;
       failures.push(`${meta.id} (${meta.docId}) sample ${i + 1} OUTPUT differs\n` +

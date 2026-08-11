@@ -178,12 +178,14 @@
   "difficulty": "Medium",
   "diffCode": "M",
   "title": "Subarray Divisibility",
-  "note": "",
+  "note": "solvable in the portal (CSES has no editor; same input format, so the code you get accepted here pastes straight into the CSES submit box)",
   "url": "https://cses.fi/problemset/",
   "urlExact": false,
   "statement": "",
   "section": "Repeated work → structure",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c1",
+  "playable": true
  },
  {
   "docId": "Q11",
@@ -290,12 +292,14 @@
   "difficulty": "Medium",
   "diffCode": "M",
   "title": "Room Allocation",
-  "note": "",
+  "note": "solvable in the portal, graded by a checker because any allocation using the minimum number of rooms is correct (the room numbering is not unique), exactly as CSES grades it",
   "url": "https://cses.fi/problemset/",
   "urlExact": false,
   "statement": "",
   "section": "Repeated work → structure",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c2",
+  "playable": true
  },
  {
   "docId": "Q17",
@@ -479,7 +483,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Monotonic predicate, greedy, intervals, stack, heap",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c3",
+  "playable": true
  },
  {
   "docId": "Q27",
@@ -497,7 +503,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Monotonic predicate, greedy, intervals, stack, heap",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c4",
+  "playable": true
  },
  {
   "docId": "Q28",
@@ -627,7 +635,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Monotonic predicate, greedy, intervals, stack, heap",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c5",
+  "playable": true
  },
  {
   "docId": "Q35",
@@ -1097,7 +1107,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Trees",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c6",
+  "playable": true
  },
  {
   "docId": "Q60",
@@ -1115,7 +1127,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Trees",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c7",
+  "playable": true
  },
  {
   "docId": "Q61",
@@ -1133,7 +1147,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Trees",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c8",
+  "playable": true
  },
  {
   "docId": "Q62",
@@ -1485,7 +1501,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Graph modelling",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c9",
+  "playable": true
  },
  {
   "docId": "Q80",
@@ -1503,7 +1521,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Graph modelling",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c10",
+  "playable": true
  },
  {
   "docId": "Q81",
@@ -1521,7 +1541,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Graph modelling",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c11",
+  "playable": true
  },
  {
   "docId": "Q82",
@@ -1539,7 +1561,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Graph modelling",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c12",
+  "playable": true
  },
  {
   "docId": "Q83",
@@ -1557,7 +1581,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Graph modelling",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c13",
+  "playable": true
  },
  {
   "docId": "Q84",
@@ -1593,7 +1619,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Graph modelling",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c15",
+  "playable": true
  },
  {
   "docId": "Q86",
@@ -3450,7 +3478,8 @@
   "statement": "`n` sensor IDs. Every ID appears exactly twice except **two**, which appear once. Find those two, in `O(n)` time and `O(1)` extra space.\n**Constraints:** `1 ≤ n ≤ 2e5`.",
   "section": "Math, bits, matrices, pointers, design",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m80",
+  "playable": true
  },
  {
   "docId": "Q184",
@@ -3469,7 +3498,8 @@
   "statement": "`n` role masks over 30 permission bits. Count pairs `(i, j)`, `i < j`, whose combined mask grants **every** permission.\n**Constraints:** `1 ≤ n ≤ 2e5`.",
   "section": "Math, bits, matrices, pointers, design",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m81",
+  "playable": true
  },
  {
   "docId": "Q185",
@@ -3722,7 +3752,8 @@
   "statement": "Implement `allow(userId, timestamp)` returning whether a request is permitted. A user may make at most `k` requests in any rolling window of `w` seconds.\n**Constraints:** up to `1e6` calls, timestamps non-decreasing. *Memory matters — a per-user list of every timestamp will not fit.*",
   "section": "Math, bits, matrices, pointers, design",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m82",
+  "playable": true
  },
  {
   "docId": "Q199",
@@ -3741,7 +3772,8 @@
   "statement": "Support `APPEND s`, `DELETE k` (remove the last `k` characters), `UNDO`, `REDO`, and `PRINT i` (the `i`-th character). All operations must be sub-linear in document length.\n**Constraints:** up to `2e5` operations.",
   "section": "Math, bits, matrices, pointers, design",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m83",
+  "playable": true
  },
  {
   "docId": "Q200",
@@ -3832,7 +3864,8 @@
   "statement": "`n` binary inputs and `m` constraints, each of the form \"inputs `i` and `j` must differ\" or \"must match\". Count satisfying assignments, modulo `1e9+7`.\n**Constraints:** `1 ≤ n ≤ 1e5`, `1 ≤ m ≤ 2e5`. *`n` is large — backtracking is the trap here, not the answer.*",
   "section": "Math, bits, matrices, pointers, design",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m84",
+  "playable": true
  },
  {
   "docId": "Q205",
@@ -3869,7 +3902,8 @@
   "statement": "`n` coins in a row with values. Two players alternate; each turn a player takes the leftmost or rightmost coin. Both play optimally. Print the first player's total.\n**Constraints:** `1 ≤ n ≤ 2000`.",
   "section": "Math, bits, matrices, pointers, design",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m85",
+  "playable": true
  },
  {
   "docId": "Q207",
@@ -3888,7 +3922,8 @@
   "statement": "A machine's state is an integer `x`. Each second `x ← f(x)`, where `f` is given as a lookup table over `0..n−1`. Starting from `s`, what is the state after `T` seconds?\n**Constraints:** `1 ≤ n ≤ 2e5`, `1 ≤ T ≤ 1e18`. *You cannot step `T` times.*",
   "section": "Math, bits, matrices, pointers, design",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m86",
+  "playable": true
  },
  {
   "docId": "Q208",
@@ -3907,7 +3942,8 @@
   "statement": "A colony follows `p(t) = a·p(t−1) + b·p(t−2)`, with `p(0)`, `p(1)`, `a`, `b` given. Print `p(T) mod 1e9+7`.\n**Constraints:** `1 ≤ T ≤ 1e18`.",
   "section": "Math, bits, matrices, pointers, design",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m87",
+  "playable": true
  },
  {
   "docId": "Q209",
@@ -3926,7 +3962,8 @@
   "statement": "Count integers in `[L, R]` containing no two equal adjacent digits.\n**Constraints:** `1 ≤ L ≤ R ≤ 1e18`.",
   "section": "Math, bits, matrices, pointers, design",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m88",
+  "playable": true
  },
  {
   "docId": "Q210",
@@ -3945,7 +3982,8 @@
   "statement": "`n` jobs with weights. Split into two groups minimising the absolute difference of group sums.\n**Constraints:** `1 ≤ n ≤ 40`, `1 ≤ w_i ≤ 1e9`. *40 is not 20 and not 100. That is deliberate.*",
   "section": "Math, bits, matrices, pointers, design",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m89",
+  "playable": true
  },
  {
   "docId": "Q211",
@@ -3961,10 +3999,11 @@
   "note": "",
   "url": null,
   "urlExact": false,
-  "statement": "`n` houses on a line at positions `x_i`. Place one antenna at a real-valued position minimising the **sum of squared distances** to all houses. Print the minimum, to 6 decimals.\n**Constraints:** `1 ≤ n ≤ 2e5`.",
+  "statement": "`n` houses on a line at positions `x_i`. Place one antenna at an **integer** position minimising the **sum of squared distances** to all houses. Print the minimum cost.\n**Constraints:** `1 ≤ n ≤ 2e5`, `0 ≤ x_i ≤ 1e6`.\n*Note: the original asked for a real-valued position printed to 6 decimals. A judge cannot compare that by tokens, and rounding rules become the problem instead of the maths. Pinning the antenna to an integer keeps the real content — the cost is an upward parabola minimised at the mean, so check `floor` and `ceil` of it — and makes the answer an exact integer. The `x_i ≤ 1e6` bound is what keeps `Σx_i²` (up to `2e17`) inside a 64-bit type; that overflow is the actual trap.*",
   "section": "Math, bits, matrices, pointers, design",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m90",
+  "playable": true
  },
  {
   "docId": "Q212",
@@ -3980,10 +4019,11 @@
   "note": "",
   "url": null,
   "urlExact": false,
-  "statement": "Given `n+1` integers in `[1, n]`, find any value appearing more than once, in `O(n)` time and `O(1)` extra space, without modifying the array.\n**Constraints:** `1 ≤ n ≤ 1e5`.",
+  "statement": "Given `n+1` integers in `[1, n]`, exactly one of which repeats (possibly many times), find that value — in `O(n)` time and `O(1)` extra space, without modifying the array.\n**Constraints:** `1 ≤ n ≤ 5e5`.\n*Note: \"find any value appearing more than once\" has no unique answer when several values repeat, so the guarantee of exactly one repeated value was added. The multiplicity is deliberately left free: a solution that assumes exactly two copies (sum minus `n(n+1)/2`) passes the common case and fails the moment the duplicate appears three times.*\n*The space and no-modify constraints are the whole point but cannot be enforced by a judge. Counting will pass. Solve it with Floyd anyway — that is the version an interviewer asks.*",
   "section": "Math, bits, matrices, pointers, design",
   "part": "PART 7 — THE COMPLETE QUESTION BANK",
-  "playable": false
+  "id": "m91",
+  "playable": true
  },
  {
   "docId": "Q213",

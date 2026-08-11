@@ -18,6 +18,7 @@ const crypto = require('node:crypto');
 const { judge, runCustom } = require('./judge');
 const { CATALOG } = require('./catalog');
 const { getStore, verifyPassword, defaultLangFor } = require('./storage');
+const roundzero = require('./roundzero');
 
 const ROOT = path.resolve(__dirname, '..');
 const PROBLEMS_DIR = path.join(ROOT, 'problems');
@@ -238,6 +239,17 @@ function readBody(req) {
       // everything below needs a session
       const who = await userFor(store, req);
       if (p.startsWith('/api/') && !who) return sendJson(res, 401, { error: 'Not signed in' });
+
+      // ---- Round Zero --------------------------------------------------
+      // Aptitude / reasoning / verbal / CS fundamentals. Entirely separate
+      // from the problem catalogue: own module, own content dir, own URLs.
+      if (p.startsWith('/api/rz')) {
+        return roundzero.handle({
+          pathname: p, method: req.method, url,
+          body: req.method === 'POST' ? await readBody(req) : null,
+          store, who, sendJson, res,
+        });
+      }
 
       // ---- catalogue with progress ------------------------------------
       if (p === '/api/catalog' && req.method === 'GET') {

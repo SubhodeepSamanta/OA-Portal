@@ -1,0 +1,11 @@
+{
+  "id": "m87",
+  "docId": "Q208",
+  "order": 87,
+  "title": "Population Model",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["matrix exponentiation", "linear recurrence"]
+}

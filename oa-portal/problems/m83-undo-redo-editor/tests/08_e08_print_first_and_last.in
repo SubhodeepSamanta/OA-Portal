@@ -1,0 +1,4 @@
+3
+APPEND abcdef
+PRINT 1
+PRINT 6

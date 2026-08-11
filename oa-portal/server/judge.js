@@ -116,8 +116,60 @@ function compareTokens(actual, expected) {
   return { ok: true };
 }
 
+/**
+ * Some problems accept many different correct outputs - any allocation using
+ * the minimum number of rooms, any valid ordering, any shortest path. Token
+ * comparison would reject a correct answer for the crime of numbering things
+ * differently, so those problems ship a checker.cpp beside the statement.
+ *
+ * It is compiled once per submission and invoked as
+ *     checker <input> <expected> <submitted>
+ * exiting 0 to accept and non-zero to reject, with the reason on stdout.
+ *
+ * Problems without a `checker` field are unaffected and keep comparing tokens.
+ */
+function loadChecker(problemDir, buildDir) {
+  let meta;
+  try {
+    meta = JSON.parse(fs.readFileSync(path.join(problemDir, 'problem.json'), 'utf8'));
+  } catch (_) {
+    return null;
+  }
+  if (!meta.checker) return null;
+
+  const src = path.join(problemDir, meta.checker);
+  if (!fs.existsSync(src)) {
+    return { error: `This problem declares a checker (${meta.checker}) but the file is missing.` };
+  }
+  const exe = path.join(buildDir, 'checker' + (os.platform() === 'win32' ? '.exe' : ''));
+  const r = compileCpp(src, exe, meta.checker);
+  if (!r.ok) {
+    return { error: 'The problem checker failed to compile:\n' + (r.stderr || '').slice(0, 2000) };
+  }
+  return { exe, gotFile: path.join(buildDir, 'submitted.out') };
+}
+
+/** Ask the checker whether `stdout` is acceptable for this test. */
+function runChecker(checker, inputFile, expectedFile, stdout) {
+  try {
+    fs.writeFileSync(checker.gotFile, stdout);
+  } catch (e) {
+    return { ok: false, ie: true, reason: 'Cannot stage your output for the checker: ' + e.message };
+  }
+  const r = spawnSync(checker.exe, [inputFile, expectedFile, checker.gotFile], {
+    maxBuffer: 8 * 1024 * 1024,
+    windowsHide: true,
+  });
+  if (r.error) {
+    return { ok: false, ie: true, reason: 'Could not run the problem checker: ' + r.error.message };
+  }
+  const note = (r.stdout ? r.stdout.toString() : '').trim();
+  if (r.status === 0) return { ok: true, note };
+  return { ok: false, reason: note || `the problem checker rejected your output (exit ${r.status})` };
+}
+
 /** Run one test. Resolves to {verdict, timeMs, stdout, stderr, message}. */
-function runOne(cmd, args, inputFile, expectedFile, timeLimitMs) {
+function runOne(cmd, args, inputFile, expectedFile, timeLimitMs, checker) {
   return new Promise((resolve) => {
     let stdin;
     try {
@@ -191,6 +243,13 @@ function runOne(cmd, args, inputFile, expectedFile, timeLimitMs) {
         return finish({ verdict: 'IE', timeMs, message: 'Cannot read expected output: ' + e.message });
       }
 
+      if (checker) {
+        const v = runChecker(checker, inputFile, expectedFile, stdout);
+        if (v.ie) return finish({ verdict: 'IE', timeMs, message: v.reason, stdout, expected });
+        if (!v.ok) return finish({ verdict: 'WA', timeMs, message: v.reason, stdout, expected });
+        return finish({ verdict: 'AC', timeMs, stdout, expected, message: v.note || '' });
+      }
+
       const cmp = compareTokens(stdout, expected);
       if (!cmp.ok) {
         return finish({ verdict: 'WA', timeMs, message: cmp.reason, stdout, expected });
@@ -242,6 +301,13 @@ async function judge({ sourcePath, lang, problemDir, timeLimitMs, mode, displayN
     return { verdict: 'IE', compileError: 'No test cases found for this problem.', tests: [] };
   }
 
+  // Problems with many valid outputs are graded by their own checker.
+  const checker = loadChecker(problemDir, c.dir || tmpDir());
+  if (checker && checker.error) {
+    if (c.dir) { try { fs.rmSync(c.dir, { recursive: true, force: true }); } catch (_) {} }
+    return { verdict: 'IE', compileError: checker.error, passed: 0, total: 0, tests: [] };
+  }
+
   const results = [];
   let overall = 'AC';
   let maxTime = 0;
@@ -251,7 +317,7 @@ async function judge({ sourcePath, lang, problemDir, timeLimitMs, mode, displayN
 
   for (let i = 0; i < cases.length; i++) {
     const t = cases[i];
-    const r = await runOne(c.cmd, c.args, t.input, t.expected, effectiveTL);
+    const r = await runOne(c.cmd, c.args, t.input, t.expected, effectiveTL, checker);
     maxTime = Math.max(maxTime, r.timeMs || 0);
 
     const entry = {

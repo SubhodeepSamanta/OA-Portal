@@ -1,0 +1,11 @@
+{
+  "id": "m90",
+  "docId": "Q211",
+  "order": 90,
+  "title": "Antenna Placement",
+  "difficulty": "Easy",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["math", "convexity"]
+}

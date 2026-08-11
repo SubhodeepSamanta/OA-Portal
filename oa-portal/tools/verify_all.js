@@ -201,10 +201,17 @@ function snapshotWorkspace() {
   const wsAfter = snapshotWorkspace();
   const files = [...new Set([...wsBefore.keys(), ...wsAfter.keys()])];
   const touched = files.filter((f) => wsBefore.get(f) !== wsAfter.get(f));
+  // A difference here is worth stopping for, but the tests are not always the
+  // cause. Every suite judges as _selftest, which is sandboxed to
+  // workspace/.selftest, and each restores anything it does touch. The usual
+  // real cause is something OUTSIDE this run writing while it ran: a portal tab
+  // left open on a problem (the editor autosaves), or VS Code saving the file.
   record('workspace', 'test runs left your files alone',
          touched.length === 0,
-         touched.length ? `MODIFIED BY THE TESTS: ${touched.join(', ')}`
-                        : `${files.length} file(s) byte-identical before and after`);
+         touched.length
+           ? `CHANGED DURING THE RUN: ${touched.join(', ')} — suites judge as _selftest ` +
+             'and cannot write these, so check for an open portal tab or editor'
+           : `${files.length} file(s) byte-identical before and after`);
   record('workspace', 'test sandbox is separate',
          fs.existsSync(path.join(ROOT, 'workspace', '.selftest')), 'workspace/.selftest');
 

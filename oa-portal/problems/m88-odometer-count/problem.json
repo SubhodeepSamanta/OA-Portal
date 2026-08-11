@@ -1,0 +1,11 @@
+{
+  "id": "m88",
+  "docId": "Q209",
+  "order": 88,
+  "title": "Odometer Count",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["digit dp", "counting"]
+}

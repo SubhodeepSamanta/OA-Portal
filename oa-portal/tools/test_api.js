@@ -30,7 +30,12 @@ function snapshotWorkspace() {
   return s;
 }
 function restoreWorkspace(s) {
-  for (const [p, c] of Object.entries(s)) fsx.writeFileSync(p, c, 'utf8');
+  // only rewrite what actually differs - see the note in check_all.js
+  for (const [p, c] of Object.entries(s)) {
+    let cur = null;
+    try { cur = fsx.readFileSync(p, 'utf8'); } catch (_) {}
+    if (cur !== c) fsx.writeFileSync(p, c, 'utf8');
+  }
   for (const f of fsx.readdirSync(WSX)) {
     const p = pathx.join(WSX, f);
     if (fsx.statSync(p).isFile() && !s[p]) fsx.unlinkSync(p);

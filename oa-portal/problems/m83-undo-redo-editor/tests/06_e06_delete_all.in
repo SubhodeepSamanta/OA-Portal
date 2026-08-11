@@ -1,0 +1,5 @@
+4
+APPEND hello
+DELETE 5
+UNDO
+PRINT 5

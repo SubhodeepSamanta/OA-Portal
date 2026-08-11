@@ -4172,6 +4172,1126 @@ ${FAST_READER_JAVA}}
 `,
 };
 
+S.m86 = {
+  cpp: `${CPP_HEAD}
+// next[i] is the state the machine moves to from state i.
+int stateAfter(const vector<int>& next, int start, long long T) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n, s;
+    long long T;
+    if (scanf("%d %d %lld", &n, &s, &T) != 3) return 0;
+    vector<int> next(n);
+    for (auto &x : next) scanf("%d", &x);
+
+    printf("%d\\n", stateAfter(next, s, T));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    // next[i] is the state the machine moves to from state i.
+    static int stateAfter(int[] next, int start, long T) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        int s = in.nextInt();
+        long T = in.nextLong();
+        int[] next = new int[n];
+        for (int i = 0; i < n; i++) next[i] = in.nextInt();
+
+        System.out.println(stateAfter(next, s, T));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m87 = {
+  cpp: `${CPP_HEAD}
+const long long MOD = 1000000007LL;
+
+// p(t) = a * p(t-1) + b * p(t-2), returned modulo 1e9+7.
+long long populationAt(long long p0, long long p1, long long a, long long b, long long T) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    long long p0, p1, a, b, T;
+    if (scanf("%lld %lld %lld %lld %lld", &p0, &p1, &a, &b, &T) != 5) return 0;
+
+    printf("%lld\\n", populationAt(p0, p1, a, b, T));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    static final long MOD = 1000000007L;
+
+    // p(t) = a * p(t-1) + b * p(t-2), returned modulo 1e9+7.
+    static long populationAt(long p0, long p1, long a, long b, long T) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        long p0 = in.nextLong();
+        long p1 = in.nextLong();
+        long a = in.nextLong();
+        long b = in.nextLong();
+        long T = in.nextLong();
+
+        System.out.println(populationAt(p0, p1, a, b, T));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m88 = {
+  cpp: `${CPP_HEAD}
+// How many values in [L, R] have no two adjacent digits equal.
+long long countClean(long long L, long long R) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    long long L, R;
+    if (scanf("%lld %lld", &L, &R) != 2) return 0;
+
+    printf("%lld\\n", countClean(L, R));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    // How many values in [L, R] have no two adjacent digits equal.
+    static long countClean(long L, long R) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        long L = in.nextLong();
+        long R = in.nextLong();
+
+        System.out.println(countClean(L, R));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m89 = {
+  cpp: `${CPP_HEAD}
+long long minDifference(const vector<long long>& w) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<long long> w(n);
+    for (auto &x : w) scanf("%lld", &x);
+
+    printf("%lld\\n", minDifference(w));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    static long minDifference(long[] w) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long[] w = new long[n];
+        for (int i = 0; i < n; i++) w[i] = in.nextLong();
+
+        System.out.println(minDifference(w));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m90 = {
+  cpp: `${CPP_HEAD}
+// Minimum of sum (x[i] - p)^2 over integer positions p.
+long long minTotalCost(const vector<long long>& x) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<long long> x(n);
+    for (auto &v : x) scanf("%lld", &v);
+
+    printf("%lld\\n", minTotalCost(x));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    // Minimum of sum (x[i] - p)^2 over integer positions p.
+    static long minTotalCost(long[] x) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long[] x = new long[n];
+        for (int i = 0; i < n; i++) x[i] = in.nextLong();
+
+        System.out.println(minTotalCost(x));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.m91 = {
+  cpp: `${CPP_HEAD}
+// a has n + 1 entries, every value in 1..n, exactly one value repeated.
+// Try to do this without extra space and without modifying a.
+int findDuplicate(const vector<int>& a) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<int> a(n + 1);
+    for (auto &x : a) scanf("%d", &x);
+
+    printf("%d\\n", findDuplicate(a));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    // a has n + 1 entries, every value in 1..n, exactly one value repeated.
+    // Try to do this without extra space and without modifying a.
+    static int findDuplicate(int[] a) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        int[] a = new int[n + 1];
+        for (int i = 0; i <= n; i++) a[i] = in.nextInt();
+
+        System.out.println(findDuplicate(a));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+// ------------------------------------------------------- CSES mirrors
+// Same I/O as cses.fi, so whatever compiles here pastes straight into the
+// CSES submit box.
+
+S.c1 = {
+  cpp: `${CPP_HEAD}
+// Count the subarrays whose sum is divisible by n (the array's own length).
+long long countDivisibleSubarrays(const vector<long long>& a) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<long long> a(n);
+    for (auto &x : a) scanf("%lld", &x);
+
+    printf("%lld\\n", countDivisibleSubarrays(a));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    // Count the subarrays whose sum is divisible by n (the array's own length).
+    static long countDivisibleSubarrays(long[] a) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long[] a = new long[n];
+        for (int i = 0; i < n; i++) a[i] = in.nextLong();
+
+        System.out.println(countDivisibleSubarrays(a));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c2 = {
+  cpp: `${CPP_HEAD}
+/**
+ * Assign a room to every booking, using as few rooms as possible.
+ * Booking i occupies days a[i]..b[i] inclusive; two bookings can share a room
+ * only if one departs STRICTLY before the other arrives.
+ *
+ * @return room number for each booking, in input order, numbered from 1.
+ */
+vector<int> assignRooms(const vector<int>& a, const vector<int>& b) {
+    // write your code here
+
+    return vector<int>(a.size(), 1);
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<int> a(n), b(n);
+    for (int i = 0; i < n; i++) scanf("%d %d", &a[i], &b[i]);
+
+    vector<int> room = assignRooms(a, b);
+    int k = 0;
+    for (int r : room) k = max(k, r);
+
+    string out = to_string(k);
+    out += '\\n';
+    for (int i = 0; i < n; i++) {
+        out += to_string(room[i]);
+        out += (i + 1 == n ? '\\n' : ' ');
+    }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * Assign a room to every booking, using as few rooms as possible.
+     * Booking i occupies days a[i]..b[i] inclusive; two bookings can share a
+     * room only if one departs STRICTLY before the other arrives.
+     *
+     * Returns the room number for each booking, in input order, from 1.
+     */
+    static int[] assignRooms(int[] a, int[] b) {
+        // write your code here
+
+        int[] room = new int[a.length];
+        Arrays.fill(room, 1);
+        return room;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        int[] a = new int[n], b = new int[n];
+        for (int i = 0; i < n; i++) { a[i] = in.nextInt(); b[i] = in.nextInt(); }
+
+        int[] room = assignRooms(a, b);
+        int k = 0;
+        for (int r : room) k = Math.max(k, r);
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(k).append('\\n');
+        for (int i = 0; i < n; i++) sb.append(room[i]).append(i + 1 == n ? '\\n' : ' ');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c3 = {
+  cpp: `${CPP_HEAD}
+// k[i] is the seconds machine i needs per product. All machines run at once.
+long long minTime(const vector<long long>& k, long long t) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    long long n, t;
+    if (scanf("%lld %lld", &n, &t) != 2) return 0;
+    vector<long long> k(n);
+    for (auto &x : k) scanf("%lld", &x);
+
+    printf("%lld\\n", minTime(k, t));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    // k[i] is the seconds machine i needs per product. All machines run at once.
+    static long minTime(long[] k, long t) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = (int) in.nextLong();
+        long t = in.nextLong();
+        long[] k = new long[n];
+        for (int i = 0; i < n; i++) k[i] = in.nextLong();
+
+        System.out.println(minTime(k, t));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c4 = {
+  cpp: `${CPP_HEAD}
+// Split x into k contiguous pieces; minimise the largest piece sum.
+long long minLargestPiece(const vector<long long>& x, long long k) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    long long n, k;
+    if (scanf("%lld %lld", &n, &k) != 2) return 0;
+    vector<long long> x(n);
+    for (auto &v : x) scanf("%lld", &v);
+
+    printf("%lld\\n", minLargestPiece(x, k));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    // Split x into k contiguous pieces; minimise the largest piece sum.
+    static long minLargestPiece(long[] x, long k) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long k = in.nextLong();
+        long[] x = new long[n];
+        for (int i = 0; i < n; i++) x[i] = in.nextLong();
+
+        System.out.println(minLargestPiece(x, k));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c5 = {
+  cpp: `${CPP_HEAD}
+/**
+ * h holds the ticket prices, t the customer maximums in arrival order.
+ * Each customer takes the dearest remaining ticket costing at most their
+ * maximum; that ticket is then gone.
+ *
+ * @return what each customer pays, or -1 if they get nothing.
+ */
+vector<int> ticketPrices(vector<int> h, const vector<int>& t) {
+    // write your code here
+
+    return vector<int>(t.size(), -1);
+}
+
+int main() {
+    int n, m;
+    if (scanf("%d %d", &n, &m) != 2) return 0;
+    vector<int> h(n), t(m);
+    for (auto &v : h) scanf("%d", &v);
+    for (auto &v : t) scanf("%d", &v);
+
+    string out;
+    for (int v : ticketPrices(h, t)) { out += to_string(v); out += '\\n'; }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * h holds the ticket prices, t the customer maximums in arrival order.
+     * Each customer takes the dearest remaining ticket costing at most their
+     * maximum; that ticket is then gone.
+     *
+     * Returns what each customer pays, or -1 if they get nothing.
+     */
+    static int[] ticketPrices(int[] h, int[] t) {
+        // write your code here
+
+        int[] paid = new int[t.length];
+        Arrays.fill(paid, -1);
+        return paid;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), m = in.nextInt();
+        int[] h = new int[n], t = new int[m];
+        for (int i = 0; i < n; i++) h[i] = in.nextInt();
+        for (int i = 0; i < m; i++) t[i] = in.nextInt();
+
+        StringBuilder sb = new StringBuilder();
+        for (int v : ticketPrices(h, t)) sb.append(v).append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c6 = {
+  cpp: `${CPP_HEAD}
+/**
+ * boss[i] is the direct boss of employee i, for i in 2..n. boss[1] is 0.
+ * Careful: the hierarchy can be a 200000-deep chain, so a recursive DFS
+ * will overflow the stack. Use BFS order or an explicit stack.
+ *
+ * @return the number of subordinates of each employee 1..n.
+ */
+vector<int> subordinateCounts(const vector<int>& boss) {
+    int n = (int)boss.size() - 1;
+    // write your code here
+
+    return vector<int>(n + 1, 0);
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<int> boss(n + 1, 0);
+    for (int i = 2; i <= n; i++) scanf("%d", &boss[i]);
+
+    vector<int> cnt = subordinateCounts(boss);
+    string out;
+    for (int i = 1; i <= n; i++) { out += to_string(cnt[i]); out += (i == n ? '\\n' : ' '); }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * boss[i] is the direct boss of employee i, for i in 2..n. boss[1] is 0.
+     * Careful: the hierarchy can be a 200000-deep chain, so a recursive DFS
+     * will overflow the stack. Use BFS order or an explicit stack.
+     *
+     * Returns the number of subordinates of each employee 1..n (index 0 unused).
+     */
+    static int[] subordinateCounts(int[] boss) {
+        int n = boss.length - 1;
+        // write your code here
+
+        return new int[n + 1];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        int[] boss = new int[n + 1];
+        for (int i = 2; i <= n; i++) boss[i] = in.nextInt();
+
+        int[] cnt = subordinateCounts(boss);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 1; i <= n; i++) sb.append(cnt[i]).append(i == n ? '\\n' : ' ');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c7 = {
+  cpp: `${CPP_HEAD}
+/**
+ * adj is the tree's adjacency list over nodes 1..n (index 0 unused).
+ * A BFS from every node is O(n^2) and too slow - three passes are enough.
+ *
+ * @return for each node 1..n, the distance to the node furthest from it.
+ */
+vector<int> farthestDistances(const vector<vector<int>>& adj) {
+    int n = (int)adj.size() - 1;
+    // write your code here
+
+    return vector<int>(n + 1, 0);
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<vector<int>> adj(n + 1);
+    for (int i = 0; i < n - 1; i++) {
+        int a, b; scanf("%d %d", &a, &b);
+        adj[a].push_back(b);
+        adj[b].push_back(a);
+    }
+
+    vector<int> ans = farthestDistances(adj);
+    string out;
+    for (int v = 1; v <= n; v++) { out += to_string(ans[v]); out += (v == n ? '\\n' : ' '); }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * adj is the tree's adjacency list over nodes 1..n (index 0 unused).
+     * A BFS from every node is O(n^2) and too slow - three passes are enough.
+     *
+     * Returns, for each node 1..n, the distance to the node furthest from it.
+     */
+    static int[] farthestDistances(List<List<Integer>> adj) {
+        int n = adj.size() - 1;
+        // write your code here
+
+        return new int[n + 1];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        List<List<Integer>> adj = new ArrayList<>();
+        for (int i = 0; i <= n; i++) adj.add(new ArrayList<>());
+        for (int i = 0; i < n - 1; i++) {
+            int a = in.nextInt(), b = in.nextInt();
+            adj.get(a).add(b);
+            adj.get(b).add(a);
+        }
+
+        int[] ans = farthestDistances(adj);
+        StringBuilder sb = new StringBuilder();
+        for (int v = 1; v <= n; v++) sb.append(ans[v]).append(v == n ? '\\n' : ' ');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c8 = {
+  cpp: `${CPP_HEAD}
+/**
+ * boss[i] is the direct boss of employee i, for i in 2..n, and is always
+ * smaller than i. queries holds q pairs (a, b).
+ *
+ * Climbing one step at a time is too slow: the hierarchy can be 200000 deep
+ * with 200000 queries.
+ *
+ * @return the lowest common boss for each query, in order.
+ */
+vector<int> lowestCommonBosses(const vector<int>& boss,
+                               const vector<pair<int, int>>& queries) {
+    // write your code here
+
+    return vector<int>(queries.size(), 1);
+}
+
+int main() {
+    int n, q;
+    if (scanf("%d %d", &n, &q) != 2) return 0;
+    vector<int> boss(n + 1, 0);
+    for (int i = 2; i <= n; i++) scanf("%d", &boss[i]);
+    vector<pair<int, int>> queries(q);
+    for (auto &pr : queries) scanf("%d %d", &pr.first, &pr.second);
+
+    string out;
+    for (int v : lowestCommonBosses(boss, queries)) { out += to_string(v); out += '\\n'; }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * boss[i] is the direct boss of employee i, for i in 2..n, and is always
+     * smaller than i. qa[j] and qb[j] are the j-th query pair.
+     *
+     * Climbing one step at a time is too slow: the hierarchy can be 200000
+     * deep with 200000 queries.
+     *
+     * Returns the lowest common boss for each query, in order.
+     */
+    static int[] lowestCommonBosses(int[] boss, int[] qa, int[] qb) {
+        // write your code here
+
+        int[] ans = new int[qa.length];
+        Arrays.fill(ans, 1);
+        return ans;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), q = in.nextInt();
+        int[] boss = new int[n + 1];
+        for (int i = 2; i <= n; i++) boss[i] = in.nextInt();
+        int[] qa = new int[q], qb = new int[q];
+        for (int i = 0; i < q; i++) { qa[i] = in.nextInt(); qb[i] = in.nextInt(); }
+
+        StringBuilder sb = new StringBuilder();
+        for (int v : lowestCommonBosses(boss, qa, qb)) sb.append(v).append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c9 = {
+  cpp: `${CPP_HEAD}
+/**
+ * grid[r][c] is '.', '#', 'A' or 'B'. Moves are L, R, U, D.
+ * Any SHORTEST route is accepted.
+ *
+ * @return "" if B cannot be reached, otherwise the moves of a shortest route.
+ */
+string shortestRoute(const vector<string>& grid) {
+    // write your code here
+
+    return "";
+}
+
+int main() {
+    int n, m;
+    if (scanf("%d %d", &n, &m) != 2) return 0;
+    vector<string> grid(n);
+    for (int i = 0; i < n; i++) {
+        char buf[1024];
+        scanf("%s", buf);
+        grid[i] = buf;
+    }
+
+    string route = shortestRoute(grid);
+    if (route.empty()) { printf("NO\\n"); return 0; }
+    printf("YES\\n%d\\n%s\\n", (int)route.size(), route.c_str());
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * grid[r] is a row of '.', '#', 'A' or 'B'. Moves are L, R, U, D.
+     * Any SHORTEST route is accepted.
+     *
+     * Returns "" if B cannot be reached, otherwise a shortest route's moves.
+     */
+    static String shortestRoute(String[] grid) {
+        // write your code here
+
+        return "";
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), m = in.nextInt();
+        String[] grid = new String[n];
+        for (int i = 0; i < n; i++) grid[i] = in.next();
+
+        String route = shortestRoute(grid);
+        if (route.isEmpty()) { System.out.println("NO"); return; }
+        System.out.println("YES");
+        System.out.println(route.length());
+        System.out.println(route);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c10 = {
+  cpp: `${CPP_HEAD}
+/**
+ * n cities, and roads[i] = {a, b} is an existing two-way road.
+ * Any set of new roads that connects everything using the minimum number
+ * is accepted.
+ *
+ * @return the new roads to build.
+ */
+vector<pair<int, int>> roadsToBuild(int n, const vector<pair<int, int>>& roads) {
+    // write your code here
+
+    return {};
+}
+
+int main() {
+    int n, m;
+    if (scanf("%d %d", &n, &m) != 2) return 0;
+    vector<pair<int, int>> roads(m);
+    for (auto &r : roads) scanf("%d %d", &r.first, &r.second);
+
+    vector<pair<int, int>> add = roadsToBuild(n, roads);
+    string out = to_string((int)add.size());
+    out += '\\n';
+    for (auto &r : add) {
+        out += to_string(r.first);
+        out += ' ';
+        out += to_string(r.second);
+        out += '\\n';
+    }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * n cities; ra[i]-rb[i] is an existing two-way road.
+     * Any set of new roads that connects everything using the minimum number
+     * is accepted. Return them as an array of {a, b} pairs.
+     */
+    static int[][] roadsToBuild(int n, int[] ra, int[] rb) {
+        // write your code here
+
+        return new int[0][];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), m = in.nextInt();
+        int[] ra = new int[m], rb = new int[m];
+        for (int i = 0; i < m; i++) { ra[i] = in.nextInt(); rb[i] = in.nextInt(); }
+
+        int[][] add = roadsToBuild(n, ra, rb);
+        StringBuilder sb = new StringBuilder();
+        sb.append(add.length).append('\\n');
+        for (int[] r : add) sb.append(r[0]).append(' ').append(r[1]).append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c11 = {
+  cpp: `${CPP_HEAD}
+/**
+ * Flights are one-way: from[i] -> to[i] costing cost[i].
+ * One coupon may halve ONE flight's price, rounded down.
+ *
+ * @return the cheapest total price from city 1 to city n.
+ */
+long long cheapestWithDiscount(int n, const vector<int>& from, const vector<int>& to,
+                               const vector<long long>& cost) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n, m;
+    if (scanf("%d %d", &n, &m) != 2) return 0;
+    vector<int> from(m), to(m);
+    vector<long long> cost(m);
+    for (int i = 0; i < m; i++) scanf("%d %d %lld", &from[i], &to[i], &cost[i]);
+
+    printf("%lld\\n", cheapestWithDiscount(n, from, to, cost));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * Flights are one-way: from[i] -> to[i] costing cost[i].
+     * One coupon may halve ONE flight's price, rounded down.
+     *
+     * Returns the cheapest total price from city 1 to city n.
+     */
+    static long cheapestWithDiscount(int n, int[] from, int[] to, long[] cost) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), m = in.nextInt();
+        int[] from = new int[m], to = new int[m];
+        long[] cost = new long[m];
+        for (int i = 0; i < m; i++) { from[i] = in.nextInt(); to[i] = in.nextInt(); cost[i] = in.nextLong(); }
+
+        System.out.println(cheapestWithDiscount(n, from, to, cost));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c12 = {
+  cpp: `${CPP_HEAD}
+/**
+ * before[i] = {a, b} means course a must be completed before course b.
+ * Any order satisfying every requirement is accepted.
+ *
+ * @return a valid order of all n courses, or an empty vector if none exists.
+ */
+vector<int> courseOrder(int n, const vector<pair<int, int>>& before) {
+    // write your code here
+
+    return {};
+}
+
+int main() {
+    int n, m;
+    if (scanf("%d %d", &n, &m) != 2) return 0;
+    vector<pair<int, int>> before(m);
+    for (auto &r : before) scanf("%d %d", &r.first, &r.second);
+
+    vector<int> order = courseOrder(n, before);
+    if (order.empty()) { printf("IMPOSSIBLE\\n"); return 0; }
+
+    string out;
+    for (int i = 0; i < (int)order.size(); i++) {
+        out += to_string(order[i]);
+        out += (i + 1 == (int)order.size() ? '\\n' : ' ');
+    }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * a[i] must be completed before b[i].
+     * Any order satisfying every requirement is accepted.
+     *
+     * Returns a valid order of all n courses, or an empty array if none exists.
+     */
+    static int[] courseOrder(int n, int[] a, int[] b) {
+        // write your code here
+
+        return new int[0];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), m = in.nextInt();
+        int[] a = new int[m], b = new int[m];
+        for (int i = 0; i < m; i++) { a[i] = in.nextInt(); b[i] = in.nextInt(); }
+
+        int[] order = courseOrder(n, a, b);
+        if (order.length == 0) { System.out.println("IMPOSSIBLE"); return; }
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < order.length; i++) sb.append(order[i]).append(i + 1 == order.length ? '\\n' : ' ');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c13 = {
+  cpp: `${CPP_HEAD}
+/**
+ * flights[i] = {a, b} is a one-way flight. The network has no directed cycles.
+ * Any route visiting the maximum number of cities is accepted.
+ *
+ * @return the cities in order, or an empty vector if n is unreachable from 1.
+ */
+vector<int> longestRoute(int n, const vector<pair<int, int>>& flights) {
+    // write your code here
+
+    return {};
+}
+
+int main() {
+    int n, m;
+    if (scanf("%d %d", &n, &m) != 2) return 0;
+    vector<pair<int, int>> flights(m);
+    for (auto &f : flights) scanf("%d %d", &f.first, &f.second);
+
+    vector<int> route = longestRoute(n, flights);
+    if (route.empty()) { printf("IMPOSSIBLE\\n"); return 0; }
+
+    string out = to_string((int)route.size());
+    out += '\\n';
+    for (size_t i = 0; i < route.size(); i++) {
+        out += to_string(route[i]);
+        out += (i + 1 == route.size() ? '\\n' : ' ');
+    }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * a[i] -> b[i] is a one-way flight. The network has no directed cycles.
+     * Any route visiting the maximum number of cities is accepted.
+     *
+     * Returns the cities in order, or an empty array if n is unreachable.
+     */
+    static int[] longestRoute(int n, int[] a, int[] b) {
+        // write your code here
+
+        return new int[0];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), m = in.nextInt();
+        int[] a = new int[m], b = new int[m];
+        for (int i = 0; i < m; i++) { a[i] = in.nextInt(); b[i] = in.nextInt(); }
+
+        int[] route = longestRoute(n, a, b);
+        if (route.length == 0) { System.out.println("IMPOSSIBLE"); return; }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(route.length).append('\\n');
+        for (int i = 0; i < route.length; i++) sb.append(route[i]).append(i + 1 == route.length ? '\\n' : ' ');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c15 = {
+  cpp: `${CPP_HEAD}
+/**
+ * t[v] is where planet v's teleporter leads. Each query asks where you land
+ * after k teleports from planet x. Note k can be 0, and reaches 1e9.
+ *
+ * @return the destination for each query, in order.
+ */
+vector<int> destinations(const vector<int>& t,
+                         const vector<pair<int, long long>>& queries) {
+    // write your code here
+
+    return vector<int>(queries.size(), 1);
+}
+
+int main() {
+    int n, q;
+    if (scanf("%d %d", &n, &q) != 2) return 0;
+    vector<int> t(n + 1);
+    for (int v = 1; v <= n; v++) scanf("%d", &t[v]);
+    vector<pair<int, long long>> queries(q);
+    for (auto &qr : queries) scanf("%d %lld", &qr.first, &qr.second);
+
+    string out;
+    for (int v : destinations(t, queries)) { out += to_string(v); out += '\\n'; }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * t[v] is where planet v's teleporter leads (index 0 unused). Query j asks
+     * where you land after k[j] teleports from planet x[j]. k can be 0, and
+     * reaches 1e9.
+     *
+     * Returns the destination for each query, in order.
+     */
+    static int[] destinations(int[] t, int[] x, long[] k) {
+        // write your code here
+
+        return new int[x.length];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), q = in.nextInt();
+        int[] t = new int[n + 1];
+        for (int v = 1; v <= n; v++) t[v] = in.nextInt();
+        int[] x = new int[q];
+        long[] k = new long[q];
+        for (int i = 0; i < q; i++) { x[i] = in.nextInt(); k[i] = in.nextLong(); }
+
+        StringBuilder sb = new StringBuilder();
+        for (int v : destinations(t, x, k)) sb.append(v).append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
 /**
  * The /** ... *\/ blocks above each function are kept in THIS file so the
  * signatures stay self-documenting for whoever edits the templates, but they

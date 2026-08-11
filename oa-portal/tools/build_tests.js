@@ -165,6 +165,28 @@ const SAMPLES = {
         '5\nUNDO\nAPPEND ab\nUNDO\nREDO\nPRINT 1\n'],
   m84: ['3 2\n1 2 1\n2 3 1\n', '3 3\n1 2 1\n2 3 1\n1 3 1\n', '3 0\n', '2 1\n1 2 0\n'],
   m85: ['4\n1 2 9 3\n', '1\n5\n', '2\n3 7\n', '4\n1 1 1 1\n'],
+  m86: ['3 0 5\n1 2 0\n', '1 0 1000000000000000000\n0\n', '5 0 1000000000000000000\n1 2 3 4 2\n'],
+  m87: ['0 1 1 1 10\n', '1 1 1 0 5\n', '0 1 1 1 0\n', '2 3 2 3 4\n'],
+  m88: ['1 100\n', '11 11\n', '1 10\n', '100 110\n'],
+  m89: ['4\n1 6 11 5\n', '1\n5\n', '4\n1 1 1 1\n', '2\n1 1000000000\n'],
+  m90: ['3\n1 2 3\n', '1\n5\n', '2\n0 3\n', '4\n0 0 0 4\n'],
+  m91: ['4\n1 3 4 2 2\n', '1\n1 1\n', '3\n3 1 3 3\n', '5\n1 2 3 4 5 3\n'],
+
+  // CSES mirrors - the samples are the ones cses.fi prints
+  c1: ['5\n3 1 2 7 4\n'],
+  c2: ['3\n1 2\n2 4\n4 4\n'],
+  c3: ['3 7\n3 2 5\n'],
+  c4: ['5 3\n2 4 7 3 5\n'],
+  c5: ['5 3\n5 3 7 8 5\n4 8 3\n'],
+  c6: ['5\n1 1 2 3\n'],
+  c7: ['5\n1 2\n1 3\n3 4\n3 5\n'],
+  c8: ['5 3\n1 1 3 3\n4 5\n2 5\n1 4\n'],
+  c9: ['5 8\n########\n#.A#...#\n#.##.#B#\n#......#\n########\n'],
+  c10: ['4 2\n1 2\n3 4\n'],
+  c11: ['3 4\n1 2 3\n2 3 1\n1 3 7\n2 1 5\n'],
+  c12: ['5 3\n1 2\n3 1\n4 5\n'],
+  c13: ['5 5\n1 2\n2 5\n1 3\n3 4\n4 5\n'],
+  c15: ['4 3\n2 1 1 4\n1 2\n3 4\n4 1\n'],
 };
 
 // expected sample answers, straight from the statements - a second check
@@ -254,6 +276,27 @@ const SAMPLE_EXPECT = {
   m83: ['b b c', 'y z', 'a'],
   m84: ['2', '0', '8', '2'],
   m85: ['10', '5', '7', '2'],
+  m86: ['2', '0', '4'],
+  m87: ['55', '1', '0', '102'],
+  m88: ['90', '0', '10', '9'],
+  m89: ['1', '5', '0', '999999999'],
+  m90: ['2', '0', '5', '12'],
+  m91: ['2', '1', '3', '3'],
+
+  c1: ['1'],
+  c2: ['2\n1 2 1'],
+  c3: ['8'],
+  c4: ['8'],
+  c5: ['3\n8\n-1'],
+  c6: ['4 1 1 0 0'],
+  c7: ['2 3 2 3 3'],
+  c8: ['3\n1\n1'],
+  c9: ['YES\n9\nLDDRRRRRU'],
+  c10: ['1\n2 3'],
+  c11: ['2'],
+  c12: ['3 4 1 5 2'],
+  c13: ['4\n1 3 4 5'],
+  c15: ['1\n2\n4'],
 };
 
 function compile(src, out) {
@@ -304,6 +347,46 @@ function runString(exe, input, timeoutMs) {
 
 const norm = (s) => s.trim().split(/\s+/).filter(Boolean).join(' ');
 
+/**
+ * Problems where several different outputs are all correct (any allocation
+ * using the minimum number of rooms, any valid ordering) ship a checker.cpp.
+ * Both the sample check and the brute-vs-ref stress have to go through it -
+ * comparing tokens would flag a correct brute for numbering things its own way.
+ *
+ * Problems with no `checker` field keep the plain token comparison.
+ */
+function makeComparator(meta, dir) {
+  if (!meta.checker) {
+    return {
+      checked: false,
+      compare: (input, want, got) =>
+        (norm(want) === norm(got)
+          ? { ok: true }
+          : { ok: false, why: `ref="${norm(want).slice(0, 120)}"  other="${norm(got).slice(0, 120)}"` }),
+    };
+  }
+
+  const exe = path.join(BUILD, meta.id + '_checker.exe');
+  compile(path.join(dir, meta.checker), exe);
+  const inF = path.join(BUILD, meta.id + '_chk.in');
+  const expF = path.join(BUILD, meta.id + '_chk.exp');
+  const gotF = path.join(BUILD, meta.id + '_chk.got');
+
+  return {
+    checked: true,
+    compare: (input, want, got) => {
+      fs.writeFileSync(inF, input);
+      fs.writeFileSync(expF, want);
+      fs.writeFileSync(gotF, got);
+      const r = spawnSync(exe, [inF, expF, gotF], { maxBuffer: MAXBUF, windowsHide: true });
+      if (r.error) return { ok: false, why: 'checker could not run: ' + r.error.message };
+      const note = (r.stdout || '').toString().trim();
+      if (r.status === 0) return { ok: true };
+      return { ok: false, why: note || `checker exited ${r.status}` };
+    },
+  };
+}
+
 // ---- main ---------------------------------------------------------------
 const argv = process.argv.slice(2);
 const FAST = argv.includes('--fast');
@@ -330,6 +413,8 @@ for (const d of dirs) {
   console.log('compiled ref + brute');
 
   const gen = require(path.join(dir, 'gen.js'));
+  const cmp = makeComparator(meta, dir);
+  if (cmp.checked) console.log(`compiled ${meta.checker} - this problem is graded by a checker`);
 
   // ---- 1. sample answers must match the statements ---------------------
   const samples = SAMPLES[meta.id];
@@ -338,9 +423,9 @@ for (const d of dirs) {
   samples.forEach((inp, i) => {
     const r = runString(refExe, inp);
     if (!r.ok) { console.log(`  SAMPLE ${i + 1}: ref crashed`); sampleFail++; return; }
-    const got = norm(r.out), want = norm(expects[i]);
-    if (got !== want) {
-      console.log(`  SAMPLE ${i + 1} MISMATCH  ref="${got}"  statement="${want}"`);
+    const v = cmp.compare(inp, expects[i], r.out);
+    if (!v.ok) {
+      console.log(`  SAMPLE ${i + 1} MISMATCH  ${v.why}`);
       sampleFail++;
     }
   });
@@ -372,13 +457,17 @@ for (const d of dirs) {
         }
         continue;
       }
-      if (!a.ok || norm(a.out) !== norm(b.out)) {
+      const v = a.ok ? cmp.compare(c.input, a.out, b.out) : { ok: false, why: 'ref failed: ' + a.err };
+      if (!v.ok) {
         stressBad++;
         if (stressBad <= 3) {
           console.log(`  STRESS MISMATCH (seed ${seed}, ${c.name})`);
           console.log(`    input: ${JSON.stringify(c.input.slice(0, 160))}`);
-          console.log(`    ref:   ${a.ok ? norm(a.out).slice(0, 120) : a.err}`);
-          console.log(`    brute: ${norm(b.out).slice(0, 120)}`);
+          console.log(`    ${v.why}`);
+          if (cmp.checked && a.ok) {
+            console.log(`    ref:   ${norm(a.out).slice(0, 120)}`);
+            console.log(`    brute: ${norm(b.out).slice(0, 120)}`);
+          }
         }
       }
     }

@@ -1,0 +1,14 @@
+{
+  "id": "c2",
+  "docId": "Q16",
+  "order": 93,
+  "title": "Room Allocation",
+  "difficulty": "Medium",
+  "timeLimitMs": 2000,
+  "memoryNote": "512 MB",
+  "source": { "name": "CSES 1164", "url": "https://cses.fi/problemset/task/1164" },
+  "checker": "checker.cpp",
+  "checkerNote": "Any allocation using the minimum number of rooms is accepted, exactly as on CSES.",
+  "tagsHidden": true,
+  "tags": ["greedy", "sweep", "priority queue"]
+}

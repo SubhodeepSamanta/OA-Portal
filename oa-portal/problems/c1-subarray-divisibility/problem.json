@@ -1,0 +1,12 @@
+{
+  "id": "c1",
+  "docId": "Q10",
+  "order": 92,
+  "title": "Subarray Divisibility",
+  "difficulty": "Medium",
+  "timeLimitMs": 2000,
+  "memoryNote": "512 MB",
+  "source": { "name": "CSES 1662", "url": "https://cses.fi/problemset/task/1662" },
+  "tagsHidden": true,
+  "tags": ["prefix sums", "counting", "modular arithmetic"]
+}

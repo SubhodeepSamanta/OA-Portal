@@ -1,0 +1,14 @@
+{
+  "id": "c12",
+  "docId": "Q82",
+  "order": 103,
+  "title": "Course Schedule",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "512 MB",
+  "source": { "name": "CSES 1679", "url": "https://cses.fi/problemset/task/1679" },
+  "checker": "checker.cpp",
+  "checkerNote": "Any order satisfying every prerequisite is accepted, exactly as on CSES.",
+  "tagsHidden": true,
+  "tags": ["topological sort", "cycle detection"]
+}

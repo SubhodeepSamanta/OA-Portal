@@ -1,0 +1,6 @@
+5
+APPEND ab
+UNDO
+APPEND cd
+REDO
+PRINT 2

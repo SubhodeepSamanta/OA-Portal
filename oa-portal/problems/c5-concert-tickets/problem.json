@@ -1,0 +1,12 @@
+{
+  "id": "c5",
+  "docId": "Q34",
+  "order": 96,
+  "title": "Concert Tickets",
+  "difficulty": "Medium",
+  "timeLimitMs": 3000,
+  "memoryNote": "512 MB",
+  "source": { "name": "CSES 1091", "url": "https://cses.fi/problemset/task/1091" },
+  "tagsHidden": true,
+  "tags": ["multiset", "ordered container", "binary search"]
+}

@@ -4,6 +4,8 @@ import { useTheme, ThemeIcon } from './theme.jsx';
 import Login from './pages/Login.jsx';
 import Home from './pages/Home.jsx';
 import Problem from './pages/Problem.jsx';
+import RoundZero from './pages/RoundZero.jsx';
+import Sheet from './pages/Sheet.jsx';
 
 function useHashRoute() {
   const [hash, setHash] = useState(window.location.hash || '#/');
@@ -63,6 +65,8 @@ export default function App() {
   }
 
   const solveMatch = hash.match(/^#\/solve\/([\w-]+)/);
+  const sheetMatch = hash.match(/^#\/rz\/([\w-]+)/);
+  const onRz = hash.startsWith('#/rz');
 
   return (
     <div className="shell">
@@ -72,6 +76,10 @@ export default function App() {
           Portal
           <span className="tag">local judge</span>
         </a>
+        <nav className="topnav">
+          <a href="#/" className={onRz ? '' : 'on'}>Question Bank</a>
+          <a href="#/rz" className={onRz ? 'on' : ''}>Round Zero</a>
+        </nav>
         <div className="spacer" />
         <button className="icon-btn" onClick={theme.cycle}
                 title={`Theme: ${THEME_LABEL[theme.mode]} — click to change`}
@@ -83,7 +91,10 @@ export default function App() {
       </header>
 
       <main className="main">
-        {solveMatch ? <Problem id={solveMatch[1]} isDark={theme.isDark} /> : <Home />}
+        {solveMatch ? <Problem id={solveMatch[1]} isDark={theme.isDark} />
+          : sheetMatch ? <Sheet id={sheetMatch[1]} />
+          : onRz ? <RoundZero />
+          : <Home />}
       </main>
     </div>
   );

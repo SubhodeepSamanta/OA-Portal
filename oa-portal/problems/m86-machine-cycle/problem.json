@@ -1,0 +1,11 @@
+{
+  "id": "m86",
+  "docId": "Q207",
+  "order": 86,
+  "title": "Machine Cycle",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "256 MB",
+  "tagsHidden": true,
+  "tags": ["functional graph", "cycle detection"]
+}

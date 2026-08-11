@@ -619,6 +619,105 @@ select.lang {
 @keyframes sp { to { transform: rotate(360deg); } }
 .center-note { padding: 70px 20px; text-align: center; color: var(--muted); }
 
+/* ============================================================ Round Zero */
+.topnav { display: flex; gap: 2px; margin-left: 16px; }
+.topnav a {
+  font-size: 13px; font-weight: 600; color: var(--muted); padding: 5px 11px;
+  border-radius: 7px; letter-spacing: -.1px;
+}
+.topnav a:hover { color: var(--ink); background: var(--surface-2); text-decoration: none; }
+.topnav a.on { color: var(--ink); background: var(--surface-2); }
+
+.rz-track-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.rz-track-blurb {
+  font-family: var(--sans); font-weight: 450; color: var(--muted);
+  text-transform: none; letter-spacing: 0; font-size: 12.5px;
+}
+.rz-track-count { margin-left: auto; font-size: 11px; opacity: .7; }
+
+/* Round Zero rows have no `.qid` cell, so they need their own column count -
+   inheriting `.row`'s 4-column grid would push every cell one column left. */
+.rz-row { grid-template-columns: 30px 1fr auto; }
+.rz-row .main { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.rz-bar { height: 3px; background: var(--line); border-radius: 2px; overflow: hidden; max-width: 320px; }
+.rz-bar i { display: block; height: 100%; background: var(--accent); border-radius: 2px; transition: width .35s ease; }
+.row.done .rz-bar i { background: var(--ac); }
+
+.chip.rz-must   { background: var(--wa-bg);      color: var(--wa);     border-color: var(--wa-line); }
+.chip.rz-should { background: var(--tle-bg);     color: var(--tle);    border-color: var(--tle-line); }
+.chip.rz-edge   { background: var(--surface-2);  color: var(--muted);  border-color: var(--line); }
+
+/* ---- one sheet ---- */
+.sheet-page { max-width: 860px; }
+.sheet-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.sheet-head .spacer { flex: 1; }
+.sheet-crumb { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .6px; font-weight: 650; }
+
+.sheet-progress { height: 4px; background: var(--line); border-radius: 3px; overflow: hidden; margin-bottom: 26px; }
+.sheet-progress i { display: block; height: 100%; background: var(--accent); transition: width .35s ease; }
+
+.sheet-body { font-size: 14.5px; line-height: 1.65; color: var(--ink-2); }
+.sheet-body h1 { font-size: 26px; margin: 0 0 6px; letter-spacing: -.7px; }
+.sheet-body h2 {
+  font-size: 16px; margin: 34px 0 12px; padding-bottom: 7px;
+  border-bottom: 1px solid var(--line); color: var(--ink); font-weight: 720;
+}
+.sheet-body h3 { font-size: 14px; margin: 22px 0 7px; color: var(--ink); }
+.sheet-body table { font-size: 13.5px; }
+.sheet-body p { margin: 0 0 14px; }
+.sheet-body ul, .sheet-body ol { margin: 0 0 16px; }
+.sheet-body li { margin-bottom: 7px; line-height: 1.6; }
+.sheet-body blockquote {
+  border-left: 3px solid var(--accent-line); background: var(--accent-soft);
+  padding: 12px 16px; border-radius: 0 7px 7px 0; color: var(--ink-2);
+  margin: 0 0 16px;
+}
+.sheet-body blockquote p:last-child { margin-bottom: 0; }
+
+/* ---- practice questions ----
+   Each question is an h4; the working follows as one paragraph of hard-broken
+   lines, and the answer sits alone in its own paragraph. */
+.sheet-body h4 {
+  font-size: 14px; font-weight: 700; color: var(--ink); line-height: 1.55;
+  margin: 32px 0 14px; padding: 11px 15px;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0;
+}
+.sheet-body h4 + p,
+.sheet-body h4 + ul,
+.sheet-body h4 + ol,
+.sheet-body h4 + pre,
+.sheet-body h4 + table { margin-top: 0; }
+
+/* working lines are joined by <br>, so give them room to breathe */
+.sheet-body h4 + p { line-height: 1.95; }
+
+/* a paragraph that is nothing but bold text is an answer line */
+.sheet-body p > strong:only-child {
+  display: inline-block; margin-top: 2px;
+  background: var(--ac-bg); color: var(--ac); border: 1px solid var(--ac-line);
+  padding: 5px 12px; border-radius: 6px; font-weight: 700;
+}
+
+/* section dividers inside a practice set */
+.sheet-body h3 { margin: 30px 0 10px; }
+.sheet-body hr { margin: 30px 0; }
+
+/* live checkpoints, rendered from GFM task lists */
+.sheet-body ul:has(> li > input[type="checkbox"]) { list-style: none; padding-left: 2px; }
+.sheet-body li:has(> input[type="checkbox"]) {
+  display: flex; align-items: flex-start; gap: 10px; padding: 7px 10px;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--surface);
+  margin-bottom: 6px; font-size: 13.5px; transition: border-color .15s, background .15s;
+}
+.sheet-body li:has(> input[type="checkbox"]):hover { border-color: var(--line-2); }
+.sheet-body li.ck-done { background: var(--ac-bg); border-color: var(--ac-line); color: var(--ink-2); }
+.sheet-body li > input[type="checkbox"] {
+  flex: none; width: 15px; height: 15px; margin: 2px 0 0; cursor: pointer; accent-color: var(--ac);
+}
+
+.sheet-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--line); }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }

@@ -1,0 +1,107 @@
+{
+  "name": "Round Zero",
+  "tagline": "The round before anyone looks at your code.",
+  "blurb": "Aptitude, reasoning, verbal and CS fundamentals — the screening layer that decides who even gets to the coding round. Built for the companies that actually visit DIT University.",
+  "tracks": [
+    {
+      "id": "start",
+      "title": "Start Here",
+      "blurb": "Read these two first. They tell you what to skip.",
+      "sheets": [
+        { "id": "s-plan",     "file": "start/00-how-to-use-this.md",   "title": "How to use this / the 30-day plan", "mins": 12, "tier": "must" },
+        { "id": "s-patterns", "file": "start/01-company-patterns.md",  "title": "Exact test pattern, company by company", "mins": 15, "tier": "must" }
+      ]
+    },
+    {
+      "id": "quant",
+      "title": "Quantitative",
+      "blurb": "Arithmetic pays the bills. The first six sheets cover most of what is asked.",
+      "sheets": [
+        { "id": "q-numbers",     "file": "quant/01-numbers.md",                  "title": "Numbers, LCM/HCF, remainders",  "mins": 35, "tier": "must" },
+        { "id": "q-percent",     "file": "quant/02-percentages.md",              "title": "Percentages",                   "mins": 25, "tier": "must" },
+        { "id": "q-ratio",       "file": "quant/03-ratio-proportion.md",         "title": "Ratio, proportion, partnership","mins": 25, "tier": "must" },
+        { "id": "q-average",     "file": "quant/04-averages-alligation.md",      "title": "Averages, mixtures, alligation","mins": 30, "tier": "must" },
+        { "id": "q-profit",      "file": "quant/05-profit-loss.md",              "title": "Profit, loss, discount",        "mins": 25, "tier": "must" },
+        { "id": "q-interest",    "file": "quant/06-interest.md",                 "title": "Simple & compound interest",    "mins": 22, "tier": "must" },
+        { "id": "q-work",        "file": "quant/07-time-work.md",                "title": "Time & work, pipes & cisterns", "mins": 30, "tier": "must" },
+        { "id": "q-tsd",         "file": "quant/08-time-speed-distance.md",      "title": "Time, speed & distance",        "mins": 30, "tier": "must" },
+        { "id": "q-trains",      "file": "quant/09-trains-boats.md",             "title": "Trains, boats & streams",       "mins": 22, "tier": "must" },
+        { "id": "q-pnc",         "file": "quant/10-permutation-combination.md",  "title": "Permutation & combination",     "mins": 35, "tier": "should" },
+        { "id": "q-prob",        "file": "quant/11-probability.md",              "title": "Probability",                   "mins": 28, "tier": "should" },
+        { "id": "q-progression", "file": "quant/12-progressions.md",             "title": "Progressions & number series",  "mins": 22, "tier": "should" },
+        { "id": "q-algebra",     "file": "quant/13-algebra.md",                  "title": "Algebra, surds, indices, logs",  "mins": 25, "tier": "should" },
+        { "id": "q-geometry",    "file": "quant/14-geometry-mensuration.md",     "title": "Geometry & mensuration",        "mins": 28, "tier": "should" },
+        { "id": "q-clocks",      "file": "quant/15-clocks-calendars.md",         "title": "Clocks & calendars",            "mins": 20, "tier": "edge" },
+        { "id": "q-di",          "file": "quant/16-data-interpretation.md",      "title": "Data interpretation",           "mins": 25, "tier": "must" },
+        { "id": "q-simplify",    "file": "quant/17-simplification.md",           "title": "Simplification & approximation","mins": 22, "tier": "must" }
+      ]
+    },
+    {
+      "id": "reasoning",
+      "title": "Logical Reasoning",
+      "blurb": "Highest marks per hour of study in the whole section. Almost pure pattern recognition.",
+      "sheets": [
+        { "id": "r-series",    "file": "reasoning/01-series-analogy.md",      "title": "Series, analogy, odd one out",   "mins": 25, "tier": "must" },
+        { "id": "r-coding",    "file": "reasoning/02-coding-decoding.md",     "title": "Coding–decoding",                "mins": 22, "tier": "must" },
+        { "id": "r-blood",     "file": "reasoning/03-blood-relations.md",     "title": "Blood relations",                "mins": 18, "tier": "must" },
+        { "id": "r-direction", "file": "reasoning/04-direction-sense.md",     "title": "Direction sense",                "mins": 15, "tier": "must" },
+        { "id": "r-seating",   "file": "reasoning/05-seating-puzzles.md",     "title": "Seating arrangement & puzzles",  "mins": 40, "tier": "must" },
+        { "id": "r-syllogism", "file": "reasoning/06-syllogism.md",           "title": "Syllogism",                      "mins": 25, "tier": "must" },
+        { "id": "r-statement", "file": "reasoning/07-statements.md",          "title": "Assumptions, conclusions, arguments", "mins": 25, "tier": "should" },
+        { "id": "r-datasuff",  "file": "reasoning/08-data-sufficiency.md",    "title": "Data sufficiency",               "mins": 20, "tier": "must" },
+        { "id": "r-visual",    "file": "reasoning/09-cubes-dice-visual.md",   "title": "Cubes, dice, figural reasoning", "mins": 25, "tier": "should" },
+        { "id": "r-crypt",     "file": "reasoning/10-cryptarithmetic.md",     "title": "Cryptarithmetic",                "mins": 22, "tier": "edge" },
+        { "id": "r-misc",      "file": "reasoning/11-flowcharts-tables.md",   "title": "Flowcharts, decision tables, attention to detail", "mins": 20, "tier": "should" },
+        { "id": "r-puzzles",   "file": "reasoning/12-puzzles.md",             "title": "Puzzles",                        "mins": 28, "tier": "must" }
+      ]
+    },
+    {
+      "id": "verbal",
+      "title": "Verbal Ability",
+      "blurb": "The cheapest section to fix. Most people lose marks on six repeating grammar rules.",
+      "sheets": [
+        { "id": "v-grammar",  "file": "verbal/01-grammar-core.md",           "title": "The grammar rules that get tested", "mins": 30, "tier": "must" },
+        { "id": "v-error",    "file": "verbal/02-error-spotting.md",         "title": "Error spotting & sentence correction", "mins": 25, "tier": "must" },
+        { "id": "v-complete", "file": "verbal/03-sentence-completion.md",    "title": "Sentence completion & cloze",     "mins": 20, "tier": "must" },
+        { "id": "v-jumbles",  "file": "verbal/04-para-jumbles.md",           "title": "Para jumbles",                    "mins": 20, "tier": "must" },
+        { "id": "v-rc",       "file": "verbal/05-reading-comprehension.md",  "title": "Reading comprehension",           "mins": 22, "tier": "must" },
+        { "id": "v-vocab",    "file": "verbal/06-vocabulary-idioms.md",      "title": "Vocabulary, idioms, one-word",    "mins": 30, "tier": "should" },
+        { "id": "v-writing",  "file": "verbal/07-email-essay.md",            "title": "Email & essay writing",           "mins": 20, "tier": "must" }
+      ]
+    },
+    {
+      "id": "core",
+      "title": "CS Fundamentals",
+      "blurb": "40–50% of the technical interview, and increasingly in the written test too.",
+      "sheets": [
+        { "id": "c-oops",   "file": "core/01-oops.md",        "title": "OOPS",                        "mins": 40, "tier": "must" },
+        { "id": "c-os",     "file": "core/02-os.md",          "title": "Operating Systems",           "mins": 45, "tier": "must" },
+        { "id": "c-dbms",   "file": "core/03-dbms-sql.md",    "title": "DBMS & SQL",                  "mins": 45, "tier": "must" },
+        { "id": "c-cn",     "file": "core/04-cn.md",          "title": "Computer Networks",           "mins": 40, "tier": "must" },
+        { "id": "c-pseudo", "file": "core/05-pseudocode.md",  "title": "Pseudocode & output questions","mins": 30, "tier": "must" },
+        { "id": "c-dsa",    "file": "core/06-dsa-theory.md",  "title": "DSA theory MCQs",             "mins": 30, "tier": "should" },
+        { "id": "c-msoffice","file": "core/07-ms-office.md",  "title": "MS Office & computer basics", "mins": 25, "tier": "must" }
+      ]
+    },
+    {
+      "id": "interview",
+      "title": "After the Written Test",
+      "blurb": "Clearing the OA gets you here. This is what converts a shortlist into an offer.",
+      "sheets": [
+        { "id": "i-hr",   "file": "interview/01-hr-questions.md",      "title": "HR interview",              "mins": 35, "tier": "must" },
+        { "id": "i-gd",   "file": "interview/02-group-discussion.md",  "title": "Group discussion",          "mins": 25, "tier": "must" },
+        { "id": "i-comm", "file": "interview/03-communication-test.md","title": "Communication assessment",  "mins": 22, "tier": "must" }
+      ]
+    },
+    {
+      "id": "mocks",
+      "title": "Mock Tests",
+      "blurb": "Sit these under a real timer. Do not open the answer key early.",
+      "sheets": [
+        { "id": "m-tcs",     "file": "mocks/01-tcs-nqt.md",     "title": "Mock 1 — TCS NQT pattern",  "mins": 54, "tier": "must" },
+        { "id": "m-infosys", "file": "mocks/02-infosys.md",     "title": "Mock 2 — Infosys pattern",  "mins": 66, "tier": "must" },
+        { "id": "m-wipro",   "file": "mocks/03-wipro-speed.md", "title": "Mock 3 — Wipro speed drill","mins": 34, "tier": "must" }
+      ]
+    }
+  ]
+}

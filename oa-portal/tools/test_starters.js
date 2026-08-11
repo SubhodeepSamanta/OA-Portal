@@ -72,8 +72,13 @@ async function call(p, opts = {}) {
     }
   }
 
-  // restore workspace exactly
-  for (const [p, c] of Object.entries(snap)) fs.writeFileSync(p, c, 'utf8');
+  // restore workspace exactly - but only rewrite what actually differs,
+  // so untouched files keep their mtime (see the note in check_all.js)
+  for (const [p, c] of Object.entries(snap)) {
+    let cur = null;
+    try { cur = fs.readFileSync(p, 'utf8'); } catch (_) {}
+    if (cur !== c) fs.writeFileSync(p, c, 'utf8');
+  }
   for (const f of fs.readdirSync(WS)) {
     const p = path.join(WS, f);
     if (fs.statSync(p).isFile() && !snap[p]) fs.unlinkSync(p);

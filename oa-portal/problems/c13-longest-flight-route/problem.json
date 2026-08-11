@@ -1,0 +1,14 @@
+{
+  "id": "c13",
+  "docId": "Q83",
+  "order": 104,
+  "title": "Longest Flight Route",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "512 MB",
+  "source": { "name": "CSES 1680", "url": "https://cses.fi/problemset/task/1680" },
+  "checker": "checker.cpp",
+  "checkerNote": "Any route visiting the maximum number of cities is accepted, exactly as on CSES.",
+  "tagsHidden": true,
+  "tags": ["dag", "topological sort", "dynamic programming"]
+}

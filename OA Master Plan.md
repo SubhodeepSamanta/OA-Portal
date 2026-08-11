@@ -454,7 +454,7 @@ You extend this yourself. Entries you write after losing marks encode the trigge
 **Q7** `[PLATFORM]` LC · `M` — *Subarray Sums Divisible by K*
 **Q8** `[PLATFORM]` LC · `M` — *Continuous Subarray Sum*
 **Q9** `[PLATFORM]` LC · `M` — *Maximum Size Subarray Sum Equals k*
-**Q10** `[PLATFORM]` CSES · `M` — *Subarray Divisibility*
+**Q10** `[PLATFORM]` CSES · `M` — *Subarray Divisibility* — **solvable in the portal** (CSES has no editor; same input format, so the code you get accepted here pastes straight into the CSES submit box)
 
 **Q11** `[MODELLED]` · `M` — **Warehouse Bay Audit**
 > A scanner recorded `n` shelf IDs, unordered and possibly repeated. An aisle is a set of shelves with consecutive IDs. Find the length of the longest aisle formable from the scanned shelves.
@@ -468,7 +468,7 @@ You extend this yourself. Entries you write after losing marks encode the trigge
 **Q13** `[PLATFORM]` LC · `M` — *Corporate Flight Bookings*
 **Q14** `[PLATFORM]` LC · `M` — *Product of Array Except Self*
 **Q15** `[PLATFORM]` LC · `M` — *Check If All 1's Are at Least Length K Places Away*
-**Q16** `[PLATFORM]` CSES · `M` — *Room Allocation*
+**Q16** `[PLATFORM]` CSES · `M` — *Room Allocation* — **solvable in the portal**, graded by a checker because any allocation using the minimum number of rooms is correct (the room numbering is not unique), exactly as CSES grades it
 
 **Q17** `[MODELLED]` · `M` — **Meeting Room Heatmap**
 > `n` meetings; meeting `i` occupies the half-open interval `[s_i, e_i)`. Report the maximum number running simultaneously at any instant.
@@ -1016,12 +1016,15 @@ You extend this yourself. Entries you write after losing marks encode the trigge
 > **Constraints:** `1 ≤ n ≤ 40`, `1 ≤ w_i ≤ 1e9`. *40 is not 20 and not 100. That is deliberate.*
 
 **Q211** `[MODELLED]` · `H` — **Antenna Placement**
-> `n` houses on a line at positions `x_i`. Place one antenna at a real-valued position minimising the **sum of squared distances** to all houses. Print the minimum, to 6 decimals.
-> **Constraints:** `1 ≤ n ≤ 2e5`.
+> `n` houses on a line at positions `x_i`. Place one antenna at an **integer** position minimising the **sum of squared distances** to all houses. Print the minimum cost.
+> **Constraints:** `1 ≤ n ≤ 2e5`, `0 ≤ x_i ≤ 1e6`.
+> *Note: the original asked for a real-valued position printed to 6 decimals. A judge cannot compare that by tokens, and rounding rules become the problem instead of the maths. Pinning the antenna to an integer keeps the real content — the cost is an upward parabola minimised at the mean, so check `floor` and `ceil` of it — and makes the answer an exact integer. The `x_i ≤ 1e6` bound is what keeps `Σx_i²` (up to `2e17`) inside a 64-bit type; that overflow is the actual trap.*
 
 **Q212** `[MODELLED]` · `H` — **Duplicate Detector**
-> Given `n+1` integers in `[1, n]`, find any value appearing more than once, in `O(n)` time and `O(1)` extra space, without modifying the array.
-> **Constraints:** `1 ≤ n ≤ 1e5`.
+> Given `n+1` integers in `[1, n]`, exactly one of which repeats (possibly many times), find that value — in `O(n)` time and `O(1)` extra space, without modifying the array.
+> **Constraints:** `1 ≤ n ≤ 5e5`.
+> *Note: "find any value appearing more than once" has no unique answer when several values repeat, so the guarantee of exactly one repeated value was added. The multiplicity is deliberately left free: a solution that assumes exactly two copies (sum minus `n(n+1)/2`) passes the common case and fails the moment the duplicate appears three times.*
+> *The space and no-modify constraints are the whole point but cannot be enforced by a judge. Counting will pass. Solve it with Floyd anyway — that is the version an interviewer asks.*
 
 **Q213** `[PLATFORM]` LC · `H` — *Basic Calculator II* — then extend it to handle parentheses
 
@@ -2198,7 +2201,7 @@ Each row gives the technique, the **key observation** (the one sentence that unl
 | Q207 | **Functional graph ρ** | Walk to find tail length and cycle length; then `T` reduces mod the cycle | O(n) |
 | Q208, Q265 | **Matrix exponentiation** | A linear recurrence is a matrix power; `T ≤ 1e18` leaves no alternative | O(k³ log T) |
 | Q210, Q263, Q264 | **Meet in the middle** | `n ≤ 40` ⇒ 2²⁰ per half; enumerate both, sort one, binary search | O(2^(n/2)·n) |
-| Q211 | Closed form | Sum of squared distances is minimised at the **mean** (absolute distances → median) | O(n) |
+| Q211 | Closed form | Sum of squared distances is minimised at the **mean** (absolute distances → median); for an integer position, test `floor` and `ceil` | O(n) |
 | Q212 | Floyd on an implicit graph | Treat values as `next` pointers; the duplicate is the cycle entry | O(n) |
 | Q213, Q255–Q257 | Stack evaluation | Two stacks (values, operators) with precedence, or recursive descent | O(n) |
 

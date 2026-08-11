@@ -1,0 +1,12 @@
+{
+  "id": "c7",
+  "docId": "Q60",
+  "order": 98,
+  "title": "Tree Distances I",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "512 MB",
+  "source": { "name": "CSES 1132", "url": "https://cses.fi/problemset/task/1132" },
+  "tagsHidden": true,
+  "tags": ["tree diameter", "bfs"]
+}

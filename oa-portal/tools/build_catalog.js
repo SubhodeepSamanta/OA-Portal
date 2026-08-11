@@ -254,7 +254,14 @@ const SOLVABLE = {
   Q161: 'm66', Q162: 'm67', Q163: 'm68', Q164: 'm69', Q165: 'm70', Q166: 'm71',
   Q167: 'm72', Q168: 'm73', Q173: 'm74', Q174: 'm75', Q175: 'm76', Q176: 'm77',
   Q177: 'm78', Q178: 'm79', Q183: 'm80', Q184: 'm81', Q198: 'm82', Q199: 'm83',
-  Q204: 'm84', Q206: 'm85',
+  Q204: 'm84', Q206: 'm85', Q207: 'm86', Q208: 'm87', Q209: 'm88',
+  Q210: 'm89', Q211: 'm90', Q212: 'm91',
+
+  // CSES problems mirrored locally so they can be solved in the editor here
+  // and then pasted straight into the CSES submit box.
+  Q10: 'c1', Q16: 'c2', Q26: 'c3', Q27: 'c4', Q34: 'c5',
+  Q59: 'c6', Q60: 'c7', Q61: 'c8', Q79: 'c9', Q80: 'c10', Q81: 'c11',
+  Q82: 'c12', Q83: 'c13', Q85: 'c15',
 };
 let solvable = 0;
 for (const it of items) {

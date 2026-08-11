@@ -1,0 +1,12 @@
+{
+  "id": "c3",
+  "docId": "Q26",
+  "order": 94,
+  "title": "Factory Machines",
+  "difficulty": "Medium",
+  "timeLimitMs": 2000,
+  "memoryNote": "512 MB",
+  "source": { "name": "CSES 1620", "url": "https://cses.fi/problemset/task/1620" },
+  "tagsHidden": true,
+  "tags": ["binary search on answer"]
+}

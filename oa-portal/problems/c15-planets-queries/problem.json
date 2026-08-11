@@ -1,0 +1,12 @@
+{
+  "id": "c15",
+  "docId": "Q85",
+  "order": 106,
+  "title": "Planets Queries I",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "512 MB",
+  "source": { "name": "CSES 1750", "url": "https://cses.fi/problemset/task/1750" },
+  "tagsHidden": true,
+  "tags": ["binary lifting", "functional graph"]
+}
