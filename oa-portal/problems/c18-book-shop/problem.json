@@ -1,0 +1,12 @@
+{
+  "id": "c18",
+  "docId": "Q102",
+  "order": 109,
+  "title": "Book Shop",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "512 MB",
+  "source": { "name": "CSES 1158", "url": "https://cses.fi/problemset/task/1158" },
+  "tagsHidden": true,
+  "tags": ["knapsack", "dynamic programming"]
+}

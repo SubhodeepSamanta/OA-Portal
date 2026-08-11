@@ -1,0 +1,12 @@
+{
+  "id": "c19",
+  "docId": "Q103",
+  "order": 110,
+  "title": "Edit Distance",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "512 MB",
+  "source": { "name": "CSES 1639", "url": "https://cses.fi/problemset/task/1639" },
+  "tagsHidden": true,
+  "tags": ["dynamic programming", "strings"]
+}

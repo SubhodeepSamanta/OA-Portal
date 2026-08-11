@@ -261,7 +261,8 @@ const SOLVABLE = {
   // and then pasted straight into the CSES submit box.
   Q10: 'c1', Q16: 'c2', Q26: 'c3', Q27: 'c4', Q34: 'c5',
   Q59: 'c6', Q60: 'c7', Q61: 'c8', Q79: 'c9', Q80: 'c10', Q81: 'c11',
-  Q82: 'c12', Q83: 'c13', Q85: 'c15',
+  Q82: 'c12', Q83: 'c13', Q85: 'c15', Q100: 'c16', Q101: 'c17',
+  Q102: 'c18', Q103: 'c19',
 };
 let solvable = 0;
 for (const it of items) {

@@ -218,6 +218,24 @@ const WRONG = {
   // k (up to 1e9), not n - so every query with k >= 262144 is wrong
   c15: `#include <bits/stdc++.h>\nusing namespace std;\nstatic const int LG=18;\nint main(){int n,q;scanf("%d %d",&n,&q);vector<vector<int>>up(LG,vector<int>(n+1));for(int v=1;v<=n;v++)scanf("%d",&up[0][v]);for(int j=1;j<LG;j++)for(int v=1;v<=n;v++)up[j][v]=up[j-1][up[j-1][v]];string o;for(int i=0;i<q;i++){int x;long long k;scanf("%d %lld",&x,&k);for(int j=0;j<LG;j++)if(k>>j&1)x=up[j][x];o+=to_string(x);o+='\\n';}fwrite(o.data(),1,o.size(),stdout);}`,
 
+  // c16: leaves ways[0] at 0 instead of 1, so the empty sequence never seeds
+  // the recurrence and every count collapses to zero
+  c16: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);const long long MOD=1000000007LL;vector<long long>w(n+1,0);for(int s=1;s<=n;s++){long long a=0;for(int j=1;j<=6&&j<=s;j++)a+=w[s-j];w[s]=a%MOD;}printf("%lld\\n",w[n]);}`,
+
+  // c17: forgets to skip digit 0, so steps[v-0] reads steps[v] itself - still
+  // zero at that point - and every value looks one step from done.
+  // (Note: subtracting the largest digit greedily IS optimal here, so that
+  // would not be a wrong solution at all.)
+  c17: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<int>st(n+1,0);for(int v=1;v<=n;v++){int best=INT_MAX;for(int t=v;t;t/=10){int d=t%10;best=min(best,st[v-d]);}st[v]=best+1;}printf("%d\\n",st[n]);}`,
+
+  // c18: iterates the budget UPWARDS, turning 0/1 into the unbounded knapsack
+  // so a cheap book can be bought over and over
+  c18: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,x;scanf("%d %d",&n,&x);vector<int>h(n),s(n);for(int i=0;i<n;i++)scanf("%d",&h[i]);for(int i=0;i<n;i++)scanf("%d",&s[i]);vector<int>b(x+1,0);for(int i=0;i<n;i++)for(int c=h[i];c<=x;c++)b[c]=max(b[c],b[c-h[i]]+s[i]);printf("%d\\n",b[x]);}`,
+
+  // c19: swaps the insert and delete moves' base cases - the first row and
+  // column are left at zero instead of counting the characters consumed
+  c19: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){static char A[5005],B[5005];scanf("%s",A);scanf("%s",B);string a=A,b=B;int n=a.size(),m=b.size();vector<int>p(m+1,0),c(m+1,0);for(int i=1;i<=n;i++){c[0]=0;for(int j=1;j<=m;j++){if(a[i-1]==b[j-1])c[j]=p[j-1];else c[j]=1+min(p[j-1],min(p[j],c[j-1]));}p.swap(c);}printf("%d\\n",p[m]);}`,
+
   // m74: builds the lcm first, so a*b overflows long before the division
   m74: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){long long a,b;scanf("%lld %lld",&a,&b);long long g=__gcd(a,b);long long l=a*b/g;printf("%lld\\n",l/a);}`,
 

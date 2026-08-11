@@ -5292,6 +5292,175 @@ ${FAST_READER_JAVA}}
 `,
 };
 
+S.c16 = {
+  cpp: `${CPP_HEAD}
+const long long MOD = 1000000007LL;
+
+// Ways to make the sum n from dice throws of 1..6, where order matters.
+long long countWays(int n) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    printf("%lld\\n", countWays(n));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    static final long MOD = 1000000007L;
+
+    // Ways to make the sum n from dice throws of 1..6, where order matters.
+    static long countWays(int n) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        System.out.println(countWays(in.nextInt()));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c17 = {
+  cpp: `${CPP_HEAD}
+// Fewest steps to reach 0, subtracting one digit of the current value each step.
+int minSteps(int n) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    printf("%d\\n", minSteps(n));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    // Fewest steps to reach 0, subtracting one digit of the current value each step.
+    static int minSteps(int n) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        System.out.println(minSteps(in.nextInt()));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c18 = {
+  cpp: `${CPP_HEAD}
+/**
+ * Book i costs price[i] and has pages[i] pages. Budget is x.
+ * Each book may be bought at most once.
+ *
+ * @return the greatest number of pages affordable.
+ */
+int maxPages(int x, const vector<int>& price, const vector<int>& pages) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n, x;
+    if (scanf("%d %d", &n, &x) != 2) return 0;
+    vector<int> price(n), pages(n);
+    for (auto &v : price) scanf("%d", &v);
+    for (auto &v : pages) scanf("%d", &v);
+
+    printf("%d\\n", maxPages(x, price, pages));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * Book i costs price[i] and has pages[i] pages. Budget is x.
+     * Each book may be bought at most once.
+     *
+     * Returns the greatest number of pages affordable.
+     */
+    static int maxPages(int x, int[] price, int[] pages) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), x = in.nextInt();
+        int[] price = new int[n], pages = new int[n];
+        for (int i = 0; i < n; i++) price[i] = in.nextInt();
+        for (int i = 0; i < n; i++) pages[i] = in.nextInt();
+
+        System.out.println(maxPages(x, price, pages));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c19 = {
+  cpp: `${CPP_HEAD}
+// Minimum insertions, removals and replacements to turn a into b.
+int editDistance(const string& a, const string& b) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    static char bufA[5005], bufB[5005];
+    if (scanf("%s", bufA) != 1) return 0;
+    if (scanf("%s", bufB) != 1) return 0;
+
+    printf("%d\\n", editDistance(string(bufA), string(bufB)));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    // Minimum insertions, removals and replacements to turn a into b.
+    static int editDistance(String a, String b) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        System.out.println(editDistance(in.next(), in.next()));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
 /**
  * The /** ... *\/ blocks above each function are kept in THIS file so the
  * signatures stay self-documenting for whoever edits the templates, but they

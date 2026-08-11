@@ -187,6 +187,10 @@ const SAMPLES = {
   c12: ['5 3\n1 2\n3 1\n4 5\n'],
   c13: ['5 5\n1 2\n2 5\n1 3\n3 4\n4 5\n'],
   c15: ['4 3\n2 1 1 4\n1 2\n3 4\n4 1\n'],
+  c16: ['3\n'],
+  c17: ['27\n'],
+  c18: ['4 10\n4 8 5 3\n5 12 8 1\n'],
+  c19: ['LOVE\nMOVIE\n'],
 };
 
 // expected sample answers, straight from the statements - a second check
@@ -297,6 +301,10 @@ const SAMPLE_EXPECT = {
   c12: ['3 4 1 5 2'],
   c13: ['4\n1 3 4 5'],
   c15: ['1\n2\n4'],
+  c16: ['4'],
+  c17: ['5'],
+  c18: ['13'],
+  c19: ['2'],
 };
 
 function compile(src, out) {

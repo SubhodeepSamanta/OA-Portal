@@ -1,0 +1,12 @@
+{
+  "id": "c17",
+  "docId": "Q101",
+  "order": 108,
+  "title": "Removing Digits",
+  "difficulty": "Medium",
+  "timeLimitMs": 2000,
+  "memoryNote": "512 MB",
+  "source": { "name": "CSES 1637", "url": "https://cses.fi/problemset/task/1637" },
+  "tagsHidden": true,
+  "tags": ["dynamic programming", "shortest path on values"]
+}
