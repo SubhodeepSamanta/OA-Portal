@@ -6500,6 +6500,116 @@ ${FAST_READER_JAVA}}
 `,
 };
 
+S.a7 = {
+  cpp: `${CPP_HEAD}
+/**
+ * Find one longest string that is a subsequence of both s and t.
+ *
+ * Any longest one is accepted - when several tie, they are equally correct.
+ * If the two share no character, return the empty string.
+ *
+ * @return one longest common subsequence.
+ */
+string longestCommonSubsequence(const string& s, const string& t) {
+    // write your code here
+
+    return "";
+}
+
+int main() {
+    static char bs[3005], bt[3005];
+    if (scanf("%s", bs) != 1) return 0;
+    if (scanf("%s", bt) != 1) return 0;
+
+    printf("%s\\n", longestCommonSubsequence(string(bs), string(bt)).c_str());
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * Find one longest string that is a subsequence of both s and t.
+     *
+     * Any longest one is accepted - when several tie, they are equally
+     * correct. If the two share no character, return the empty string.
+     *
+     * Returns one longest common subsequence.
+     */
+    static String longestCommonSubsequence(String s, String t) {
+        // write your code here
+
+        return "";
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        String s = in.next(), t = in.next();
+
+        System.out.println(longestCommonSubsequence(s, t));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.a8 = {
+  cpp: `${CPP_HEAD}
+/**
+ * p[i] is the probability that coin i comes up heads. The coins are tossed
+ * once each, independently, and the count of them is odd.
+ *
+ * @return the probability that more coins show heads than tails.
+ */
+double probabilityMoreHeads(const vector<double>& p) {
+    // write your code here
+
+    return 0.0;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<double> p(n);
+    for (int i = 0; i < n; i++) scanf("%lf", &p[i]);
+
+    // an absolute error up to 1e-9 is accepted, so print plenty of digits
+    printf("%.10f\\n", probabilityMoreHeads(p));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * p[i] is the probability that coin i comes up heads. The coins are
+     * tossed once each, independently, and the count of them is odd.
+     *
+     * Returns the probability that more coins show heads than tails.
+     */
+    static double probabilityMoreHeads(double[] p) {
+        // write your code here
+
+        return 0.0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        double[] p = new double[n];
+        for (int i = 0; i < n; i++) p[i] = Double.parseDouble(in.next());
+
+        // an absolute error up to 1e-9 is accepted, so print plenty of digits.
+        // Locale.US keeps the decimal point a '.' whatever the machine is set to.
+        System.out.println(String.format(Locale.US, "%.10f", probabilityMoreHeads(p)));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
 /**
  * The /** ... *\/ blocks above each function are kept in THIS file so the
  * signatures stay self-documenting for whoever edits the templates, but they

@@ -1,0 +1,14 @@
+{
+  "id": "a7",
+  "docId": "Q94",
+  "order": 127,
+  "title": "LCS",
+  "difficulty": "Medium",
+  "timeLimitMs": 2000,
+  "memoryNote": "1024 MB",
+  "source": { "name": "AtCoder EDPC F", "url": "https://atcoder.jp/contests/dp/tasks/dp_f" },
+  "checker": "checker.cpp",
+  "checkerNote": "Any longest common subsequence is accepted, exactly as on AtCoder.",
+  "tagsHidden": true,
+  "tags": ["dynamic programming", "subsequence", "reconstruction"]
+}

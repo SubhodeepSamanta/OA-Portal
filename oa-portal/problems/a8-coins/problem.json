@@ -1,0 +1,14 @@
+{
+  "id": "a8",
+  "docId": "Q96",
+  "order": 129,
+  "title": "Coins",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "1024 MB",
+  "source": { "name": "AtCoder EDPC I", "url": "https://atcoder.jp/contests/dp/tasks/dp_i" },
+  "checker": "checker.cpp",
+  "checkerNote": "Absolute error up to 1e-9 is accepted, exactly as on AtCoder.",
+  "tagsHidden": true,
+  "tags": ["dynamic programming", "probability", "counting"]
+}

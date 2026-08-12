@@ -301,6 +301,15 @@ const WRONG = {
   // a6: counts paths through walls - it never zeroes a blocked square
   a6: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int H,W;scanf("%d %d",&H,&W);vector<string>g(H);for(int r=0;r<H;r++){static char b[1005];scanf("%s",b);g[r]=b;}const long long MOD=1000000007LL;vector<vector<long long>>w(H,vector<long long>(W,0));w[0][0]=1;for(int r=0;r<H;r++)for(int c=0;c<W;c++){if(r==0&&c==0)continue;long long t=0;if(r>0)t+=w[r-1][c];if(c>0)t+=w[r][c-1];w[r][c]=t%MOD;}printf("%lld\\n",w[H-1][W-1]);}`,
 
+  // a7: skips the table and matches greedily left to right. It always prints a
+  // genuine common subsequence, just not the longest - so it is rejected on
+  // length alone, which is exactly the axis the checker exists to police.
+  a7: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){static char bs[3005],bt[3005];if(scanf("%s",bs)!=1)return 0;if(scanf("%s",bt)!=1)return 0;string s=bs,t=bt,r;size_t j=0;for(size_t i=0;i<s.size();i++){size_t k=t.find(s[i],j);if(k!=string::npos){r+=s[i];j=k+1;}}printf("%s\\n",r.c_str());}`,
+
+  // a8: rolls the array UPWARD, so dp[k-1] has already been updated for this
+  // coin and the same coin is counted twice - the knapsack mistake again
+  a8: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;if(scanf("%d",&n)!=1)return 0;vector<double>p(n);for(int i=0;i<n;i++)scanf("%lf",&p[i]);vector<double>dp(n+1,0.0);dp[0]=1.0;for(int i=0;i<n;i++){dp[0]*=(1.0-p[i]);for(int k=1;k<=i+1;k++)dp[k]=dp[k]*(1.0-p[i])+dp[k-1]*p[i];}double a=0;for(int k=(n+1)/2;k<=n;k++)a+=dp[k];printf("%.10f\\n",a);}`,
+
   // m74: builds the lcm first, so a*b overflows long before the division
   m74: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){long long a,b;scanf("%lld %lld",&a,&b);long long g=__gcd(a,b);long long l=a*b/g;printf("%lld\\n",l/a);}`,
 

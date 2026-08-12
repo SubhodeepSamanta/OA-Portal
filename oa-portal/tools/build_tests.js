@@ -217,6 +217,8 @@ const SAMPLES = {
        '6 15\n6 5\n5 6\n6 4\n6 6\n3 5\n7 2\n'],
   a6: ['3 4\n...#\n.#..\n....\n', '5 2\n..\n#.\n..\n.#\n..\n',
        '20 20\n' + Array(20).fill('.'.repeat(20)).join('\n') + '\n'],
+  a7: ['axyb\nabyxb\n', 'aa\nxayaz\n', 'a\nz\n', 'abracadabra\navadakedavra\n'],
+  a8: ['3\n0.30 0.60 0.80\n', '1\n0.50\n', '5\n0.42 0.01 0.42 0.99 0.42\n'],
 };
 
 // expected sample answers, straight from the statements - a second check
@@ -350,6 +352,11 @@ const SAMPLE_EXPECT = {
   a4: ['90', '5000000000', '17'],
   a5: ['90', '10', '17'],
   a6: ['3', '0', '345263555'],
+  // a7 and a8 are graded by a checker, so these are AtCoder's printed answers
+  // rather than the reference's exact bytes: 'axb' has the tie 'ayb', and
+  // '0.612' is the same number as the reference's '0.6120000000'.
+  a7: ['axb', 'aa', '', 'aaadara'],
+  a8: ['0.612', '0.5', '0.3821815872'],
 };
 
 function compile(src, out) {
