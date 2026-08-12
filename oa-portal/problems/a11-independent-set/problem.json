@@ -1,0 +1,12 @@
+{
+  "id": "a11",
+  "docId": "Q99",
+  "order": 132,
+  "title": "Independent Set",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "1024 MB",
+  "source": { "name": "AtCoder EDPC P", "url": "https://atcoder.jp/contests/dp/tasks/dp_p" },
+  "tagsHidden": true,
+  "tags": ["dynamic programming", "tree dp", "counting"]
+}

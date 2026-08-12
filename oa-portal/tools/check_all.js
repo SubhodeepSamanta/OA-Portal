@@ -310,6 +310,18 @@ const WRONG = {
   // coin and the same coin is counted twice - the knapsack mistake again
   a8: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;if(scanf("%d",&n)!=1)return 0;vector<double>p(n);for(int i=0;i<n;i++)scanf("%lf",&p[i]);vector<double>dp(n+1,0.0);dp[0]=1.0;for(int i=0;i<n;i++){dp[0]*=(1.0-p[i]);for(int k=1;k<=i+1;k++)dp[k]=dp[k]*(1.0-p[i])+dp[k-1]*p[i];}double a=0;for(int k=(n+1)/2;k<=n;k++)a+=dp[k];printf("%.10f\\n",a);}`,
 
+  // a9: takes the larger end every turn. It survives EDPC samples 1-4 and
+  // dies on sample 5, which exists to kill exactly this
+  a9: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;if(scanf("%d",&n)!=1)return 0;vector<long long>a(n);for(int i=0;i<n;i++)scanf("%lld",&a[i]);int i=0,j=n-1;long long X=0,Y=0;bool taro=true;while(i<=j){long long v;if(a[i]>=a[j])v=a[i++];else v=a[j--];if(taro)X+=v;else Y+=v;taro=!taro;}printf("%lld\\n",X-Y);}`,
+
+  // a10: greedily fuses the cheapest adjacent pair. It reproduces all four
+  // EDPC samples and is still wrong on about a fifth of random rows
+  a10: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;if(scanf("%d",&n)!=1)return 0;vector<long long>a(n);for(int i=0;i<n;i++)scanf("%lld",&a[i]);long long tot=0;while(a.size()>1){size_t b=0;for(size_t i=0;i+1<a.size();i++)if(a[i]+a[i+1]<a[b]+a[b+1])b=i;long long m=a[b]+a[b+1];tot+=m;a[b]=m;a.erase(a.begin()+b+1);}printf("%lld\\n",tot);}`,
+
+  // a11: the recurrence is right, the traversal is recursive. Correct on every
+  // small tree, then the 100000-vertex path overflows the stack
+  a11: `#include <bits/stdc++.h>\nusing namespace std;\nconst long long MOD=1000000007LL;int n;vector<vector<int>>g;vector<long long>w,b;\nvoid dfs(int v,int p){w[v]=b[v]=1;for(int u:g[v]){if(u==p)continue;dfs(u,v);w[v]=w[v]*((w[u]+b[u])%MOD)%MOD;b[v]=b[v]*w[u]%MOD;}}\nint main(){if(scanf("%d",&n)!=1)return 0;g.assign(n+1,{});for(int i=0;i<n-1;i++){int x,y;scanf("%d %d",&x,&y);g[x].push_back(y);g[y].push_back(x);}w.assign(n+1,1);b.assign(n+1,1);dfs(1,0);printf("%lld\\n",(w[1]+b[1])%MOD);}`,
+
   // m74: builds the lcm first, so a*b overflows long before the division
   m74: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){long long a,b;scanf("%lld %lld",&a,&b);long long g=__gcd(a,b);long long l=a*b/g;printf("%lld\\n",l/a);}`,
 

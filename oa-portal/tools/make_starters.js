@@ -6610,6 +6610,175 @@ ${FAST_READER_JAVA}}
 `,
 };
 
+S.a9 = {
+  cpp: `${CPP_HEAD}
+/**
+ * Both players take from either end, best play on both sides, and the score
+ * asked for is the FIRST player's minus the second player's.
+ *
+ * @return X - Y under optimal play. It can be negative.
+ */
+long long bestMargin(const vector<long long>& a) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<long long> a(n);
+    for (int i = 0; i < n; i++) scanf("%lld", &a[i]);
+
+    printf("%lld\\n", bestMargin(a));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * Both players take from either end, best play on both sides, and the
+     * score asked for is the FIRST player's minus the second player's.
+     *
+     * Returns X - Y under optimal play. It can be negative.
+     */
+    static long bestMargin(long[] a) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long[] a = new long[n];
+        for (int i = 0; i < n; i++) a[i] = in.nextLong();
+
+        System.out.println(bestMargin(a));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.a10 = {
+  cpp: `${CPP_HEAD}
+/**
+ * Fusing two ADJACENT slimes of sizes x and y costs x + y and leaves one
+ * slime of size x + y. Fuse until a single slime is left.
+ *
+ * @return the cheapest total cost. It does not fit in 32 bits.
+ */
+long long minFusionCost(const vector<long long>& a) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<long long> a(n);
+    for (int i = 0; i < n; i++) scanf("%lld", &a[i]);
+
+    printf("%lld\\n", minFusionCost(a));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * Fusing two ADJACENT slimes of sizes x and y costs x + y and leaves one
+     * slime of size x + y. Fuse until a single slime is left.
+     *
+     * Returns the cheapest total cost. It does not fit in 32 bits.
+     */
+    static long minFusionCost(long[] a) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long[] a = new long[n];
+        for (int i = 0; i < n; i++) a[i] = in.nextLong();
+
+        System.out.println(minFusionCost(a));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.a11 = {
+  cpp: `${CPP_HEAD}
+const long long MOD = 1000000007LL;
+
+/**
+ * edges holds the n-1 edges of a tree on vertices 1..n. Paint each vertex
+ * white or black so that no edge has black at both ends.
+ *
+ * n reaches 1e5 and the tree may be one long path, so a recursive traversal
+ * will overflow the stack. Walk it iteratively.
+ *
+ * @return the number of paintings, modulo 1e9+7.
+ */
+long long countColourings(int n, const vector<pair<int, int>>& edges) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<pair<int, int>> edges(n - 1);
+    for (int i = 0; i < n - 1; i++) scanf("%d %d", &edges[i].first, &edges[i].second);
+
+    printf("%lld\\n", countColourings(n, edges));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    static final long MOD = 1000000007L;
+
+    /**
+     * edges[i] = {x, y} for the n-1 edges of a tree on vertices 1..n. Paint
+     * each vertex white or black so that no edge has black at both ends.
+     *
+     * n reaches 1e5 and the tree may be one long path, so a recursive
+     * traversal will overflow the stack. Walk it iteratively.
+     *
+     * Returns the number of paintings, modulo 1e9+7.
+     */
+    static long countColourings(int n, int[][] edges) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        int[][] edges = new int[n - 1][2];
+        for (int i = 0; i < n - 1; i++) { edges[i][0] = in.nextInt(); edges[i][1] = in.nextInt(); }
+
+        System.out.println(countColourings(n, edges));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
 /**
  * The /** ... *\/ blocks above each function are kept in THIS file so the
  * signatures stay self-documenting for whoever edits the templates, but they

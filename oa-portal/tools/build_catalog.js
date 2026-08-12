@@ -268,7 +268,7 @@ const SOLVABLE = {
 
   // AtCoder Educational DP Contest
   Q89: 'a1', Q90: 'a2', Q91: 'a3', Q92: 'a4', Q93: 'a5', Q94: 'a7',
-  Q95: 'a6', Q96: 'a8',
+  Q95: 'a6', Q96: 'a8', Q97: 'a9', Q98: 'a10', Q99: 'a11',
 };
 let solvable = 0;
 for (const it of items) {

@@ -1,0 +1,12 @@
+{
+  "id": "a10",
+  "docId": "Q98",
+  "order": 131,
+  "title": "Slimes",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "1024 MB",
+  "source": { "name": "AtCoder EDPC N", "url": "https://atcoder.jp/contests/dp/tasks/dp_n" },
+  "tagsHidden": true,
+  "tags": ["dynamic programming", "interval dp", "prefix sums"]
+}

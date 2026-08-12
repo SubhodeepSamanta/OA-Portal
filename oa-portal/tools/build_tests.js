@@ -219,6 +219,13 @@ const SAMPLES = {
        '20 20\n' + Array(20).fill('.'.repeat(20)).join('\n') + '\n'],
   a7: ['axyb\nabyxb\n', 'aa\nxayaz\n', 'a\nz\n', 'abracadabra\navadakedavra\n'],
   a8: ['3\n0.30 0.60 0.80\n', '1\n0.50\n', '5\n0.42 0.01 0.42 0.99 0.42\n'],
+  a9: ['4\n10 80 90 30\n', '3\n10 100 10\n', '1\n10\n',
+       '10\n1000000000 1 1000000000 1 1000000000 1 1000000000 1 1000000000 1\n',
+       '6\n4 2 9 7 1 5\n'],
+  a10: ['4\n10 20 30 40\n', '5\n10 10 10 10 10\n',
+        '3\n1000000000 1000000000 1000000000\n', '6\n7 6 8 6 1 1\n'],
+  a11: ['3\n1 2\n2 3\n', '4\n1 2\n1 3\n1 4\n', '1\n',
+        '10\n8 5\n10 8\n6 5\n1 5\n4 8\n2 10\n3 6\n9 2\n1 7\n'],
 };
 
 // expected sample answers, straight from the statements - a second check
@@ -357,6 +364,9 @@ const SAMPLE_EXPECT = {
   // '0.612' is the same number as the reference's '0.6120000000'.
   a7: ['axb', 'aa', '', 'aaadara'],
   a8: ['0.612', '0.5', '0.3821815872'],
+  a9: ['10', '-80', '10', '4999999995', '2'],
+  a10: ['190', '120', '5000000000', '68'],
+  a11: ['5', '9', '2', '157'],
 };
 
 function compile(src, out) {

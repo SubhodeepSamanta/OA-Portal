@@ -1,0 +1,12 @@
+{
+  "id": "a9",
+  "docId": "Q97",
+  "order": 130,
+  "title": "Deque",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "1024 MB",
+  "source": { "name": "AtCoder EDPC L", "url": "https://atcoder.jp/contests/dp/tasks/dp_l" },
+  "tagsHidden": true,
+  "tags": ["dynamic programming", "interval dp", "game theory"]
+}
