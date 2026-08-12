@@ -1,0 +1,12 @@
+{
+  "id": "c25",
+  "docId": "Q171",
+  "order": 116,
+  "title": "Exponentiation",
+  "difficulty": "Medium",
+  "timeLimitMs": 2000,
+  "memoryNote": "512 MB",
+  "source": { "name": "CSES 1095", "url": "https://cses.fi/problemset/task/1095" },
+  "tagsHidden": true,
+  "tags": ["modular arithmetic", "fast exponentiation"]
+}

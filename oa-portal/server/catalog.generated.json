@@ -3247,7 +3247,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Math, bits, matrices, pointers, design",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c24",
+  "playable": true
  },
  {
   "docId": "Q171",
@@ -3265,7 +3267,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Math, bits, matrices, pointers, design",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c25",
+  "playable": true
  },
  {
   "docId": "Q172",

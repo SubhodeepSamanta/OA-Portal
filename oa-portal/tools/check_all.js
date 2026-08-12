@@ -250,6 +250,14 @@ const WRONG = {
   // c23: xors p[b] with p[a] instead of p[a-1], dropping the first element
   c23: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,q;scanf("%d %d",&n,&q);vector<int>p(n+1,0);for(int i=1;i<=n;i++){int v;scanf("%d",&v);p[i]=p[i-1]^v;}string o;for(int i=0;i<q;i++){int a,b;scanf("%d %d",&a,&b);o+=to_string(p[b]^p[a]);o+='\\n';}fwrite(o.data(),1,o.size(),stdout);}`,
 
+  // c24: trial division that counts d and x/d as two divisors even when they
+  // are the same, so every perfect square comes out one too high
+  c24: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);string o;for(int i=0;i<n;i++){int x;scanf("%d",&x);int c=0;for(int d=1;(long long)d*d<=x;d++)if(x%d==0)c+=2;o+=to_string(c);o+='\\n';}fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // c25: holds the base in a 32-bit int, so base*base wraps before it is
+  // ever widened or reduced
+  c25: `#include <bits/stdc++.h>\nusing namespace std;\nstatic const long long MOD=1000000007LL;\nint main(){int n;scanf("%d",&n);string o;for(int i=0;i<n;i++){long long a,b;scanf("%lld %lld",&a,&b);int base=(int)(a%MOD);long long r=1;long long e=b;while(e>0){if(e&1)r=r*base%MOD;base=(int)((long long)(base*base)%MOD);e>>=1;}o+=to_string(r);o+='\\n';}fwrite(o.data(),1,o.size(),stdout);}`,
+
   // m74: builds the lcm first, so a*b overflows long before the division
   m74: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){long long a,b;scanf("%lld %lld",&a,&b);long long g=__gcd(a,b);long long l=a*b/g;printf("%lld\\n",l/a);}`,
 

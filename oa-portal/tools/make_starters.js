@@ -5740,6 +5740,107 @@ ${FAST_READER_JAVA}}
 `,
 };
 
+S.c24 = {
+  cpp: `${CPP_HEAD}
+// All queries share one small universe (x <= 1e6) - precompute once.
+vector<int> divisorCounts(const vector<int>& xs) {
+    // write your code here
+
+    return vector<int>(xs.size(), 0);
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<int> xs(n);
+    for (auto &v : xs) scanf("%d", &v);
+
+    string out;
+    for (int v : divisorCounts(xs)) { out += to_string(v); out += '\\n'; }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    // All queries share one small universe (x <= 1e6) - precompute once.
+    static int[] divisorCounts(int[] xs) {
+        // write your code here
+
+        return new int[xs.length];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        int[] xs = new int[n];
+        for (int i = 0; i < n; i++) xs[i] = in.nextInt();
+
+        StringBuilder sb = new StringBuilder();
+        for (int v : divisorCounts(xs)) sb.append(v).append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c25 = {
+  cpp: `${CPP_HEAD}
+const long long MOD = 1000000007LL;
+
+// a^b mod 1e9+7. Note 0^0 is defined as 1, and products reach ~1e18.
+long long power(long long a, long long b) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+
+    string out;
+    for (int i = 0; i < n; i++) {
+        long long a, b;
+        scanf("%lld %lld", &a, &b);
+        out += to_string(power(a, b));
+        out += '\\n';
+    }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    static final long MOD = 1000000007L;
+
+    // a^b mod 1e9+7. Note 0^0 is defined as 1, and products reach ~1e18.
+    static long power(long a, long b) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            long a = in.nextLong(), b = in.nextLong();
+            sb.append(power(a, b)).append('\\n');
+        }
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
 /**
  * The /** ... *\/ blocks above each function are kept in THIS file so the
  * signatures stay self-documenting for whoever edits the templates, but they
