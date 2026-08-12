@@ -2161,7 +2161,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Trie, range structures, strings, bitmask",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c20",
+  "playable": true
  },
  {
   "docId": "Q115",
@@ -2179,7 +2181,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Trie, range structures, strings, bitmask",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c21",
+  "playable": true
  },
  {
   "docId": "Q116",
@@ -2197,7 +2201,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Trie, range structures, strings, bitmask",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c22",
+  "playable": true
  },
  {
   "docId": "Q117",
@@ -2273,7 +2279,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Trie, range structures, strings, bitmask",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c23",
+  "playable": true
  },
  {
   "docId": "Q121",

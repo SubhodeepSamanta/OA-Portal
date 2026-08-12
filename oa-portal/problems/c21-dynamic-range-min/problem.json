@@ -1,0 +1,12 @@
+{
+  "id": "c21",
+  "docId": "Q115",
+  "order": 112,
+  "title": "Dynamic Range Minimum Queries",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "512 MB",
+  "source": { "name": "CSES 1649", "url": "https://cses.fi/problemset/task/1649" },
+  "tagsHidden": true,
+  "tags": ["segment tree", "range queries"]
+}

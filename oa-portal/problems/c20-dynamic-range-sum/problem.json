@@ -1,0 +1,12 @@
+{
+  "id": "c20",
+  "docId": "Q114",
+  "order": 111,
+  "title": "Dynamic Range Sum Queries",
+  "difficulty": "Medium",
+  "timeLimitMs": 5000,
+  "memoryNote": "512 MB",
+  "source": { "name": "CSES 1648", "url": "https://cses.fi/problemset/task/1648" },
+  "tagsHidden": true,
+  "tags": ["fenwick tree", "range queries"]
+}

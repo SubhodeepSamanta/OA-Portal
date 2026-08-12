@@ -5461,6 +5461,285 @@ ${FAST_READER_JAVA}}
 `,
 };
 
+// --- range query set: the I/O loop is written for you, fill in the structure
+
+S.c20 = {
+  cpp: `${CPP_HEAD}
+/**
+ * Handle "1 k u" (SET position k to u) and "2 a b" (sum of a..b), 1-indexed.
+ * A prefix-sum array is O(n) to repair per update and too slow.
+ *
+ * @return the answer to each type-2 query, in order.
+ */
+vector<long long> answerQueries(vector<long long> x, const vector<array<long long, 3>>& ops) {
+    // ops[i] = {type, first, second}
+    // write your code here
+
+    return {};
+}
+
+int main() {
+    int n, q;
+    if (scanf("%d %d", &n, &q) != 2) return 0;
+    vector<long long> x(n + 1, 0);
+    for (int i = 1; i <= n; i++) scanf("%lld", &x[i]);
+    vector<array<long long, 3>> ops;
+    for (int i = 0; i < q; i++) {
+        long long t, a, b;
+        scanf("%lld %lld %lld", &t, &a, &b);
+        ops.push_back({ t, a, b });
+    }
+
+    string out;
+    for (long long v : answerQueries(x, ops)) { out += to_string(v); out += '\\n'; }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * Handle "1 k u" (SET position k to u) and "2 a b" (sum of a..b), 1-indexed.
+     * ops[i] = {type, first, second}. x is 1-indexed (x[0] unused).
+     *
+     * Returns the answer to each type-2 query, in order.
+     */
+    static long[] answerQueries(long[] x, long[][] ops) {
+        // write your code here
+
+        return new long[0];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), q = in.nextInt();
+        long[] x = new long[n + 1];
+        for (int i = 1; i <= n; i++) x[i] = in.nextLong();
+        long[][] ops = new long[q][3];
+        for (int i = 0; i < q; i++) { ops[i][0] = in.nextLong(); ops[i][1] = in.nextLong(); ops[i][2] = in.nextLong(); }
+
+        StringBuilder sb = new StringBuilder();
+        for (long v : answerQueries(x, ops)) sb.append(v).append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c21 = {
+  cpp: `${CPP_HEAD}
+/**
+ * Handle "1 k u" (SET position k to u) and "2 a b" (MINIMUM over a..b),
+ * 1-indexed. Note a Fenwick tree cannot answer this - minimum has no inverse.
+ *
+ * @return the answer to each type-2 query, in order.
+ */
+vector<int> answerQueries(vector<int> x, const vector<array<int, 3>>& ops) {
+    // ops[i] = {type, first, second}
+    // write your code here
+
+    return {};
+}
+
+int main() {
+    int n, q;
+    if (scanf("%d %d", &n, &q) != 2) return 0;
+    vector<int> x(n + 1, 0);
+    for (int i = 1; i <= n; i++) scanf("%d", &x[i]);
+    vector<array<int, 3>> ops;
+    for (int i = 0; i < q; i++) {
+        int t, a, b;
+        scanf("%d %d %d", &t, &a, &b);
+        ops.push_back({ t, a, b });
+    }
+
+    string out;
+    for (int v : answerQueries(x, ops)) { out += to_string(v); out += '\\n'; }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * Handle "1 k u" (SET position k to u) and "2 a b" (MINIMUM over a..b),
+     * 1-indexed. A Fenwick tree cannot answer this - minimum has no inverse.
+     * ops[i] = {type, first, second}. x is 1-indexed.
+     *
+     * Returns the answer to each type-2 query, in order.
+     */
+    static int[] answerQueries(int[] x, int[][] ops) {
+        // write your code here
+
+        return new int[0];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), q = in.nextInt();
+        int[] x = new int[n + 1];
+        for (int i = 1; i <= n; i++) x[i] = in.nextInt();
+        int[][] ops = new int[q][3];
+        for (int i = 0; i < q; i++) { ops[i][0] = in.nextInt(); ops[i][1] = in.nextInt(); ops[i][2] = in.nextInt(); }
+
+        StringBuilder sb = new StringBuilder();
+        for (int v : answerQueries(x, ops)) sb.append(v).append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c22 = {
+  cpp: `${CPP_HEAD}
+/**
+ * Handle "1 a b u" (add u to every position in a..b) and "2 k" (read the
+ * value at k), 1-indexed. Values can reach about 2e14, so use 64-bit types.
+ *
+ * ops[i] = {type, a, b, u} for a range add, or {2, k, 0, 0} for a read.
+ *
+ * @return the answer to each type-2 query, in order.
+ */
+vector<long long> answerQueries(vector<long long> x, const vector<array<long long, 4>>& ops) {
+    // write your code here
+
+    return {};
+}
+
+int main() {
+    int n, q;
+    if (scanf("%d %d", &n, &q) != 2) return 0;
+    vector<long long> x(n + 1, 0);
+    for (int i = 1; i <= n; i++) scanf("%lld", &x[i]);
+
+    vector<array<long long, 4>> ops;
+    for (int i = 0; i < q; i++) {
+        long long t;
+        scanf("%lld", &t);
+        if (t == 1) {
+            long long a, b, u;
+            scanf("%lld %lld %lld", &a, &b, &u);
+            ops.push_back({ t, a, b, u });
+        } else {
+            long long k;
+            scanf("%lld", &k);
+            ops.push_back({ t, k, 0, 0 });
+        }
+    }
+
+    string out;
+    for (long long v : answerQueries(x, ops)) { out += to_string(v); out += '\\n'; }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * Handle "1 a b u" (add u to every position in a..b) and "2 k" (read the
+     * value at k), 1-indexed. Values reach about 2e14, so use long.
+     *
+     * ops[i] = {type, a, b, u} for a range add, or {2, k, 0, 0} for a read.
+     *
+     * Returns the answer to each type-2 query, in order.
+     */
+    static long[] answerQueries(long[] x, long[][] ops) {
+        // write your code here
+
+        return new long[0];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), q = in.nextInt();
+        long[] x = new long[n + 1];
+        for (int i = 1; i <= n; i++) x[i] = in.nextLong();
+
+        long[][] ops = new long[q][4];
+        for (int i = 0; i < q; i++) {
+            long t = in.nextLong();
+            ops[i][0] = t;
+            if (t == 1) { ops[i][1] = in.nextLong(); ops[i][2] = in.nextLong(); ops[i][3] = in.nextLong(); }
+            else ops[i][1] = in.nextLong();
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (long v : answerQueries(x, ops)) sb.append(v).append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c23 = {
+  cpp: `${CPP_HEAD}
+/**
+ * x is 1-indexed and never changes. Each query asks for the xor of x[a..b].
+ *
+ * @return the answer to each query, in order.
+ */
+vector<int> rangeXors(const vector<int>& x, const vector<pair<int, int>>& queries) {
+    // write your code here
+
+    return vector<int>(queries.size(), 0);
+}
+
+int main() {
+    int n, q;
+    if (scanf("%d %d", &n, &q) != 2) return 0;
+    vector<int> x(n + 1, 0);
+    for (int i = 1; i <= n; i++) scanf("%d", &x[i]);
+    vector<pair<int, int>> queries(q);
+    for (auto &qr : queries) scanf("%d %d", &qr.first, &qr.second);
+
+    string out;
+    for (int v : rangeXors(x, queries)) { out += to_string(v); out += '\\n'; }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * x is 1-indexed (x[0] unused) and never changes. Query j asks for the
+     * xor of x[a[j]..b[j]].
+     *
+     * Returns the answer to each query, in order.
+     */
+    static int[] rangeXors(int[] x, int[] a, int[] b) {
+        // write your code here
+
+        return new int[a.length];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), q = in.nextInt();
+        int[] x = new int[n + 1];
+        for (int i = 1; i <= n; i++) x[i] = in.nextInt();
+        int[] a = new int[q], b = new int[q];
+        for (int i = 0; i < q; i++) { a[i] = in.nextInt(); b[i] = in.nextInt(); }
+
+        StringBuilder sb = new StringBuilder();
+        for (int v : rangeXors(x, a, b)) sb.append(v).append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
 /**
  * The /** ... *\/ blocks above each function are kept in THIS file so the
  * signatures stay self-documenting for whoever edits the templates, but they

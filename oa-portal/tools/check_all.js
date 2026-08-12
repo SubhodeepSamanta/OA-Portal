@@ -236,6 +236,20 @@ const WRONG = {
   // column are left at zero instead of counting the characters consumed
   c19: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){static char A[5005],B[5005];scanf("%s",A);scanf("%s",B);string a=A,b=B;int n=a.size(),m=b.size();vector<int>p(m+1,0),c(m+1,0);for(int i=1;i<=n;i++){c[0]=0;for(int j=1;j<=m;j++){if(a[i-1]==b[j-1])c[j]=p[j-1];else c[j]=1+min(p[j-1],min(p[j],c[j-1]));}p.swap(c);}printf("%d\\n",p[m]);}`,
 
+  // c20: treats "1 k u" as ADD u rather than SET to u
+  c20: `#include <bits/stdc++.h>\nusing namespace std;\nint n;vector<long long>t;\nvoid add(int i,long long v){for(;i<=n;i+=i&-i)t[i]+=v;}\nlong long pref(int i){long long s=0;for(;i>0;i-=i&-i)s+=t[i];return s;}\nint main(){int q;scanf("%d %d",&n,&q);t.assign(n+1,0);for(int i=1;i<=n;i++){long long v;scanf("%lld",&v);add(i,v);}string o;for(int i=0;i<q;i++){int ty;scanf("%d",&ty);if(ty==1){int k;long long u;scanf("%d %lld",&k,&u);add(k,u);}else{int a,b;scanf("%d %d",&a,&b);o+=to_string(pref(b)-pref(a-1));o+='\\n';}}fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // c21: writes the leaf but never climbs to fix its ancestors, so every
+  // query spanning more than one leaf reads stale internal nodes
+  c21: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,q;scanf("%d %d",&n,&q);int sz=1;while(sz<n)sz<<=1;vector<int>t(2*sz,INT_MAX);for(int i=0;i<n;i++)scanf("%d",&t[sz+i]);for(int i=sz-1;i>=1;i--)t[i]=min(t[2*i],t[2*i+1]);string o;for(int i=0;i<q;i++){int ty;scanf("%d",&ty);if(ty==1){int k,u;scanf("%d %d",&k,&u);t[sz+k-1]=u;}else{int a,b;scanf("%d %d",&a,&b);int r2=INT_MAX,l=sz+a-1,r=sz+b;while(l<r){if(l&1)r2=min(r2,t[l++]);if(r&1)r2=min(r2,t[--r]);l>>=1;r>>=1;}o+=to_string(r2);o+='\\n';}}fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // c22: cancels the range increment at b instead of b+1, so the last cell of
+  // every range misses out entirely
+  c22: `#include <bits/stdc++.h>\nusing namespace std;\nint m;vector<long long>t;\nvoid add(int i,long long v){if(i<1)return;for(;i<=m;i+=i&-i)t[i]+=v;}\nlong long pref(int i){long long s=0;for(;i>0;i-=i&-i)s+=t[i];return s;}\nint main(){int n,q;scanf("%d %d",&n,&q);vector<long long>x(n+2,0);for(int i=1;i<=n;i++)scanf("%lld",&x[i]);m=n+1;t.assign(m+1,0);string o;for(int i=0;i<q;i++){int ty;scanf("%d",&ty);if(ty==1){int a,b;long long u;scanf("%d %d %lld",&a,&b,&u);add(a,u);add(b,-u);}else{int k;scanf("%d",&k);o+=to_string(x[k]+pref(k));o+='\\n';}}fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // c23: xors p[b] with p[a] instead of p[a-1], dropping the first element
+  c23: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,q;scanf("%d %d",&n,&q);vector<int>p(n+1,0);for(int i=1;i<=n;i++){int v;scanf("%d",&v);p[i]=p[i-1]^v;}string o;for(int i=0;i<q;i++){int a,b;scanf("%d %d",&a,&b);o+=to_string(p[b]^p[a]);o+='\\n';}fwrite(o.data(),1,o.size(),stdout);}`,
+
   // m74: builds the lcm first, so a*b overflows long before the division
   m74: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){long long a,b;scanf("%lld %lld",&a,&b);long long g=__gcd(a,b);long long l=a*b/g;printf("%lld\\n",l/a);}`,
 
