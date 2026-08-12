@@ -6040,6 +6040,143 @@ ${FAST_READER_JAVA}}
 `,
 };
 
+S.c30 = {
+  cpp: `${CPP_HEAD}
+/**
+ * roads[i] = {a, b}, built one per day. After each one, report the number of
+ * components and the size of the largest. A road joining two already-connected
+ * cities changes neither.
+ *
+ * @return one {components, largest} pair per road, in order.
+ */
+vector<pair<int, int>> afterEachRoad(int n, const vector<pair<int, int>>& roads) {
+    // write your code here
+
+    return {};
+}
+
+int main() {
+    int n, m;
+    if (scanf("%d %d", &n, &m) != 2) return 0;
+    vector<pair<int, int>> roads(m);
+    for (auto &r : roads) scanf("%d %d", &r.first, &r.second);
+
+    string out;
+    for (auto &pr : afterEachRoad(n, roads)) {
+        out += to_string(pr.first);
+        out += ' ';
+        out += to_string(pr.second);
+        out += '\\n';
+    }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * a[i]-b[i] is the road built on day i. After each one, report the number
+     * of components and the size of the largest. A road joining two already
+     * connected cities changes neither.
+     *
+     * Returns one {components, largest} pair per road, in order.
+     */
+    static int[][] afterEachRoad(int n, int[] a, int[] b) {
+        // write your code here
+
+        return new int[0][];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), m = in.nextInt();
+        int[] a = new int[m], b = new int[m];
+        for (int i = 0; i < m; i++) { a[i] = in.nextInt(); b[i] = in.nextInt(); }
+
+        StringBuilder sb = new StringBuilder();
+        for (int[] r : afterEachRoad(n, a, b)) sb.append(r[0]).append(' ').append(r[1]).append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c14 = {
+  cpp: `${CPP_HEAD}
+/**
+ * edges[i] = {a, b, cost}, directed, costs may be negative.
+ * Any negative cycle is accepted, printed from any starting node.
+ *
+ * Careful: the cycle need not be reachable from node 1, and weights can
+ * drive distances past what a naive accumulator holds.
+ *
+ * @return the cycle's nodes, first == last, or an empty vector if none exists.
+ */
+vector<int> findNegativeCycle(int n, const vector<array<long long, 3>>& edges) {
+    // write your code here
+
+    return {};
+}
+
+int main() {
+    int n, m;
+    if (scanf("%d %d", &n, &m) != 2) return 0;
+    vector<array<long long, 3>> edges(m);
+    for (auto &e : edges) scanf("%lld %lld %lld", &e[0], &e[1], &e[2]);
+
+    vector<int> cycle = findNegativeCycle(n, edges);
+    if (cycle.empty()) { printf("NO\\n"); return 0; }
+
+    string out = "YES\\n";
+    for (size_t i = 0; i < cycle.size(); i++) {
+        out += to_string(cycle[i]);
+        out += (i + 1 == cycle.size() ? '\\n' : ' ');
+    }
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * ea[i] -> eb[i] with weight ec[i], directed, weights may be negative.
+     * Any negative cycle is accepted, printed from any starting node.
+     *
+     * Careful: the cycle need not be reachable from node 1, and weights can
+     * drive distances past what a naive accumulator holds.
+     *
+     * Returns the cycle's nodes with first == last, or an empty array if none.
+     */
+    static int[] findNegativeCycle(int n, int[] ea, int[] eb, long[] ec) {
+        // write your code here
+
+        return new int[0];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), m = in.nextInt();
+        int[] ea = new int[m], eb = new int[m];
+        long[] ec = new long[m];
+        for (int i = 0; i < m; i++) { ea[i] = in.nextInt(); eb[i] = in.nextInt(); ec[i] = in.nextLong(); }
+
+        int[] cycle = findNegativeCycle(n, ea, eb, ec);
+        if (cycle.length == 0) { System.out.println("NO"); return; }
+
+        StringBuilder sb = new StringBuilder("YES\\n");
+        for (int i = 0; i < cycle.length; i++) sb.append(cycle[i]).append(i + 1 == cycle.length ? '\\n' : ' ');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
 /**
  * The /** ... *\/ blocks above each function are kept in THIS file so the
  * signatures stay self-documenting for whoever edits the templates, but they

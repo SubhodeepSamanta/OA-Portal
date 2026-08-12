@@ -274,6 +274,14 @@ const WRONG = {
   // the total passes 2^31
   c29: `#include <bits/stdc++.h>\nusing namespace std;\nvector<int>p,sz;\nint f(int x){while(p[x]!=x){p[x]=p[p[x]];x=p[x];}return x;}\nint main(){int n,m;scanf("%d %d",&n,&m);vector<array<int,3>>e(m);for(int i=0;i<m;i++){int a,b,c;scanf("%d %d %d",&a,&b,&c);e[i]={c,a,b};}sort(e.begin(),e.end());p.resize(n+1);sz.assign(n+1,1);for(int i=1;i<=n;i++)p[i]=i;int total=0;int taken=0;for(auto&x:e){int ra=f(x[1]),rb=f(x[2]);if(ra==rb)continue;if(sz[ra]<sz[rb])swap(ra,rb);p[rb]=ra;sz[ra]+=sz[rb];total+=x[0];if(++taken==n-1)break;}if(taken!=n-1)printf("IMPOSSIBLE\\n");else printf("%d\\n",total);}`,
 
+  // c30: decrements the component count for EVERY road, including ones
+  // joining two cities that are already connected
+  c30: `#include <bits/stdc++.h>\nusing namespace std;\nvector<int>p,sz;\nint f(int x){while(p[x]!=x){p[x]=p[p[x]];x=p[x];}return x;}\nint main(){int n,m;scanf("%d %d",&n,&m);p.resize(n+1);sz.assign(n+1,1);for(int i=1;i<=n;i++)p[i]=i;int comp=n,big=1;string o;for(int i=0;i<m;i++){int a,b;scanf("%d %d",&a,&b);int ra=f(a),rb=f(b);if(ra!=rb){if(sz[ra]<sz[rb])swap(ra,rb);p[rb]=ra;sz[ra]+=sz[rb];big=max(big,sz[ra]);}comp--;o+=to_string(comp);o+=' ';o+=to_string(big);o+='\\n';}fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // c14: seeds only node 1 at distance 0 and leaves the rest at infinity, so
+  // a negative cycle that node 1 cannot reach is never detected
+  c14: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,m;scanf("%d %d",&n,&m);vector<int>ea(m),eb(m);vector<long long>ec(m);for(int i=0;i<m;i++)scanf("%d %d %lld",&ea[i],&eb[i],&ec[i]);const long long INF=(long long)4e18,FL=-(long long)4e18;vector<long long>d(n+1,INF);vector<int>p(n+1,-1);d[1]=0;int x=-1;for(int t=0;t<n;t++){x=-1;for(int j=0;j<m;j++){if(d[ea[j]]==INF)continue;if(d[ea[j]]+ec[j]<d[eb[j]]){d[eb[j]]=max(d[ea[j]]+ec[j],FL);p[eb[j]]=ea[j];x=eb[j];}}if(x==-1)break;}if(x==-1){printf("NO\\n");return 0;}for(int i=0;i<n;i++)x=p[x];vector<int>c;for(int v=x;;v=p[v]){c.push_back(v);if(v==x&&c.size()>1)break;}reverse(c.begin(),c.end());string o="YES\\n";for(size_t i=0;i<c.size();i++){o+=to_string(c[i]);o+=(i+1==c.size()?'\\n':' ');}fwrite(o.data(),1,o.size(),stdout);}`,
+
   // m74: builds the lcm first, so a*b overflows long before the division
   m74: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){long long a,b;scanf("%lld %lld",&a,&b);long long g=__gcd(a,b);long long l=a*b/g;printf("%lld\\n",l/a);}`,
 

@@ -1,0 +1,14 @@
+{
+  "id": "c14",
+  "docId": "Q84",
+  "order": 105,
+  "title": "Cycle Finding",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "512 MB",
+  "source": { "name": "CSES 1197", "url": "https://cses.fi/problemset/task/1197" },
+  "checker": "checker.cpp",
+  "checkerNote": "Any negative cycle is accepted, exactly as on CSES.",
+  "tagsHidden": true,
+  "tags": ["bellman-ford", "negative cycle"]
+}
