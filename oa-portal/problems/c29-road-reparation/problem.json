@@ -1,0 +1,12 @@
+{
+  "id": "c29",
+  "docId": "Q234",
+  "order": 120,
+  "title": "Road Reparation",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "512 MB",
+  "source": { "name": "CSES 1675", "url": "https://cses.fi/problemset/task/1675" },
+  "tagsHidden": true,
+  "tags": ["minimum spanning tree", "kruskal", "dsu"]
+}

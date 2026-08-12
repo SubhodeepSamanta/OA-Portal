@@ -5841,6 +5841,205 @@ ${FAST_READER_JAVA}}
 `,
 };
 
+S.c26 = {
+  cpp: `${CPP_HEAD}
+// Occurrences of pattern in text. They may OVERLAP.
+long long countOccurrences(const string& text, const string& pattern) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    static char bufS[1000006], bufP[1000006];
+    if (scanf("%s", bufS) != 1) return 0;
+    if (scanf("%s", bufP) != 1) return 0;
+
+    printf("%lld\\n", countOccurrences(string(bufS), string(bufP)));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    // Occurrences of pattern in text. They may OVERLAP.
+    static long countOccurrences(String text, String pattern) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        String text = in.next(), pattern = in.next();
+        System.out.println(countOccurrences(text, pattern));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c27 = {
+  cpp: `${CPP_HEAD}
+/**
+ * A border is a proper prefix that is also a suffix.
+ *
+ * @return every border length, in INCREASING order (empty if there are none).
+ */
+vector<int> borderLengths(const string& s) {
+    // write your code here
+
+    return {};
+}
+
+int main() {
+    static char buf[1000006];
+    if (scanf("%s", buf) != 1) return 0;
+
+    vector<int> borders = borderLengths(string(buf));
+    string out;
+    for (size_t i = 0; i < borders.size(); i++) {
+        out += to_string(borders[i]);
+        if (i + 1 < borders.size()) out += ' ';
+    }
+    out += '\\n';
+    fwrite(out.data(), 1, out.size(), stdout);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * A border is a proper prefix that is also a suffix.
+     *
+     * Returns every border length in INCREASING order (empty if there are none).
+     */
+    static int[] borderLengths(String s) {
+        // write your code here
+
+        return new int[0];
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int[] borders = borderLengths(in.next());
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < borders.length; i++) {
+            sb.append(borders[i]);
+            if (i + 1 < borders.length) sb.append(' ');
+        }
+        sb.append('\\n');
+        System.out.print(sb);
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c28 = {
+  cpp: `${CPP_HEAD}
+// Largest gcd over all pairs at distinct positions. Values repeat, and a pair
+// of two EQUAL values is a valid pair.
+int maxPairGcd(const vector<int>& x) {
+    // write your code here
+
+    return 1;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<int> x(n);
+    for (auto &v : x) scanf("%d", &v);
+
+    printf("%d\\n", maxPairGcd(x));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    // Largest gcd over all pairs at distinct positions. Values repeat, and a
+    // pair of two EQUAL values is a valid pair.
+    static int maxPairGcd(int[] x) {
+        // write your code here
+
+        return 1;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        int[] x = new int[n];
+        for (int i = 0; i < n; i++) x[i] = in.nextInt();
+
+        System.out.println(maxPairGcd(x));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.c29 = {
+  cpp: `${CPP_HEAD}
+/**
+ * roads[i] = {a, b, cost}, two-way. Connect every city as cheaply as possible.
+ * The total reaches ~1e14, so it does not fit in an int.
+ *
+ * @return the minimum total cost, or -1 if the cities cannot all be connected.
+ */
+long long minRepairCost(int n, const vector<array<int, 3>>& roads) {
+    // write your code here
+
+    return -1;
+}
+
+int main() {
+    int n, m;
+    if (scanf("%d %d", &n, &m) != 2) return 0;
+    vector<array<int, 3>> roads(m);
+    for (auto &r : roads) scanf("%d %d %d", &r[0], &r[1], &r[2]);
+
+    long long ans = minRepairCost(n, roads);
+    if (ans < 0) printf("IMPOSSIBLE\\n");
+    else printf("%lld\\n", ans);
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * roads[i] = {a, b, cost}, two-way. Connect every city as cheaply as
+     * possible. The total reaches ~1e14, so it does not fit in an int.
+     *
+     * Returns the minimum total cost, or -1 if they cannot all be connected.
+     */
+    static long minRepairCost(int n, int[][] roads) {
+        // write your code here
+
+        return -1;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), m = in.nextInt();
+        int[][] roads = new int[m][3];
+        for (int i = 0; i < m; i++) { roads[i][0] = in.nextInt(); roads[i][1] = in.nextInt(); roads[i][2] = in.nextInt(); }
+
+        long ans = minRepairCost(n, roads);
+        System.out.println(ans < 0 ? "IMPOSSIBLE" : String.valueOf(ans));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
 /**
  * The /** ... *\/ blocks above each function are kept in THIS file so the
  * signatures stay self-documenting for whoever edits the templates, but they

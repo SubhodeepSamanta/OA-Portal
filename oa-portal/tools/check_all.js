@@ -258,6 +258,22 @@ const WRONG = {
   // ever widened or reduced
   c25: `#include <bits/stdc++.h>\nusing namespace std;\nstatic const long long MOD=1000000007LL;\nint main(){int n;scanf("%d",&n);string o;for(int i=0;i<n;i++){long long a,b;scanf("%lld %lld",&a,&b);int base=(int)(a%MOD);long long r=1;long long e=b;while(e>0){if(e&1)r=r*base%MOD;base=(int)((long long)(base*base)%MOD);e>>=1;}o+=to_string(r);o+='\\n';}fwrite(o.data(),1,o.size(),stdout);}`,
 
+  // c26: resets the match length to 0 after a hit instead of falling back to
+  // fail[m-1], so overlapping occurrences are missed
+  c26: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){static char A[1000006],B[1000006];scanf("%s",A);scanf("%s",B);string s=A,p=B;int n=s.size(),m=p.size();if(m>n){printf("0\\n");return 0;}vector<int>f(m,0);for(int i=1,k=0;i<m;i++){while(k>0&&p[i]!=p[k])k=f[k-1];if(p[i]==p[k])k++;f[i]=k;}long long c=0;for(int i=0,k=0;i<n;i++){while(k>0&&s[i]!=p[k])k=f[k-1];if(s[i]==p[k])k++;if(k==m){c++;k=0;}}printf("%lld\\n",c);}`,
+
+  // c27: prints only the longest border instead of chaining down through
+  // fail[k-1] to collect them all
+  c27: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){static char A[1000006];scanf("%s",A);string s=A;int n=s.size();vector<int>f(n,0);for(int i=1,k=0;i<n;i++){while(k>0&&s[i]!=s[k])k=f[k-1];if(s[i]==s[k])k++;f[i]=k;}string o;if(f[n-1]>0)o+=to_string(f[n-1]);o+='\\n';fwrite(o.data(),1,o.size(),stdout);}`,
+
+  // c28: marks values as seen rather than counting them, so a pair made of
+  // two EQUAL inputs is never noticed
+  c28: `#include <bits/stdc++.h>\nusing namespace std;\nstatic const int L=1000000;\nint main(){int n;scanf("%d",&n);static char seen[L+1];for(int i=0;i<n;i++){int v;scanf("%d",&v);seen[v]=1;}for(int d=L;d>=1;d--){int c=0;for(int m=d;m<=L;m+=d){c+=seen[m];if(c>=2)break;}if(c>=2){printf("%d\\n",d);return 0;}}printf("1\\n");}`,
+
+  // c29: accumulates the spanning tree cost in a 32-bit int, which wraps once
+  // the total passes 2^31
+  c29: `#include <bits/stdc++.h>\nusing namespace std;\nvector<int>p,sz;\nint f(int x){while(p[x]!=x){p[x]=p[p[x]];x=p[x];}return x;}\nint main(){int n,m;scanf("%d %d",&n,&m);vector<array<int,3>>e(m);for(int i=0;i<m;i++){int a,b,c;scanf("%d %d %d",&a,&b,&c);e[i]={c,a,b};}sort(e.begin(),e.end());p.resize(n+1);sz.assign(n+1,1);for(int i=1;i<=n;i++)p[i]=i;int total=0;int taken=0;for(auto&x:e){int ra=f(x[1]),rb=f(x[2]);if(ra==rb)continue;if(sz[ra]<sz[rb])swap(ra,rb);p[rb]=ra;sz[ra]+=sz[rb];total+=x[0];if(++taken==n-1)break;}if(taken!=n-1)printf("IMPOSSIBLE\\n");else printf("%d\\n",total);}`,
+
   // m74: builds the lcm first, so a*b overflows long before the division
   m74: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){long long a,b;scanf("%lld %lld",&a,&b);long long g=__gcd(a,b);long long l=a*b/g;printf("%lld\\n",l/a);}`,
 

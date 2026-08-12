@@ -2317,7 +2317,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Trie, range structures, strings, bitmask",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c26",
+  "playable": true
  },
  {
   "docId": "Q123",
@@ -2335,7 +2337,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Trie, range structures, strings, bitmask",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c27",
+  "playable": true
  },
  {
   "docId": "Q124",
@@ -3229,7 +3233,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Math, bits, matrices, pointers, design",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c28",
+  "playable": true
  },
  {
   "docId": "Q170",
@@ -4459,7 +4465,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Coverage gap-fillers",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "c29",
+  "playable": true
  },
  {
   "docId": "Q235",

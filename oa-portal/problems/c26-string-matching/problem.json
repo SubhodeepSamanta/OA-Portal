@@ -1,0 +1,12 @@
+{
+  "id": "c26",
+  "docId": "Q122",
+  "order": 117,
+  "title": "String Matching",
+  "difficulty": "Hard",
+  "timeLimitMs": 3000,
+  "memoryNote": "512 MB",
+  "source": { "name": "CSES 1753", "url": "https://cses.fi/problemset/task/1753" },
+  "tagsHidden": true,
+  "tags": ["kmp", "string matching"]
+}
