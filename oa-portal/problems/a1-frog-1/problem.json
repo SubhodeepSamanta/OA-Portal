@@ -1,0 +1,12 @@
+{
+  "id": "a1",
+  "docId": "Q89",
+  "order": 122,
+  "title": "Frog 1",
+  "difficulty": "Easy",
+  "timeLimitMs": 2000,
+  "memoryNote": "1024 MB",
+  "source": { "name": "AtCoder EDPC A", "url": "https://atcoder.jp/contests/dp/tasks/dp_a" },
+  "tagsHidden": true,
+  "tags": ["dynamic programming"]
+}

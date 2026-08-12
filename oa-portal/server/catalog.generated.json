@@ -1695,7 +1695,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Dynamic programming",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "a1",
+  "playable": true
  },
  {
   "docId": "Q90",
@@ -1713,7 +1715,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Dynamic programming",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "a2",
+  "playable": true
  },
  {
   "docId": "Q91",
@@ -1731,7 +1735,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Dynamic programming",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "a3",
+  "playable": true
  },
  {
   "docId": "Q92",
@@ -1749,7 +1755,9 @@
   "urlExact": false,
   "statement": "",
   "section": "Dynamic programming",
-  "part": "PART 7 — THE COMPLETE QUESTION BANK"
+  "part": "PART 7 — THE COMPLETE QUESTION BANK",
+  "id": "a4",
+  "playable": true
  },
  {
   "docId": "Q93",

@@ -1,0 +1,12 @@
+{
+  "id": "a4",
+  "docId": "Q92",
+  "order": 125,
+  "title": "Knapsack 1",
+  "difficulty": "Medium",
+  "timeLimitMs": 2000,
+  "memoryNote": "1024 MB",
+  "source": { "name": "AtCoder EDPC D", "url": "https://atcoder.jp/contests/dp/tasks/dp_d" },
+  "tagsHidden": true,
+  "tags": ["knapsack", "dynamic programming"]
+}

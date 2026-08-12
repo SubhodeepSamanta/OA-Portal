@@ -265,6 +265,9 @@ const SOLVABLE = {
   Q102: 'c18', Q103: 'c19', Q114: 'c20', Q115: 'c21', Q116: 'c22',
   Q120: 'c23', Q170: 'c24', Q171: 'c25', Q122: 'c26', Q123: 'c27',
   Q169: 'c28', Q234: 'c29', Q235: 'c30', Q84: 'c14',
+
+  // AtCoder Educational DP Contest
+  Q89: 'a1', Q90: 'a2', Q91: 'a3', Q92: 'a4',
 };
 let solvable = 0;
 for (const it of items) {

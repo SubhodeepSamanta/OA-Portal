@@ -1,0 +1,12 @@
+{
+  "id": "a3",
+  "docId": "Q91",
+  "order": 124,
+  "title": "Vacation",
+  "difficulty": "Medium",
+  "timeLimitMs": 2000,
+  "memoryNote": "1024 MB",
+  "source": { "name": "AtCoder EDPC C", "url": "https://atcoder.jp/contests/dp/tasks/dp_c" },
+  "tagsHidden": true,
+  "tags": ["dynamic programming", "state machine"]
+}

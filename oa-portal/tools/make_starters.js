@@ -6177,6 +6177,208 @@ ${FAST_READER_JAVA}}
 `,
 };
 
+// ------------------------------------------- AtCoder Educational DP Contest
+
+S.a1 = {
+  cpp: `${CPP_HEAD}
+// h is 1-indexed. From stone i the frog jumps to i+1 or i+2, paying
+// |h[i] - h[j]|. Minimum total cost to reach stone n.
+long long minCost(const vector<long long>& h) {
+    int n = (int)h.size() - 1;
+    // write your code here
+
+    (void)n;
+    return 0;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<long long> h(n + 1);
+    for (int i = 1; i <= n; i++) scanf("%lld", &h[i]);
+
+    printf("%lld\\n", minCost(h));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    // h is 1-indexed (h[0] unused). From stone i the frog jumps to i+1 or i+2,
+    // paying |h[i] - h[j]|. Minimum total cost to reach stone n.
+    static long minCost(long[] h) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long[] h = new long[n + 1];
+        for (int i = 1; i <= n; i++) h[i] = in.nextLong();
+
+        System.out.println(minCost(h));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.a2 = {
+  cpp: `${CPP_HEAD}
+// h is 1-indexed. From stone i the frog jumps to any of i+1 .. i+k, paying
+// |h[i] - h[j]|. Minimum total cost to reach stone n.
+long long minCost(const vector<long long>& h, int k) {
+    // write your code here
+
+    (void)k;
+    return 0;
+}
+
+int main() {
+    int n, k;
+    if (scanf("%d %d", &n, &k) != 2) return 0;
+    vector<long long> h(n + 1);
+    for (int i = 1; i <= n; i++) scanf("%lld", &h[i]);
+
+    printf("%lld\\n", minCost(h, k));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    // h is 1-indexed (h[0] unused). From stone i the frog jumps to any of
+    // i+1 .. i+k, paying |h[i] - h[j]|. Minimum cost to reach stone n.
+    static long minCost(long[] h, int k) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt(), k = in.nextInt();
+        long[] h = new long[n + 1];
+        for (int i = 1; i <= n; i++) h[i] = in.nextLong();
+
+        System.out.println(minCost(h, k));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.a3 = {
+  cpp: `${CPP_HEAD}
+/**
+ * day[i] = {a, b, c}: the happiness from each activity on day i.
+ * The same activity cannot be chosen on two consecutive days.
+ *
+ * @return the maximum total happiness.
+ */
+long long maxHappiness(const vector<array<long long, 3>>& day) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+    vector<array<long long, 3>> day(n);
+    for (auto &d : day) scanf("%lld %lld %lld", &d[0], &d[1], &d[2]);
+
+    printf("%lld\\n", maxHappiness(day));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * day[i] = {a, b, c}: the happiness from each activity on day i.
+     * The same activity cannot be chosen on two consecutive days.
+     *
+     * Returns the maximum total happiness.
+     */
+    static long maxHappiness(long[][] day) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long[][] day = new long[n][3];
+        for (int i = 0; i < n; i++) { day[i][0] = in.nextLong(); day[i][1] = in.nextLong(); day[i][2] = in.nextLong(); }
+
+        System.out.println(maxHappiness(day));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.a4 = {
+  cpp: `${CPP_HEAD}
+/**
+ * Item i weighs w[i] and is worth v[i]; take each at most once, total weight
+ * at most W. Values reach 1e9 each, so the total does not fit in an int.
+ *
+ * @return the maximum total value.
+ */
+long long maxValue(long long W, const vector<long long>& w, const vector<long long>& v) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n; long long W;
+    if (scanf("%d %lld", &n, &W) != 2) return 0;
+    vector<long long> w(n), v(n);
+    for (int i = 0; i < n; i++) scanf("%lld %lld", &w[i], &v[i]);
+
+    printf("%lld\\n", maxValue(W, w, v));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * Item i weighs w[i] and is worth v[i]; take each at most once, total
+     * weight at most W. Values reach 1e9 each, so the total needs a long.
+     *
+     * Returns the maximum total value.
+     */
+    static long maxValue(long W, long[] w, long[] v) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long W = in.nextLong();
+        long[] w = new long[n], v = new long[n];
+        for (int i = 0; i < n; i++) { w[i] = in.nextLong(); v[i] = in.nextLong(); }
+
+        System.out.println(maxValue(W, w, v));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
 /**
  * The /** ... *\/ blocks above each function are kept in THIS file so the
  * signatures stay self-documenting for whoever edits the templates, but they

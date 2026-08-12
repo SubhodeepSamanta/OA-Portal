@@ -282,6 +282,18 @@ const WRONG = {
   // a negative cycle that node 1 cannot reach is never detected
   c14: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,m;scanf("%d %d",&n,&m);vector<int>ea(m),eb(m);vector<long long>ec(m);for(int i=0;i<m;i++)scanf("%d %d %lld",&ea[i],&eb[i],&ec[i]);const long long INF=(long long)4e18,FL=-(long long)4e18;vector<long long>d(n+1,INF);vector<int>p(n+1,-1);d[1]=0;int x=-1;for(int t=0;t<n;t++){x=-1;for(int j=0;j<m;j++){if(d[ea[j]]==INF)continue;if(d[ea[j]]+ec[j]<d[eb[j]]){d[eb[j]]=max(d[ea[j]]+ec[j],FL);p[eb[j]]=ea[j];x=eb[j];}}if(x==-1)break;}if(x==-1){printf("NO\\n");return 0;}for(int i=0;i<n;i++)x=p[x];vector<int>c;for(int v=x;;v=p[v]){c.push_back(v);if(v==x&&c.size()>1)break;}reverse(c.begin(),c.end());string o="YES\\n";for(size_t i=0;i<c.size();i++){o+=to_string(c[i]);o+=(i+1==c.size()?'\\n':' ');}fwrite(o.data(),1,o.size(),stdout);}`,
 
+  // a1: greedy - always takes the cheaper next jump, which strands it
+  a1: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);vector<long long>h(n+1);for(int i=1;i<=n;i++)scanf("%lld",&h[i]);long long c=0;int i=1;while(i<n){if(i+2>n){c+=llabs(h[i]-h[i+1]);i++;continue;}long long o=llabs(h[i]-h[i+1]),t=llabs(h[i]-h[i+2]);if(o<=t){c+=o;i++;}else{c+=t;i+=2;}}printf("%lld\\n",c);}`,
+
+  // a2: only ever looks one stone back, ignoring the wider jump range
+  a2: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n,k;scanf("%d %d",&n,&k);vector<long long>h(n+1);for(int i=1;i<=n;i++)scanf("%lld",&h[i]);const long long INF=LLONG_MAX/4;vector<long long>c(n+1,INF);c[1]=0;for(int i=2;i<=n;i++)c[i]=c[i-1]+llabs(h[i]-h[i-1]);printf("%lld\\n",c[n]);}`,
+
+  // a3: takes the largest value each day with no memory of yesterday
+  a3: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;scanf("%d",&n);long long t=0;for(int i=0;i<n;i++){long long a,b,c;scanf("%lld %lld %lld",&a,&b,&c);t+=max(a,max(b,c));}printf("%lld\\n",t);}`,
+
+  // a4: iterates the capacity upward, turning 0/1 into unbounded knapsack
+  a4: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;long long W;scanf("%d %lld",&n,&W);vector<long long>w(n),v(n);for(int i=0;i<n;i++)scanf("%lld %lld",&w[i],&v[i]);vector<long long>b(W+1,0);for(int i=0;i<n;i++)for(long long c=w[i];c<=W;c++)b[c]=max(b[c],b[c-w[i]]+v[i]);printf("%lld\\n",b[W]);}`,
+
   // m74: builds the lcm first, so a*b overflows long before the division
   m74: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){long long a,b;scanf("%lld %lld",&a,&b);long long g=__gcd(a,b);long long l=a*b/g;printf("%lld\\n",l/a);}`,
 
