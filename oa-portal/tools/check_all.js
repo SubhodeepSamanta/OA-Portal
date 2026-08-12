@@ -294,6 +294,13 @@ const WRONG = {
   // a4: iterates the capacity upward, turning 0/1 into unbounded knapsack
   a4: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;long long W;scanf("%d %lld",&n,&W);vector<long long>w(n),v(n);for(int i=0;i<n;i++)scanf("%lld %lld",&w[i],&v[i]);vector<long long>b(W+1,0);for(int i=0;i<n;i++)for(long long c=w[i];c<=W;c++)b[c]=max(b[c],b[c-w[i]]+v[i]);printf("%lld\\n",b[W]);}`,
 
+  // a5: keeps Knapsack 1's weight-indexed state. W is 1e9 here, so the array
+  // is clamped to something allocatable and the answer collapses
+  a5: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int n;long long W;scanf("%d %lld",&n,&W);vector<long long>w(n),v(n);for(int i=0;i<n;i++)scanf("%lld %lld",&w[i],&v[i]);long long cap=min(W,(long long)200000);vector<long long>b(cap+1,0);for(int i=0;i<n;i++)for(long long c=cap;c>=w[i];c--)b[c]=max(b[c],b[c-w[i]]+v[i]);printf("%lld\\n",b[cap]);}`,
+
+  // a6: counts paths through walls - it never zeroes a blocked square
+  a6: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){int H,W;scanf("%d %d",&H,&W);vector<string>g(H);for(int r=0;r<H;r++){static char b[1005];scanf("%s",b);g[r]=b;}const long long MOD=1000000007LL;vector<vector<long long>>w(H,vector<long long>(W,0));w[0][0]=1;for(int r=0;r<H;r++)for(int c=0;c<W;c++){if(r==0&&c==0)continue;long long t=0;if(r>0)t+=w[r-1][c];if(c>0)t+=w[r][c-1];w[r][c]=t%MOD;}printf("%lld\\n",w[H-1][W-1]);}`,
+
   // m74: builds the lcm first, so a*b overflows long before the division
   m74: `#include <bits/stdc++.h>\nusing namespace std;\nint main(){long long a,b;scanf("%lld %lld",&a,&b);long long g=__gcd(a,b);long long l=a*b/g;printf("%lld\\n",l/a);}`,
 

@@ -6379,6 +6379,127 @@ ${FAST_READER_JAVA}}
 `,
 };
 
+S.a5 = {
+  cpp: `${CPP_HEAD}
+/**
+ * Item i weighs w[i] and is worth v[i]; take each at most once, total weight
+ * at most W.
+ *
+ * Note W reaches 1e9 here but values are at most 1000 each. That is not an
+ * accident - it decides which axis the state is indexed by.
+ *
+ * @return the maximum total value.
+ */
+long long maxValue(long long W, const vector<long long>& w, const vector<long long>& v) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int n; long long W;
+    if (scanf("%d %lld", &n, &W) != 2) return 0;
+    vector<long long> w(n), v(n);
+    for (int i = 0; i < n; i++) scanf("%lld %lld", &w[i], &v[i]);
+
+    printf("%lld\\n", maxValue(W, w, v));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    /**
+     * Item i weighs w[i] and is worth v[i]; take each at most once, total
+     * weight at most W.
+     *
+     * Note W reaches 1e9 here but values are at most 1000 each. That is not an
+     * accident - it decides which axis the state is indexed by.
+     *
+     * Returns the maximum total value.
+     */
+    static long maxValue(long W, long[] w, long[] v) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int n = in.nextInt();
+        long W = in.nextLong();
+        long[] w = new long[n], v = new long[n];
+        for (int i = 0; i < n; i++) { w[i] = in.nextLong(); v[i] = in.nextLong(); }
+
+        System.out.println(maxValue(W, w, v));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
+S.a6 = {
+  cpp: `${CPP_HEAD}
+const long long MOD = 1000000007LL;
+
+/**
+ * grid[r] is a row of '.' (empty) and '#' (wall). Move only right or down,
+ * from the top-left to the bottom-right, never onto a wall.
+ *
+ * @return the number of paths, modulo 1e9+7.
+ */
+long long countPaths(const vector<string>& grid) {
+    // write your code here
+
+    return 0;
+}
+
+int main() {
+    int H, W;
+    if (scanf("%d %d", &H, &W) != 2) return 0;
+    vector<string> grid(H);
+    for (int r = 0; r < H; r++) {
+        static char buf[1005];
+        scanf("%s", buf);
+        grid[r] = buf;
+    }
+
+    printf("%lld\\n", countPaths(grid));
+    return 0;
+}
+`,
+  java: `import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    static final long MOD = 1000000007L;
+
+    /**
+     * grid[r] is a row of '.' (empty) and '#' (wall). Move only right or down,
+     * from the top-left to the bottom-right, never onto a wall.
+     *
+     * Returns the number of paths, modulo 1e9+7.
+     */
+    static long countPaths(String[] grid) {
+        // write your code here
+
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int H = in.nextInt(), W = in.nextInt();
+        String[] grid = new String[H];
+        for (int r = 0; r < H; r++) grid[r] = in.next();
+
+        System.out.println(countPaths(grid));
+    }
+${FAST_READER_JAVA}}
+`,
+};
+
 /**
  * The /** ... *\/ blocks above each function are kept in THIS file so the
  * signatures stay self-documenting for whoever edits the templates, but they

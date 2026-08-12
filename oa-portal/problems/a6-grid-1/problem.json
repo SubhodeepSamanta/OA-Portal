@@ -1,0 +1,12 @@
+{
+  "id": "a6",
+  "docId": "Q95",
+  "order": 127,
+  "title": "Grid 1",
+  "difficulty": "Medium",
+  "timeLimitMs": 2000,
+  "memoryNote": "1024 MB",
+  "source": { "name": "AtCoder EDPC H", "url": "https://atcoder.jp/contests/dp/tasks/dp_h" },
+  "tagsHidden": true,
+  "tags": ["dynamic programming", "grid", "counting"]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "a5",
+  "docId": "Q93",
+  "order": 126,
+  "title": "Knapsack 2",
+  "difficulty": "Hard",
+  "timeLimitMs": 2000,
+  "memoryNote": "1024 MB",
+  "source": { "name": "AtCoder EDPC E", "url": "https://atcoder.jp/contests/dp/tasks/dp_e" },
+  "tagsHidden": true,
+  "tags": ["knapsack", "dynamic programming", "state choice"]
+}
